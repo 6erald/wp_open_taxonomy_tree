@@ -15,3 +15,5 @@ It's important to give proper credit. Add links to any repo that inspired you or
 
 > Git Styleguide
 > https://udacity.github.io/git-styleguide/
+
+> Based on the Plugin: "Category D3 Tree" by Anshisolutions 

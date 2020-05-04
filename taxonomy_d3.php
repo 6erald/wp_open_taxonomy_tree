@@ -1,11 +1,9 @@
 <?php
 /*
 
-Based on the Plugin
-
-Plugin Name: Category D3 Tree
-Plugin URI: http://www.anshisolutions.com/
-Author:
+Plugin Name: open taxonomy tree
+Plugin URI:
+Author: Gerald Wagner
 
 ,
 */
