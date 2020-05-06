@@ -43,28 +43,28 @@ var svg = d3.select('#categorytree').append("svg")
 
 // ajax
 jQuery.ajax({
-     url: MyAjax.ajaxurl,
-     data:{
-          'action':'categorytree',
-          'taxonomy': taxonomy
-     },
-     dataType: 'JSON',
-     success:function(data){
-          // our handler function will go here
-          // this part is very important!
-          // its what happens with the JSON data
-          // after it is fetched via AJAX!
-          // alert(JSON.stringify(data));
-          root = data;
-	     root.x0 = height / 2;
-	     root.y0 = 0;
+    url: MyAjax.ajaxurl,
+    data:{
+        'action':'categorytree',
+        'taxonomy': taxonomy
+    },
+    dataType: 'JSON',
+    success:function(data){
+        // our handler function will go here
+        // this part is very important!
+        // its what happens with the JSON data
+        // after it is fetched via AJAX!
+        // alert(JSON.stringify(data));
+        root = data;
+	    root.x0 = height / 2;
+	    root.y0 = 0;
 
-	     update(root);
-     },
-     error: function(errorThrown){
+	    update(root);
+    },
+    error: function(errorThrown){
           //alert(JSON.stringify(errorThrown));
           console.log(errorThrown);
-     }
+    }
 });
 
 
