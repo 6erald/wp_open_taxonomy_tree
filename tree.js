@@ -91,37 +91,40 @@ var unitLenght = 150;
 svg.selectAll(".link")
     .data(links)
     .enter()
+    // group
     .append("g")
     .attr("class", "diagonal")
-        .append("path")
-        .attr("class", "link")
-	    .style("stroke-width", "1")
-	    .style("fill", "none")
-	    .style("stroke", function(d) {
-			if (d.target.taxonomy_color) {
-			    return d.target.taxonomy_color
-			}
-			if (d.target.parent.taxonomy_color ) {
-			    return d.target.parent.taxonomy_color
-			}
-			if (d.target.parent.parent.taxonomy_color ) {
-			    return d.target.parent.parent.taxonomy_color
-			}
-			else {return "black"}
-		})
-	    .attr("d", diagonal)
-	    .attr("z-index", "-100");
+    // path element
+    .append("path")
+    .attr("class", "link")
+    .style("stroke-width", "1")
+    .style("fill", "none")
+    .style("stroke", function(d) {
+		if (d.target.taxonomy_color) {
+		    return d.target.taxonomy_color
+		}
+		if (d.target.parent.taxonomy_color ) {
+		    return d.target.parent.taxonomy_color
+		}
+		if (d.target.parent.parent.taxonomy_color ) {
+		    return d.target.parent.parent.taxonomy_color
+		}
+		else {return "black"}
+	})
+    .attr("d", diagonal)
+    .attr("z-index", "-100");
 
 // create g.node
 var node = svg.selectAll(".node")
 	.data(nodes)
 	.enter()
 	.append("g")
-		.attr("class", "node")
-		.attr("transform", function(d) {
-			// rotate the coordinates d.x and d.y for horizontal layout
-			return "translate(" + d.y + "," + d.x  + ")";})
-		.attr("z-index", "0");
+	.attr("class", "node")
+	.attr("transform", function(d) {
+		// rotate the coordinates d.x and d.y for horizontal layout
+		return "translate(" + d.y + "," + d.x  + ")";
+    })
+	.attr("z-index", "0");
 
 // append names on g.node
 node.filter(function(d) {return d.depth==0 || d.depth==3}) // filter only 0 and 3rd level labels
@@ -132,8 +135,7 @@ node.filter(function(d) {return d.depth==0 || d.depth==3}) // filter only 0 and 
 	.attr("transform", "translate(0, -5)")
 	.style("fill", "black")
 	.filter(function(d) {return d.depth==0<})
-	.call(wrap, 90, 15)
-
+	.call(wrap, 90, 15);
 
 // append g.circle to level 3
 node.filter(function(d) {return d.depth==3;})
@@ -219,8 +221,7 @@ svg.selectAll('.infoCurvy')
 	.attr("d", diagonal);
 
 // create textCurvy related to defs
-var curvyText =
-svg.selectAll('.textCurvy')
+var curvyText = svg.selectAll('.textCurvy')
 	.data(nodes)
 	.enter()
 	.append('g')
@@ -235,7 +236,7 @@ svg.selectAll('.textCurvy')
 		.style("fill", function(d) {
 			if(d.taxonomy_color) {return d.taxonomy_color}
 			if(d.parent.taxonomy_color) {return d.parent.taxonomy_color}
-            else {return "black"}})
+            else {return "black"}});
 
 /*
  *
