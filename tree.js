@@ -134,7 +134,7 @@ node.filter(function(d) {return d.depth==0 || d.depth==3}) // filter only 0 and 
 	.style("text-anchor", function(d) {if (d.depth==0) {return "end";}}) // switches the textanchor of depth 1 and 2
 	.attr("transform", "translate(0, -5)")
 	.style("fill", "black")
-	.filter(function(d) {return d.depth==0<})
+	.filter(function(d) {return d.depth==0;})
 	.call(wrap, 90, 15);
 
 // append g.circle to level 3
@@ -257,23 +257,27 @@ function handleMouseOver (d) {
 
 	// highlight taxonomy path of element
 	svg.selectAll(".link")
-	.filter(function(e) {
-		return ((d.name==e.name)			   && (e.source === d.parent) || (e.target === d)) ||
-			   ((d.parent.name==e.name)		   && (e.source === e.parent) || (e.target === d.parent)) ||
-			   ((d.parent.parent.name==e.name) && (e.source === e.parent) || (e.target === d.parent.parent));})
-	.style("stroke-width", "2.25");
+    	.filter(function(e) {
+    		return ((d.name==e.name)			   && (e.source === d.parent) || (e.target === d)) ||
+    			   ((d.parent.name==e.name)		   && (e.source === e.parent) || (e.target === d.parent)) ||
+    			   ((d.parent.parent.name==e.name) && (e.source === e.parent) || (e.target === d.parent.parent));})
+    	.style("stroke-width", "2.25");
+
 	// highlight text of element
 	svg.selectAll(".textCurvy, .labels")
-		.style("font-weight", function(d) {
-			if (d.name == dname) {return "600";}});
+        // TODO: geht das nicht mit filter wie unten auch?
+		.style("font-weight", function(d) {if (d.name == dname) {return "600";}});
+
 	// highlight line of element
 	svg.selectAll(".inline")
-		.filter(function(j){return (d.name==j.name); })
+		.filter(function(j) {return (d.name==j.name);})
 		.style("stroke-width", "2.25");
+
 	// highlight circle of element
 	svg.selectAll(".mycircle")
 		.filter(function(j) {return (d.name==j.name);})
 		.style("fill", d.parent.parent.taxonomy_color);
+
 	svg.selectAll(".vertiacal-line, .horizontal-line")
 		.filter(function(j) {return (d.name==j.name);})
 		.classed("highlight", true)
@@ -282,13 +286,19 @@ function handleMouseOver (d) {
 
 function handleMouseOut (d) {
 
-		// unhighlight text and path of mouseover element
-		d3.selectAll(".link, .mycircle, .inline").style("stroke-width", "1");
-		d3.selectAll(".mycircle").style("fill", "white");
-		d3.selectAll(".highlight")
-			.classed("highlight", false)
-			.style("stroke", d.parent.parent.taxonomy_color);
-		d3.selectAll(".textCurvy, .labels").style("font-weight", "400");
+	// unhighlight text and path of mouseover element
+	d3.selectAll(".link, .mycircle, .inline")
+        .style("stroke-width", "1");
+
+    d3.selectAll(".mycircle")
+        .style("fill", "white");
+
+    d3.selectAll(".highlight")
+		.classed("highlight", false)
+		.style("stroke", d.parent.parent.taxonomy_color);
+
+    d3.selectAll(".textCurvy, .labels")
+        .style("font-weight", "400");
 }
 
 function handleMouseClick (d) {
