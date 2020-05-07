@@ -17,7 +17,7 @@ var tree = d3.layout.tree()
 
 // rotate the coordinates for horizontal layout
 var diagonal = d3.svg.diagonal()
-    .projection(function(d) {return [d.y, d.x]; });
+    .projection(function(d) {return [d.y, d.x];});
 
 // create the svg
 var svg = d3.select('#categorytree').append("svg")
@@ -29,12 +29,12 @@ var svg = d3.select('#categorytree').append("svg")
 // ajax
 jQuery.ajax({
     url: MyAjax.ajaxurl,
-    data:{
-	   'action':'categorytree', //TODO: Change name to name_in_taxonomy_d3.php
-	   'taxonomy': taxonomy
+    data: {
+	    'action':'categorytree', //TODO: Change name to name_in_taxonomy_d3.php
+        'taxonomy': taxonomy
     },
     dataType: 'JSON',
-    success:function(data) {
+    success: function(data) {
 	    // our handler function will go here
 	    // this part is very important!
 	    // its what happens with the JSON data
@@ -73,7 +73,7 @@ var links = tree.links(nodes);
 
 // create length units
 var unitLenght = 150;
-    nodes.forEach(function(d) { return d.y = d.depth * unitLenght + unitLenght; });
+    nodes.forEach(function(d) {return d.y = d.depth * unitLenght + unitLenght;});
     nodes.forEach(function(d) {
 		if (d.depth==0) {return d.y = d.y - unitLenght/3;}
 		if (d.depth==2) {return d.y = d.y + unitLenght/2;}
@@ -113,15 +113,14 @@ svg.selectAll(".link")
 	    .attr("z-index", "-100");
 
 // create g.node
-var node =
-svg.selectAll(".node")
+var node = svg.selectAll(".node")
 	.data(nodes)
 	.enter()
 	.append("g")
 		.attr("class", "node")
 		.attr("transform", function(d) {
 			// rotate the coordinates d.x and d.y for horizontal layout
-			return "translate(" + d.y + "," + d.x  + ")"; })
+			return "translate(" + d.y + "," + d.x  + ")";})
 		.attr("z-index", "0");
 
 // append names on g.node
@@ -153,7 +152,7 @@ node.filter(function(d) {return d.depth==3;})
 var lineLength = 1.7*unitLenght;
 nodes.forEach(function(d){
 	// request and save post_name
-	if (d.post_content) {
+	if(d.post_content) {
 		// create Link
 		svg.selectAll(".labels")
 			.filter(function(e) {return (d.post_title==e.name);})
@@ -161,7 +160,7 @@ nodes.forEach(function(d){
 			.style("fill", d.parent.parent.taxonomy_color )
 		// create line
 		svg.selectAll(".line")
-			.filter(function(e) {return ( d.post_title==e.name ); })
+			.filter(function(e) {return (d.post_title==e.name);})
 				.insert("line")
 				.attr("class", "inline")
 				.attr("stroke-width", 1)
@@ -169,7 +168,7 @@ nodes.forEach(function(d){
 				.attr("y1", function(d) {return 0})
 				.attr("x2", function(d) {return 0  + lineLength})
 				.attr("y2", function(d) {return 0})
-				.style("stroke", d.parent.parent.taxonomy_color )
+				.style("stroke", d.parent.parent.taxonomy_color)
 		// create circle
 		svg.selectAll(".circle")
 			.filter(function(e) {return (d.post_title==e.name);})
@@ -181,10 +180,10 @@ nodes.forEach(function(d){
 				.attr('r', 5)
 				.attr("cx", lineLength -5 -1.5)
 				.attr("cy", -5 -3*1.5)
-				.style("stroke", d.parent.parent.taxonomy_color )
+				.style("stroke", d.parent.parent.taxonomy_color)
 		// insert line in circle
 		svg.selectAll(".circle")
-			.filter(function(e) { return ( d.post_title==e.name ); })
+			.filter(function(e) {return (d.post_title==e.name);})
 					.insert("line")
 					.attr("class", "horizontal-line")
 					.attr("stroke-width", 1)
@@ -196,7 +195,7 @@ nodes.forEach(function(d){
 					.style("z-index", 100)
 		// insert line in circle
 		svg.selectAll(".circle")
-			.filter(function(e) {return ( d.post_title==e.name ); })
+			.filter(function(e) {return ( d.post_title==e.name );})
 					.insert("line")
 					.attr("class", "vertiacal-line")
 					.attr("stroke-width", 1)
@@ -216,7 +215,7 @@ svg.selectAll('.infoCurvy')
 	.enter()
 	.append("defs").append("path")
 	.attr("class", "infoCurvy")
-	.attr("id", function (d){return d.target.term_id})
+	.attr("id", function(d){return d.target.term_id})
 	.attr("d", diagonal);
 
 // create textCurvy related to defs
@@ -233,16 +232,10 @@ svg.selectAll('.textCurvy')
 		.text(function(d) {return d.name})
 		.attr("startOffset", "100%")
 		.style("text-anchor", "end")
-		.style("fill",
-			function (d) {
-			if (d.taxonomy_color) {
-			    return d.taxonomy_color
-			}
-			if (d.parent.taxonomy_color) {
-			    return d.parent.taxonomy_color
-			} else {return "black"}
-			}
-		)
+		.style("fill", function(d) {
+			if(d.taxonomy_color) {return d.taxonomy_color}
+			if(d.parent.taxonomy_color) {return d.parent.taxonomy_color}
+            else {return "black"}})
 
 /*
  *
@@ -335,7 +328,7 @@ function handleMouseClick (d) {
 
 function removeMe() {
 	$("#alert-box-inner-inner").animate({opacity: "0"}, 500);
-	setTimeout(function (){
+	setTimeout(function(){
 		$("#alert-box-inner").animate({opacity: "0"}, 300);
 	}, 500);
 	setTimeout(function() {
@@ -391,7 +384,7 @@ function scrolltopoint() {
 	let links = document.querySelectorAll('.navi a');
 	let i = 0;
 	for (i=0; i<links.length; i++) {
-		links[i].onclick = function (e) {
+		links[i].onclick = function(e) {
 			e.preventDefault();
 
 			elementToScroll = document.getElementById('scroll-container');
