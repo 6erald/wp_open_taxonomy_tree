@@ -30,8 +30,9 @@ var svg = d3.select('#categorytree').append("svg")
 jQuery.ajax({
     url: MyAjax.ajaxurl,
     data: {
-	    'action':'categorytree', //TODO: Change name to name_in_taxonomy_d3.php
-        'taxonomy': taxonomy
+	    'action': 'categorytree', //TODO: Change name to name_in_taxonomy_d3.php
+        'taxonomy': taxonomy,
+        'post_type': post_type
     },
     dataType: 'JSON',
     success: function(data) {
@@ -435,7 +436,7 @@ function removeScrollEvent() {
 }
 
 
-document.getElementById("scroll-container").addEventListener("scroll", hideGradient);
+// document.getElementById("scroll-container").addEventListener("scroll", hideGradient);
 
 function hideGradient() {
 

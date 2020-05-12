@@ -7,27 +7,39 @@ Author: Gerald Wagner
 
 */
 
-add_action( 'wp_footer', 'categoryd3tree_scripts' );
-add_action( 'wp_ajax_categorytree', 'categorytree_callback' );
-add_action( 'wp_ajax_nopriv_categorytree', 'categorytree_callback' );
+
+function taxonomytree_shortcode($atts) {
+
+	$atts = shortcode_atts( array(
+		'post_type'=> 'posts',
+		'taxonomy' => 'category'
+	), $atts);
+
+	// TODO: anders schreiben
+	$output = '<script>taxonomy="' . $atts['taxonomy'] . '"; post_type="' . $atts['post_type'] . '";</script><div id ="categorytree"></div>' ;
+	return $output;
+
+}
+
+add_shortcode( 'taxonomy_d3', 'taxonomytree_shortcode' );
 
 function categorytree_callback() {
 	// get acf-field-title of the taxonomytree rootlement
 	// from page with slug "taxonomy_root"
-	$the_slug = 'taxonomy_root';
-	$args = array(
-		'name'        => $the_slug,
-		'post_type'   => 'page',
-		'post_status' => 'publish',
-		'numberposts' => 1
-	);
-	$my_posts = get_posts($args);
-	$taxonomyname = get_field('taxonomy_rootname', $my_posts[0]->ID);
+	// $the_slug = 'taxonomy_root';
+	// $args = array(
+	// 	'name'        => $the_slug,
+	// 	'post_type'   => 'page',
+	// 	'post_status' => 'publish',
+	// 	'numberposts' => 1
+	// );
+	// $my_posts = get_posts($args);
+	// $taxonomyname = get_field('taxonomy_rootname', $my_posts[0]->ID);
 
 	//process plugin
 	$tree = array(
 		'parent'      => -1,
-		'name'        => $taxonomyname,
+		'name'        => $_REQUEST['taxonomy'],
 	);
 
 	// generate the response
@@ -44,27 +56,27 @@ function categorytree_callback() {
 function buildrectree($root) {
 	$args = array(
 		'parent'      => $root,
-		'meta_key'    => 'taxonomy_order', //acf-order
-		'orderby'     => 'meta_value',
+		// 'meta_key'    => 'taxonomy_order', //acf-order
+		// 'orderby'     => 'meta_value',
 		'order'       => 'ASC',
 		'hide_empty'  => 0,
-		'taxonomy'    => 'tax_structure',
+		'taxonomy'    => $_REQUEST['taxonomy'],
 	);
+
 	$l1cats = get_categories($args);
-
 	foreach($l1cats as $l1cat) {
-
+		// echo $l1cat;
 		$l1cat->children=buildrectree($l1cat->term_id);
 		// push $l1post into $l1cat
 		if(empty ($l1cat->children)) {
 			$l1posts = get_posts( array(
-				'post_type'    => 'structure',
+				'post_type'    => $_REQUEST['post_type'],
 				'meta_key'     => 'taxonomy_order', //acf-order
 				'orderby'      => 'meta_value',
 				'order'        => 'ASC',
 				'tax_query'    => array(
 					array(
-						'taxonomy'     => 'tax_structure',
+						'taxonomy'     => $_REQUEST['taxonomy'],
 						'field'        => 'tag_ID',
 						'terms'        => $l1cat->term_id
 					)
@@ -88,27 +100,25 @@ function buildrectree($root) {
 }
 
 function categoryd3tree_scripts() {
-	if(!is_single()&&get_post_type()=='structure') {
 
-		wp_register_script( 'categoryd3tree_js', get_template_directory_uri() . '/metabox/taxonomytree/tree.js', array( 'd3_js' ) );
-		wp_enqueue_script ( 'categoryd3tree_js' );
+	wp_register_script( 'categoryd3tree_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
+	wp_enqueue_script( 'categoryd3tree_js' );
 
-		wp_register_script( 'd3_js', get_template_directory_uri() . '/metabox/taxonomytree/d3.v3.min.js', array( 'jquery' ) );
-		wp_enqueue_script ( 'd3_js' );
+	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
+    wp_enqueue_script( 'd3_js' );
 
-		// declare the URL to the file that handles
-		// the AJAX request (wp-admin/admin-ajax.php)
-		wp_localize_script( 'categoryd3tree_js', 'MyAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-	}
+	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
+	wp_localize_script( 'categoryd3tree_js', 'MyAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
+
+add_action( 'wp_footer', 'categoryd3tree_scripts' );
+add_action( 'wp_ajax_categorytree', 'categorytree_callback' );
+add_action( 'wp_ajax_nopriv_categorytree', 'categorytree_callback' );
 
 
 /**
  * Remove top categories of the Taxonomy in post.php / post-new.php
  */
-
-add_action( 'admin_footer-post.php', 'wp_remove_top_categories_checkbox' );
-add_action( 'admin_footer-post-new.php', 'wp_remove_top_categories_checkbox' );
 
 function wp_remove_top_categories_checkbox() {
 	global $post_type;
@@ -125,4 +135,8 @@ function wp_remove_top_categories_checkbox() {
 		</script>
 		<?php
 }
+
+add_action( 'admin_footer-post.php', 'wp_remove_top_categories_checkbox' );
+add_action( 'admin_footer-post-new.php', 'wp_remove_top_categories_checkbox' );
+
 ?>
