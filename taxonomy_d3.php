@@ -59,8 +59,8 @@ function buildrectree($root) {
 		/*
 		'meta_key'    => 'taxonomy_order', //acf-order
 		'orderby'     => 'meta_value',
-		*/
 		'order'       => 'ASC',
+		*/
 		'hide_empty'  => 0,
 		'taxonomy'    => $_REQUEST['taxonomy'],
 	);
@@ -74,14 +74,16 @@ function buildrectree($root) {
 			$l1posts = get_posts( array(
 				'post_type'    => $_REQUEST['post_type'],
 				/*
-				'meta_key'     => 'taxonomy_order', //acf-order
+				'meta_key'     => 'taxonomy_order',
 				'orderby'      => 'meta_value',
-				*/
 				'order'        => 'ASC',
+				*/
 				'tax_query'    => array(
 					array(
 						'taxonomy'     => $_REQUEST['taxonomy'],
+						/*
 						'field'        => 'tag_ID',
+						*/
 						'terms'        => $l1cat->term_id
 					)
 				)
@@ -91,14 +93,15 @@ function buildrectree($root) {
 				$l1cat->children[]=$l1post; //TODO: Wie ist hier das spacing sinnvoll?
 			}
 		}
-		/*
 		// push $color into $l1cat
-		// $key = $l1cat->parent;
+		$key = $l1cat->parent;
 		if(0 == $key) {
+			/* TODO: soll als metabox functionieren
 			$color = get_field('taxonomy_color', 'tax_structure_' . $l1cat->term_id);
 			$l1cat->taxonomy_color = $color;
+			*/
+			$l1cat->taxonomy_color = 'red';
 		}
-		*/
 		// push $l1cat innto $tree
 		$tree[]=$l1cat;
 	}
@@ -108,10 +111,13 @@ function buildrectree($root) {
 function categoryd3tree_scripts() {
 
 	wp_register_script( 'categoryd3tree_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
-	wp_enqueue_script( 'categoryd3tree_js' );
+	wp_enqueue_script(  'categoryd3tree_js' );
 
 	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
-    wp_enqueue_script( 'd3_js' );
+    wp_enqueue_script(  'd3_js' );
+
+	wp_register_style( 'style_css', plugins_url( 'style.css', __FILE__ ) );
+    wp_enqueue_style(  'style_css' );
 
 	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
 	wp_localize_script( 'categoryd3tree_js', 'MyAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );

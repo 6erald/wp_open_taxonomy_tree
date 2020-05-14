@@ -92,14 +92,13 @@ var unitLenght = 150;
 svg.selectAll(".link")
     .data(links)
     .enter()
-    // group
-    .append("g")
+    .append("g")                // group
     .attr("class", "diagonal")
-    // path element
-    .append("path")
+    .append("path")             // path element
     .attr("class", "link")
     .style("stroke-width", "1")
     .style("fill", "none")
+
     .style("stroke", function(d) {
 		if (d.target.taxonomy_color) {
 		    return d.target.taxonomy_color
@@ -112,6 +111,7 @@ svg.selectAll(".link")
 		}
 		else {return "black"}
 	})
+    
     .attr("d", diagonal)
     .attr("z-index", "-100");
 
@@ -121,8 +121,7 @@ var node = svg.selectAll(".node")
 	.enter()
 	.append("g")
 	.attr("class", "node")
-	.attr("transform", function(d) {
-		// rotate the coordinates d.x and d.y for horizontal layout
+	.attr("transform", function(d) { // rotate the coordinates d.x and d.y for horizontal layout
 		return "translate(" + d.y + "," + d.x  + ")";
     })
 	.attr("z-index", "0");
@@ -160,7 +159,7 @@ nodes.forEach(function(d){
 		svg.selectAll(".labels")
 			.filter(function(e) {return (d.post_title==e.name);})
 			.text(d.post_title)								// insert text content in a-element
-			.style("fill", d.parent.parent.taxonomy_color )
+			.style("fill", d.parent.parent.taxonomy_color );
 		// create line
 		svg.selectAll(".line")
 			.filter(function(e) {return (d.post_title==e.name);})
