@@ -56,8 +56,10 @@ function categorytree_callback() {
 function buildrectree($root) {
 	$args = array(
 		'parent'      => $root,
-		// 'meta_key'    => 'taxonomy_order', //acf-order
-		// 'orderby'     => 'meta_value',
+		/*
+		'meta_key'    => 'taxonomy_order', //acf-order
+		'orderby'     => 'meta_value',
+		*/
 		'order'       => 'ASC',
 		'hide_empty'  => 0,
 		'taxonomy'    => $_REQUEST['taxonomy'],
@@ -65,14 +67,16 @@ function buildrectree($root) {
 
 	$l1cats = get_categories($args);
 	foreach($l1cats as $l1cat) {
-		// echo $l1cat;
+
 		$l1cat->children=buildrectree($l1cat->term_id);
 		// push $l1post into $l1cat
 		if(empty ($l1cat->children)) {
 			$l1posts = get_posts( array(
 				'post_type'    => $_REQUEST['post_type'],
+				/*
 				'meta_key'     => 'taxonomy_order', //acf-order
 				'orderby'      => 'meta_value',
+				*/
 				'order'        => 'ASC',
 				'tax_query'    => array(
 					array(
@@ -87,12 +91,14 @@ function buildrectree($root) {
 				$l1cat->children[]=$l1post; //TODO: Wie ist hier das spacing sinnvoll?
 			}
 		}
+		/*
 		// push $color into $l1cat
-		$key = $l1cat->parent;
+		// $key = $l1cat->parent;
 		if(0 == $key) {
 			$color = get_field('taxonomy_color', 'tax_structure_' . $l1cat->term_id);
 			$l1cat->taxonomy_color = $color;
 		}
+		*/
 		// push $l1cat innto $tree
 		$tree[]=$l1cat;
 	}
