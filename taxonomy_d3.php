@@ -7,7 +7,6 @@ Author: Gerald Wagner
 
 */
 
-
 function taxonomytree_shortcode($atts) {
 
 	$atts = shortcode_atts( array(
@@ -23,18 +22,37 @@ function taxonomytree_shortcode($atts) {
 
 add_shortcode( 'taxonomy_d3', 'taxonomytree_shortcode' );
 
+function categoryd3tree_scripts() {
+
+	wp_register_script( 'categoryd3tree_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
+	wp_enqueue_script(  'categoryd3tree_js' );
+
+	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
+    wp_enqueue_script(  'd3_js' );
+
+	wp_register_style( 'style_css', plugins_url( 'style.css', __FILE__ ) );
+    wp_enqueue_style(  'style_css' );
+
+	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
+	wp_localize_script( 'categoryd3tree_js', 'MyAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+}
+
+add_action( 'wp_footer', 'categoryd3tree_scripts' );
+
 function categorytree_callback() {
+	/*
 	// get acf-field-title of the taxonomytree rootlement
 	// from page with slug "taxonomy_root"
-	// $the_slug = 'taxonomy_root';
-	// $args = array(
-	// 	'name'        => $the_slug,
-	// 	'post_type'   => 'page',
-	// 	'post_status' => 'publish',
-	// 	'numberposts' => 1
-	// );
-	// $my_posts = get_posts($args);
-	// $taxonomyname = get_field('taxonomy_rootname', $my_posts[0]->ID);
+	$the_slug = 'taxonomy_root';
+	$args = array(
+		'name'        => $the_slug,
+		'post_type'   => 'page',
+		'post_status' => 'publish',
+		'numberposts' => 1
+	);
+	$my_posts = get_posts($args);
+	$taxonomyname = get_field('taxonomy_rootname', $my_posts[0]->ID);
+	*/
 
 	//process plugin
 	$tree = array(
@@ -53,6 +71,25 @@ function categorytree_callback() {
 	die();
 }
 
+
+/*
+ * From: https://en.bainternet.info/wordpress-category-extra-fields/
+ *
+ * As i stated in the beginning of this post i need to display a different
+ * image for each category, so in that case i added this few lines of code to
+ * my theme's category.php right after the code that displays the category title:
+
+//first get the current category ID
+$cat_id = get_query_var('cat');
+//then i get the data from the database
+$cat_data = get_option("category_$cat_id");
+//and then i just display my category image if it exists
+if (isset($cat_data['img'])){
+	echo '<div class="category_image"><img src="'.$cat_data['img'].'"></div>';
+}
+
+*/
+
 function buildrectree($root) {
 	$args = array(
 		'parent'      => $root,
@@ -69,6 +106,7 @@ function buildrectree($root) {
 	foreach($l1cats as $l1cat) {
 
 		$l1cat->children=buildrectree($l1cat->term_id);
+
 		// push $l1post into $l1cat
 		if(empty ($l1cat->children)) {
 			$l1posts = get_posts( array(
@@ -93,62 +131,27 @@ function buildrectree($root) {
 				$l1cat->children[]=$l1post; //TODO: Wie ist hier das spacing sinnvoll?
 			}
 		}
+
 		// push $color into $l1cat
-		$key = $l1cat->parent;
-		if(0 == $key) {
-			/* TODO: soll als metabox functionieren
-			$color = get_field('taxonomy_color', 'tax_structure_' . $l1cat->term_id);
-			$l1cat->taxonomy_color = $color;
-			*/
-			$l1cat->taxonomy_color = 'red';
+		$cat_data = get_option("category_$l1cat->term_id");
+		if (0 == $l1cat->parent) {
+			if (isset($cat_data['extra2']) && $cat_data['extra2'] != '') {
+				$l1cat->taxonomy_color = $cat_data['extra2'];
+			} else { //default color
+				$l1cat->taxonomy_color = '#000000';
+			}
 		}
+
 		// push $l1cat innto $tree
 		$tree[]=$l1cat;
 	}
 	return $tree;
 }
 
-function categoryd3tree_scripts() {
-
-	wp_register_script( 'categoryd3tree_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
-	wp_enqueue_script(  'categoryd3tree_js' );
-
-	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
-    wp_enqueue_script(  'd3_js' );
-
-	wp_register_style( 'style_css', plugins_url( 'style.css', __FILE__ ) );
-    wp_enqueue_style(  'style_css' );
-
-	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
-	wp_localize_script( 'categoryd3tree_js', 'MyAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-}
-
-add_action( 'wp_footer', 'categoryd3tree_scripts' );
 add_action( 'wp_ajax_categorytree', 'categorytree_callback' );
 add_action( 'wp_ajax_nopriv_categorytree', 'categorytree_callback' );
 
-
-/**
- * Remove top categories of the Taxonomy in post.php / post-new.php
- */
-
-function wp_remove_top_categories_checkbox() {
-	global $post_type;
-	if( 'structure' != $post_type )
-		return;
-		?>
-		<script type="text/javascript">
-			jQuery("#tax_structurechecklist>li>label input").each(function() {
-				// remove only if is unchecked
-				if(jQuery(this).is(':not(:checked)')) {
-				   jQuery(this).remove();
-				}
-			});
-		</script>
-		<?php
-}
-
-add_action( 'admin_footer-post.php', 'wp_remove_top_categories_checkbox' );
-add_action( 'admin_footer-post-new.php', 'wp_remove_top_categories_checkbox' );
+// metaboxes category_order and category_color;
+require_once 'metabox_category.php';
 
 ?>

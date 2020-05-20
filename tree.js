@@ -8,7 +8,7 @@ var taxonomy,
 
 jQuery(document).ready(function($) {
 var margin = {top: 20, right: 20, bottom: 20, left: 20},
-    width = 900 - margin.right - margin.left,
+    width  = 900 - margin.right - margin.left,
     height = 500 - margin.top - margin.bottom;
 
 // set size of tree layout
@@ -72,6 +72,10 @@ var nodes = tree.nodes(root);
 // .links returns an array which contains soruce and target elements
 var links = tree.links(nodes);
 
+console.log(root);
+console.log(nodes);
+console.log(links);
+
 // create length units
 var unitLenght = 150;
     nodes.forEach(function(d) {return d.y = d.depth * unitLenght + unitLenght;});
@@ -98,7 +102,6 @@ svg.selectAll(".link")
     .attr("class", "link")
     .style("stroke-width", "1")
     .style("fill", "none")
-
     .style("stroke", function(d) {
 		if (d.target.taxonomy_color) {
 		    return d.target.taxonomy_color
@@ -111,7 +114,6 @@ svg.selectAll(".link")
 		}
 		else {return "black"}
 	})
-    
     .attr("d", diagonal)
     .attr("z-index", "-100");
 
@@ -121,7 +123,8 @@ var node = svg.selectAll(".node")
 	.enter()
 	.append("g")
 	.attr("class", "node")
-	.attr("transform", function(d) { // rotate the coordinates d.x and d.y for horizontal layout
+	.attr("transform", function(d) {
+        // rotate the coordinates d.x and d.y for horizontal layout
 		return "translate(" + d.y + "," + d.x  + ")";
     })
 	.attr("z-index", "0");
@@ -148,65 +151,79 @@ node.filter(function(d) {return d.depth==3;})
 	.attr("class", "line");
 
 
-
-
 // create Links for blogposts
 var lineLength = 1.7*unitLenght;
+
 nodes.forEach(function(d){
+
 	// request and save post_name
-	if(d.post_content) {
+	if ( d.post_content ) {
+
 		// create Link
 		svg.selectAll(".labels")
 			.filter(function(e) {return (d.post_title==e.name);})
 			.text(d.post_title)								// insert text content in a-element
 			.style("fill", d.parent.parent.taxonomy_color );
+
 		// create line
 		svg.selectAll(".line")
-			.filter(function(e) {return (d.post_title==e.name);})
-				.insert("line")
-				.attr("class", "inline")
-				.attr("stroke-width", 1)
-				.attr("x1", function(d) {return 0})
-				.attr("y1", function(d) {return 0})
-				.attr("x2", function(d) {return 0  + lineLength})
-				.attr("y2", function(d) {return 0})
-				.style("stroke", d.parent.parent.taxonomy_color)
+			.filter(function(e) {
+                return (d.post_title==e.name);
+            })
+			.insert("line")
+			.attr("class", "inline")
+			.attr("stroke-width", 1)
+			.attr("x1", function(d) {return 0})
+			.attr("y1", function(d) {return 0})
+			.attr("x2", function(d) {return 0  + lineLength})
+			.attr("y2", function(d) {return 0})
+			.style("stroke", d.parent.parent.taxonomy_color)
+
 		// create circle
 		svg.selectAll(".circle")
-			.filter(function(e) {return (d.post_title==e.name);})
+			.filter(function(e) {
+                return (d.post_title==e.name);
+            })
 			.insert("a")									   // append a-element
 			.attr("xlink:href", location.href + d.post_name)		  // create link element
 			.attr("class", "blog-link")
-				.insert("circle")
-				.attr("class", "mycircle")
-				.attr('r', 5)
-				.attr("cx", lineLength -5 -1.5)
-				.attr("cy", -5 -3*1.5)
-				.style("stroke", d.parent.parent.taxonomy_color)
+			.insert("circle")
+			.attr("class", "mycircle")
+			.attr('r', 5)
+			.attr("cx", lineLength -5 -1.5)
+			.attr("cy", -5 -3*1.5)
+			.style("stroke", d.parent.parent.taxonomy_color)
+			.style("stroke", d.parent.parent.taxonomy_color)
+
 		// insert line in circle
 		svg.selectAll(".circle")
-			.filter(function(e) {return (d.post_title==e.name);})
-					.insert("line")
-					.attr("class", "horizontal-line")
-					.attr("stroke-width", 1)
-					.attr("x1", lineLength -9.5 )
-					.attr("y1", -5 -3*1.5)
-					.attr("x2", lineLength -3.5)
-					.attr("y2", -5 -3*1.5)
-					.style("stroke", d.parent.parent.taxonomy_color)
-					.style("z-index", 100)
-		// insert line in circle
+			.filter(function(e) {
+                return (d.post_title==e.name);
+            })
+			.insert("line")
+			.attr("class", "horizontal-line")
+			.attr("stroke-width", 1)
+			.attr("x1", lineLength -9.5 )
+			.attr("y1", -5 -3*1.5)
+			.attr("x2", lineLength -3.5)
+			.attr("y2", -5 -3*1.5)
+			.style("stroke", d.parent.parent.taxonomy_color)
+			.style("z-index", 100)
+
+        // insert line in circle
 		svg.selectAll(".circle")
-			.filter(function(e) {return ( d.post_title==e.name );})
-					.insert("line")
-					.attr("class", "vertiacal-line")
-					.attr("stroke-width", 1)
-					.attr("x1", lineLength -6.5 )
-					.attr("y1", -5 -5*1.5)
-					.attr("x2", lineLength -6.5)
-					.attr("y2", -5 -1*1.5)
-					.style("stroke", d.parent.parent.taxonomy_color)
-					.style("z-index", 100)
+			.filter(function(e) {
+                return ( d.post_title==e.name );
+            })
+			.insert("line")
+			.attr("class", "vertiacal-line")
+			.attr("stroke-width", 1)
+			.attr("x1", lineLength -6.5 )
+			.attr("y1", -5 -5*1.5)
+			.attr("x2", lineLength -6.5)
+			.attr("y2", -5 -1*1.5)
+			.style("stroke", d.parent.parent.taxonomy_color)
+			.style("z-index", 100)
 	}
 });
 
@@ -228,15 +245,20 @@ var curvyText = svg.selectAll('.textCurvy')
 	.append("text")
 	.attr("dy", "-0.35em")
 	.attr("class", "textCurvy")
-		.append("textPath")
-		.attr("xlink:href",function(d) {return "#"+d.term_id;})
-		.text(function(d) {return d.name})
-		.attr("startOffset", "100%")
-		.style("text-anchor", "end")
-		.style("fill", function(d) {
-			if(d.taxonomy_color) {return d.taxonomy_color}
-			if(d.parent.taxonomy_color) {return d.parent.taxonomy_color}
-            else {return "black"}});
+	.append("textPath")
+	.attr("xlink:href",function(d) {return "#"+d.term_id;})
+	.text(function(d) {return d.name})
+	.attr("startOffset", "100%")
+	.style("text-anchor", "end")
+	.style("fill", function(d) {
+		if (d.taxonomy_color) {
+            return d.taxonomy_color
+        }
+		if (d.parent.taxonomy_color) {
+            return d.parent.taxonomy_color
+        }
+        else { return "black" }}
+    );
 
 /*
  *
