@@ -31,8 +31,6 @@ jQuery.ajax({
     url: MyAjax.ajaxurl,
     data: {
 	    'action': 'categorytree', //TODO: Change name to name_in_taxonomy_d3.php
-        'taxonomy': taxonomy,
-        'post_type': post_type
     },
     dataType: 'JSON',
     success: function(data) {

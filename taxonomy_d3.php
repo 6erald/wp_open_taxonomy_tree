@@ -7,6 +7,7 @@ Author: Gerald Wagner
 
 */
 
+
 function taxonomytree_shortcode($atts) {
 
 	$atts = shortcode_atts( array(
@@ -14,9 +15,11 @@ function taxonomytree_shortcode($atts) {
 		'taxonomy' => 'category'
 	), $atts);
 
-	// TODO: anders schreiben
-	$output = '<script>taxonomy="' . $atts['taxonomy'] . '"; post_type="' . $atts['post_type'] . '";</script><div id ="categorytree"></div>' ;
-	return $output;
+ 	// save 'post_type' and 'taxonomy' in wp_options
+	update_option("tree_post_type", $atts['post_type']);
+	update_option("tree_taxonomy", $atts['taxonomy']);
+
+	return '<div id ="categorytree"></div>' ;
 
 }
 
@@ -53,11 +56,11 @@ function categorytree_callback() {
 	$my_posts = get_posts($args);
 	$taxonomyname = get_field('taxonomy_rootname', $my_posts[0]->ID);
 	*/
-
+	$tree_taxonomy = get_option('tree_taxonomy');
 	//process plugin
 	$tree = array(
 		'parent'      => -1,
-		'name'        => $_REQUEST['taxonomy'],
+		'name'        => $tree_taxonomy,
 	);
 
 	// generate the response
@@ -72,25 +75,11 @@ function categorytree_callback() {
 }
 
 
-/*
- * From: https://en.bainternet.info/wordpress-category-extra-fields/
- *
- * As i stated in the beginning of this post i need to display a different
- * image for each category, so in that case i added this few lines of code to
- * my theme's category.php right after the code that displays the category title:
-
-//first get the current category ID
-$cat_id = get_query_var('cat');
-//then i get the data from the database
-$cat_data = get_option("category_$cat_id");
-//and then i just display my category image if it exists
-if (isset($cat_data['img'])){
-	echo '<div class="category_image"><img src="'.$cat_data['img'].'"></div>';
-}
-
-*/
-
 function buildrectree($root) {
+
+	$tree_post_type = get_option("tree_post_type");
+	$tree_taxonomy = get_option("tree_taxonomy");
+
 	$args = array(
 		'parent'      => $root,
 		/*
@@ -99,18 +88,18 @@ function buildrectree($root) {
 		'order'       => 'ASC',
 		*/
 		'hide_empty'  => 0,
-		'taxonomy'    => $_REQUEST['taxonomy'],
+		'taxonomy'    => $tree_taxonomy,
 	);
 
 	$l1cats = get_categories($args);
-	foreach($l1cats as $l1cat) {
 
+	foreach($l1cats as $l1cat) {
 		$l1cat->children=buildrectree($l1cat->term_id);
 
-		// push $l1post into $l1cat
+		// push blogposts into $tree in category of last level
 		if(empty ($l1cat->children)) {
 			$l1posts = get_posts( array(
-				'post_type'    => $_REQUEST['post_type'],
+				'post_type'    => $tree_post_type,
 				/*
 				'meta_key'     => 'taxonomy_order',
 				'orderby'      => 'meta_value',
@@ -118,8 +107,8 @@ function buildrectree($root) {
 				*/
 				'tax_query'    => array(
 					array(
-						'taxonomy'     => $_REQUEST['taxonomy'],
-						/*
+						'taxonomy'     => $tree_taxonomy,
+						/* QUESTION: what is that for ???
 						'field'        => 'tag_ID',
 						*/
 						'terms'        => $l1cat->term_id
@@ -132,11 +121,11 @@ function buildrectree($root) {
 			}
 		}
 
-		// push $color into $l1cat
+		// push $color into $l1cat of first level
 		$cat_data = get_option("category_$l1cat->term_id");
 		if (0 == $l1cat->parent) {
-			if (isset($cat_data['extra2']) && $cat_data['extra2'] != '') {
-				$l1cat->taxonomy_color = $cat_data['extra2'];
+			if (isset($cat_data['cat_color']) && $cat_data['cat_color'] != '') {
+				$l1cat->taxonomy_color = $cat_data['cat_color'];
 			} else { //default color
 				$l1cat->taxonomy_color = '#000000';
 			}

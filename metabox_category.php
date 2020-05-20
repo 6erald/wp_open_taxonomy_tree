@@ -5,9 +5,11 @@
  *
  */
 
+$tree_taxonomy = get_option("tree_taxonomy");
+
 //add extra fields to category edit form hook
-add_action ( 'material_category_edit_form_fields', 'extra_category_fields');
-add_action ( 'material_category_add_form_fields', 'extra_category_fields');
+add_action ( $tree_taxonomy . '_edit_form_fields', 'extra_category_fields');
+add_action ( $tree_taxonomy . '_add_form_fields', 'extra_category_fields');
 
 //add extra fields to category edit form callback function
 function extra_category_fields( $tag ) {    //check for existing featured ID
@@ -28,18 +30,18 @@ function extra_category_fields( $tag ) {    //check for existing featured ID
     <!-- Form Field Color -->
     <tr class="form-field">
         <th scope="row" valign="top">
-            <label for="extra2"><?php _e('Taxonomy Color'); ?></label>
+            <label for="cat_color"><?php _e('Taxonomy Color'); ?></label>
         </th>
         <td>
-            <input type="text" name="Cat_meta[extra2]" id="Cat_meta[extra2]" size="25" style="width:60%;" value="<?php echo $cat_meta['extra2'] ? $cat_meta['extra2'] : ''; ?>"><br />
-            <span class="description"><?php _e('extra field'); ?></span>
+            <input type="text" name="Cat_meta[cat_color]" id="Cat_meta[cat_color]" size="25" style="width:60%;" value="<?php echo $cat_meta['cat_color'] ? $cat_meta['cat_color'] : ''; ?>"><br />
+            <span class="description"><?php _e('Please fill in Hex Code "#000000". Colors are only displayed in first hierarchical level categories. '); ?></span>
         </td>
     </tr>
     <?php
 }
 
-add_action ( 'edited_material_category', 'save_extra_category_fileds');
-add_action ( 'create_material_category', 'save_extra_category_fileds');
+add_action ( 'edited_' . $tree_taxonomy, 'save_extra_category_fileds');
+add_action ( 'create_' . $tree_taxonomy, 'save_extra_category_fileds');
 
 // save extra category extra fields callback function
 function save_extra_category_fileds( $term_id ) {
@@ -77,7 +79,7 @@ noption_name = category_2 // category_ + term_id
 option_value = a:2:{
                     s:6:"extra1";
                     s:4:"test";
-                    s:6:"extra2";
+                    s:6:"cat_color";
                     s:6:"test 2";
                 }
 
