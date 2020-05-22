@@ -74,17 +74,19 @@ function categorytree_callback() {
 	die();
 }
 
-
 function buildrectree($root) {
 
 	$tree_post_type = get_option("tree_post_type");
 	$tree_taxonomy = get_option("tree_taxonomy");
+	/*
+	$tree_taxonomy_order = get_option("tree_category_$l1cat->term_id");
+	*/
 
 	$args = array(
 		'parent'      => $root,
-		/*
-		'meta_key'    => 'taxonomy_order', //acf-order
-		'orderby'     => 'meta_value',
+		/* NOTE: funktioniert vielleicht nur in kombi mit 'termmeta'?
+		'meta_key'    => $tree_taxonomy_order['taxonomy_order'], //acf-order
+		'orderby'     => 'meta_value_num',
 		'order'       => 'ASC',
 		*/
 		'hide_empty'  => 0,
@@ -122,7 +124,7 @@ function buildrectree($root) {
 		}
 
 		// push $color into $l1cat of first level
-		$cat_data = get_option("category_$l1cat->term_id");
+		$cat_data = get_option("tree_category_$l1cat->term_id");
 		if (0 == $l1cat->parent) {
 			if (isset($cat_data['cat_color']) && $cat_data['cat_color'] != '') {
 				$l1cat->taxonomy_color = $cat_data['cat_color'];
