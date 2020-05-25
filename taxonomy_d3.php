@@ -43,19 +43,7 @@ function categoryd3tree_scripts() {
 add_action( 'wp_footer', 'categoryd3tree_scripts' );
 
 function categorytree_callback() {
-	/*
-	// get acf-field-title of the taxonomytree rootlement
-	// from page with slug "taxonomy_root"
-	$the_slug = 'taxonomy_root';
-	$args = array(
-		'name'        => $the_slug,
-		'post_type'   => 'page',
-		'post_status' => 'publish',
-		'numberposts' => 1
-	);
-	$my_posts = get_posts($args);
-	$taxonomyname = get_field('taxonomy_rootname', $my_posts[0]->ID);
-	*/
+	
 	$tree_taxonomy = get_option('tree_taxonomy');
 	//process plugin
 	$tree = array(
@@ -102,11 +90,9 @@ function buildrectree($root) {
 		if(empty ($l1cat->children)) {
 			$l1posts = get_posts( array(
 				'post_type'    => $tree_post_type,
-				/*
-				'meta_key'     => 'taxonomy_order',
-				'orderby'      => 'meta_value',
+				'meta_key'     => 'tree_post_order',
+				'orderby'      => 'meta_value_num',
 				'order'        => 'ASC',
-				*/
 				'tax_query'    => array(
 					array(
 						'taxonomy'     => $tree_taxonomy,
@@ -144,5 +130,6 @@ add_action( 'wp_ajax_nopriv_categorytree', 'categorytree_callback' );
 
 // metaboxes category_order and category_color;
 require_once 'metabox_category.php';
+require_once 'metabox_order.php';
 
 ?>
