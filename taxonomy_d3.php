@@ -43,12 +43,12 @@ function categoryd3tree_scripts() {
 add_action( 'wp_footer', 'categoryd3tree_scripts' );
 
 function categorytree_callback() {
-	
+
 	$tree_taxonomy = get_option('tree_taxonomy');
 	//process plugin
 	$tree = array(
 		'parent'      => -1,
-		'name'        => $tree_taxonomy,
+		'name'        => $tree_taxonomy, // TODO: Namen andern
 	);
 
 	// generate the response
@@ -72,11 +72,9 @@ function buildrectree($root) {
 
 	$args = array(
 		'parent'      => $root,
-		/* NOTE: funktioniert vielleicht nur in kombi mit 'termmeta'?
-		'meta_key'    => $tree_taxonomy_order['taxonomy_order'], //acf-order
+		'meta_key'    => 'tree_taxonomy_order', //acf-order
 		'orderby'     => 'meta_value_num',
 		'order'       => 'ASC',
-		*/
 		'hide_empty'  => 0,
 		'taxonomy'    => $tree_taxonomy,
 	);
@@ -96,9 +94,6 @@ function buildrectree($root) {
 				'tax_query'    => array(
 					array(
 						'taxonomy'     => $tree_taxonomy,
-						/* QUESTION: what is that for ???
-						'field'        => 'tag_ID',
-						*/
 						'terms'        => $l1cat->term_id
 					)
 				)
@@ -129,7 +124,7 @@ add_action( 'wp_ajax_categorytree', 'categorytree_callback' );
 add_action( 'wp_ajax_nopriv_categorytree', 'categorytree_callback' );
 
 // metaboxes category_order and category_color;
-require_once 'metabox_category.php';
+// require_once 'metabox_category.php';
 require_once 'metabox_order.php';
 
 ?>
