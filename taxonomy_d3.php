@@ -11,11 +11,11 @@ Author: Gerald Wagner
 function taxonomytree_shortcode($atts) {
 
 	$atts = shortcode_atts( array(
-		'post_type'=> 'posts',
-		'taxonomy' => 'category'
+		'post_type'  => 'posts',
+		'taxonomy'   => 'category'
 	), $atts);
 
- 	// save 'post_type' and 'taxonomy' in wp_options
+ 	// save 'post_type' and 'taxonomy' in wp_options to access later
 	update_option("tree_post_type", $atts['post_type']);
 	update_option("tree_taxonomy", $atts['taxonomy']);
 
@@ -126,5 +126,6 @@ add_action( 'wp_ajax_nopriv_categorytree', 'categorytree_callback' );
 // metaboxes category_order and category_color;
 // require_once 'metabox_category.php';
 require_once 'metabox_order.php';
+require_once 'metabox_color.php';
 
 ?>

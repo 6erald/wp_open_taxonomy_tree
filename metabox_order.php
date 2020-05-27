@@ -9,7 +9,6 @@
  */
 
 $tree_post_type = get_option( 'tree_post_type' );
-$tree_taxonomy  = get_option( 'tree_taxonomy' );
 
 /* Meta box setup function. */
 function smashing_post_meta_boxes_setup() {
@@ -104,6 +103,8 @@ add_action( 'load-post-new.php', 'smashing_post_meta_boxes_setup' );
  * Add meta box to the term page.
  */
 
+$tree_taxonomy  = get_option( 'tree_taxonomy' );
+
 function tree_taxonomy_edit_meta_field( $term ) {
 
 	// Retrieve the existing value(s) for this meta field.
@@ -122,6 +123,7 @@ function tree_taxonomy_edit_meta_field( $term ) {
         <td><input class="widefat" type="number" size="30"
                    name="term_meta[tree_taxonomy_order]" id="term_meta[tree_taxonomy_order]"
                    value="<?php echo $term_meta ? $term_meta : 1;?>" />
+                   <!-- NOTE: term_meta[tree_taxonomy_order] really necessary? -->
             <p class="description">
                 <?php _e( 'Change the post order to structure them in the tree.', '' ); ?>
             </p>
