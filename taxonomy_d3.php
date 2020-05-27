@@ -105,10 +105,11 @@ function buildrectree($root) {
 		}
 
 		// push $color into $l1cat of first level
-		$cat_data = get_option("tree_category_$l1cat->term_id");
+		$cat_color= jt_get_term_color( $l1cat->term_id, true );
+
 		if (0 == $l1cat->parent) {
-			if (isset($cat_data['cat_color']) && $cat_data['cat_color'] != '') {
-				$l1cat->taxonomy_color = $cat_data['cat_color'];
+			if (isset($cat_color) && $cat_color != '') {
+				$l1cat->taxonomy_color = $cat_color;
 			} else { //default color
 				$l1cat->taxonomy_color = '#000000';
 			}
