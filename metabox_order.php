@@ -2,13 +2,15 @@
 
 
 /**
- *
- * Created with:
- * https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
- *
+ * Order Post Metabox
  */
 
-$tree_post_type = get_option( 'tree_post_type' );
+/**
+ * -------------------------- NOTES --------------------------
+ * Created with:
+ * https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
+ */
+
 
 /* Meta box setup function. */
 function smashing_post_meta_boxes_setup() {
@@ -23,13 +25,15 @@ function smashing_post_meta_boxes_setup() {
 /* Create one or more meta boxes to be displayed on the post editor screen. */
 function smashing_add_post_meta_boxes() {
 
+    $tree_post_type = get_option( 'tree_post_type' );
+
     add_meta_box(
-        'tree-taxonomy-order',                  // Unique ID
+        'tree-taxonomy-order',                         // Unique ID
          esc_html__( 'Taxonomy-Tree Post Order', '' ), // Title
-        'tree_post_order_meta_box',              // Callback function
-         $tree_post_type,                       // Admin page (or post type)
-        'side',                                 // Context
-        'default'                               // Priority
+        'tree_post_order_meta_box',                    // Callback function
+         $tree_post_type,                              // Admin page (or post type)
+        'side',                                        // Context
+        'default'                                      // Priority
     );
 }
 
@@ -92,18 +96,30 @@ function smashing_save_post_class_meta( $post_id, $post ) {
     delete_post_meta( $post_id, $meta_key, $meta_value );
 }
 
-
 /* Fire our meta box setup function on the post editor screen. */
-add_action( 'load-post.php', 'smashing_post_meta_boxes_setup' );
+add_action( 'load-post.php',     'smashing_post_meta_boxes_setup' );
 add_action( 'load-post-new.php', 'smashing_post_meta_boxes_setup' );
 
 /**
- * From: https://gist.github.com/dtbaker/7563c8bdba24b9fdbbb975175f461035
- *
- * Add meta box to the term page.
+ * Order Term Metabox
  */
 
-$tree_taxonomy  = get_option( 'tree_taxonomy' );
+/**
+ * -------------------------- NOTES --------------------------
+ * From: https://gist.github.com/dtbaker/7563c8bdba24b9fdbbb975175f461035
+ */
+
+function tree_order_meta_taxonomy_setup() {
+
+    $tree_taxonomy  = get_option( 'tree_taxonomy' );
+
+    add_action( $tree_taxonomy . '_add_form_fields', 'tree_taxonomy_edit_meta_field', 10 );
+    add_action( $tree_taxonomy . '_edit_form_fields','tree_taxonomy_edit_meta_field', 10 );
+
+    add_action( 'edited_' . $tree_taxonomy, 'tree_taxonomy_save_custom_meta', 10, 2 );
+    add_action( 'create_' . $tree_taxonomy, 'tree_taxonomy_save_custom_meta', 10, 2 );
+
+}
 
 function tree_taxonomy_edit_meta_field( $term ) {
 
@@ -132,13 +148,6 @@ function tree_taxonomy_edit_meta_field( $term ) {
 
 <?php }
 
-add_action( $tree_taxonomy . '_add_form_fields', 'tree_taxonomy_edit_meta_field', 10 );
-add_action( $tree_taxonomy . '_edit_form_fields','tree_taxonomy_edit_meta_field', 10 );
-
-/**
- * Save meta data callback function.
- */
-
 function tree_taxonomy_save_custom_meta( $term_id ) {
 	if (
 		isset( $_POST['term_meta'] ) && is_array( $_POST['term_meta'] ) &&
@@ -150,7 +159,8 @@ function tree_taxonomy_save_custom_meta( $term_id ) {
 	}
 }
 
-add_action( 'edited_' . $tree_taxonomy, 'tree_taxonomy_save_custom_meta', 10, 2 );
-add_action( 'create_' . $tree_taxonomy, 'tree_taxonomy_save_custom_meta', 10, 2 );
+add_action( 'edit-tags.php',      'tree_order_meta_taxonomy_setup' );
+add_action( 'load-edit-tags.php', 'tree_order_meta_taxonomy_setup' );
+
 
 ?>

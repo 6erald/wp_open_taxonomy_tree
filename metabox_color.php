@@ -1,6 +1,11 @@
 <?php
 
-/*
+/**
+ * Color Metabox
+ */
+
+/**
+ * -------------------------- NOTES --------------------------
  * TUTORIAL: https://themehybrid.com/weblog/introduction-to-wordpress-term-meta
  * IDEA: colorpicker eifügen https://themehybrid.com/weblog/introduction-to-wordpress-term-meta
  * IDEA: auch mit hilfe von https://wordpress.org/plugins/wp-term-colors/
@@ -8,8 +13,6 @@
  */
 
 $tree_taxonomy = get_option("tree_taxonomy");
-
-add_action( 'init', 'jt_register_meta' );
 
 function jt_register_meta() {
 
@@ -31,7 +34,7 @@ function jt_get_term_color( $term_id, $hash = false ) {
     return $hash && $color ? "#{$color}" : $color;
 }
 
-add_action( $tree_taxonomy.'_add_form_fields', 'ccp_new_term_color_field' );
+add_action( 'init', 'jt_register_meta' );
 
 function ccp_new_term_color_field() {
 
@@ -43,7 +46,7 @@ function ccp_new_term_color_field() {
     </div>
 <?php }
 
-add_action( $tree_taxonomy.'_edit_form_fields', 'ccp_edit_term_color_field' );
+add_action( $tree_taxonomy.'_add_form_fields', 'ccp_new_term_color_field' );
 
 function ccp_edit_term_color_field( $term ) {
 
@@ -62,8 +65,7 @@ function ccp_edit_term_color_field( $term ) {
     </tr>
 <?php }
 
-add_action( 'edit_'.$tree_taxonomy,  'jt_save_term_color' );
-add_action( 'create'.$tree_taxonomy, 'jt_save_term_color' );
+add_action( $tree_taxonomy.'_edit_form_fields', 'ccp_edit_term_color_field' );
 
 function jt_save_term_color( $term_id ) {
 
@@ -80,5 +82,7 @@ function jt_save_term_color( $term_id ) {
         update_term_meta( $term_id, 'color', $new_color );
 }
 
+add_action( 'edit_'.$tree_taxonomy,  'jt_save_term_color' );
+add_action( 'create'.$tree_taxonomy, 'jt_save_term_color' );
 
 ?>
