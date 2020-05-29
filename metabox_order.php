@@ -11,26 +11,25 @@
  * https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
  */
 
-
 /* Meta box setup function. */
-function smashing_post_meta_boxes_setup() {
+function tree_order_setup_post_meta_box() {
 
     /* Add meta boxes on the 'add_meta_boxes' hook. */
-    add_action( 'add_meta_boxes', 'smashing_add_post_meta_boxes' );
+    add_action( 'add_meta_boxes', 'tree_order_add_post_meta_box' );
 
     /* Save post meta on the 'save_post' hook. */
-    add_action( 'save_post', 'smashing_save_post_class_meta', 10, 2 );
+    add_action( 'save_post', 'tree_order_save_post_meta', 10, 2 );
 }
 
 /* Create one or more meta boxes to be displayed on the post editor screen. */
-function smashing_add_post_meta_boxes() {
+function tree_order_add_post_meta_box() {
 
     $tree_post_type = get_option( 'tree_post_type' );
 
     add_meta_box(
         'tree-taxonomy-order',                         // Unique ID
          esc_html__( 'Taxonomy-Tree Post Order', '' ), // Title
-        'tree_post_order_meta_box',                    // Callback function
+        'tree_order_post_meta_box',                    // Callback function
          $tree_post_type,                              // Admin page (or post type)
         'side',                                        // Context
         'default'                                      // Priority
@@ -38,7 +37,7 @@ function smashing_add_post_meta_boxes() {
 }
 
 /* Display the post meta box. */
-function tree_post_order_meta_box( $post ) {
+function tree_order_post_meta_box( $post ) {
 
     $post_meta = $post && !empty( $post->ID) ?
                  get_post_meta( $post->ID, 'tree_post_order', true) :
@@ -60,7 +59,7 @@ function tree_post_order_meta_box( $post ) {
 <?php }
 
 /* Save the meta box’s post metadata. */
-function smashing_save_post_class_meta( $post_id, $post ) {
+function tree_order_save_post_meta( $post_id, $post ) {
 
   /* Verify the nonce before proceeding. */
   if ( !isset( $_POST['tree_post_order_nonce'] ) ||
@@ -97,8 +96,8 @@ function smashing_save_post_class_meta( $post_id, $post ) {
 }
 
 /* Fire our meta box setup function on the post editor screen. */
-add_action( 'load-post.php',     'smashing_post_meta_boxes_setup' );
-add_action( 'load-post-new.php', 'smashing_post_meta_boxes_setup' );
+add_action( 'load-post.php',     'tree_order_setup_post_meta_box' );
+add_action( 'load-post-new.php', 'tree_order_setup_post_meta_box' );
 
 /**
  * Order Term Metabox
@@ -109,19 +108,19 @@ add_action( 'load-post-new.php', 'smashing_post_meta_boxes_setup' );
  * From: https://gist.github.com/dtbaker/7563c8bdba24b9fdbbb975175f461035
  */
 
-function tree_order_meta_taxonomy_setup() {
+function tree_order_setup_term_meta_box() {
 
     $tree_taxonomy  = get_option( 'tree_taxonomy' );
 
-    add_action( $tree_taxonomy . '_add_form_fields', 'tree_taxonomy_edit_meta_field', 10 );
-    add_action( $tree_taxonomy . '_edit_form_fields','tree_taxonomy_edit_meta_field', 10 );
+    add_action( $tree_taxonomy . '_add_form_fields', 'tree_order_edit_term_field', 10 );
+    add_action( $tree_taxonomy . '_edit_form_fields','tree_order_edit_term_field', 10 );
 
-    add_action( 'edited_' . $tree_taxonomy, 'tree_taxonomy_save_custom_meta', 10, 2 );
-    add_action( 'create_' . $tree_taxonomy, 'tree_taxonomy_save_custom_meta', 10, 2 );
+    add_action( 'edited_' . $tree_taxonomy, 'tree_order_save_term_meta', 10, 2 );
+    add_action( 'create_' . $tree_taxonomy, 'tree_order_save_term_meta', 10, 2 );
 
 }
 
-function tree_taxonomy_edit_meta_field( $term ) {
+function tree_order_edit_term_field( $term ) {
 
 	// Retrieve the existing value(s) for this meta field.
 	$term_meta = $term && !empty( $term->term_id ) ?
@@ -136,7 +135,7 @@ function tree_taxonomy_edit_meta_field( $term ) {
                 <?php _e( "Taxonomy Order", '' ); ?>
             </label>
         </th>
-        <td><input class="widefat" type="number" size="30"
+        <td><input type="number"
                    name="term_meta[tree_taxonomy_order]" id="term_meta[tree_taxonomy_order]"
                    value="<?php echo $term_meta ? $term_meta : 1;?>" />
                    <!-- NOTE: term_meta[tree_taxonomy_order] really necessary? -->
@@ -148,7 +147,7 @@ function tree_taxonomy_edit_meta_field( $term ) {
 
 <?php }
 
-function tree_taxonomy_save_custom_meta( $term_id ) {
+function tree_order_save_term_meta( $term_id ) {
 	if (
 		isset( $_POST['term_meta'] ) && is_array( $_POST['term_meta'] ) &&
 		! empty( $_POST['term_meta_nonce'] ) && wp_verify_nonce( $_POST['term_meta_nonce'], 'update_term_meta' )
@@ -159,8 +158,8 @@ function tree_taxonomy_save_custom_meta( $term_id ) {
 	}
 }
 
-add_action( 'edit-tags.php',      'tree_order_meta_taxonomy_setup' );
-add_action( 'load-edit-tags.php', 'tree_order_meta_taxonomy_setup' );
+add_action( 'edit-tags.php',      'tree_order_setup_term_meta_box' );
+add_action( 'load-edit-tags.php', 'tree_order_setup_term_meta_box' );
 
 
 ?>

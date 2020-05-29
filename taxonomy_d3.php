@@ -105,7 +105,7 @@ function buildrectree($root) {
 		}
 
 		// push $color into $l1cat of first level
-		$cat_color= jt_get_term_color( $l1cat->term_id, true );
+		$cat_color= tree_color_get_term_meta( $l1cat->term_id, true );
 
 		if (0 == $l1cat->parent) {
 			if (isset($cat_color) && $cat_color != '') {
@@ -126,7 +126,8 @@ add_action( 'wp_ajax_nopriv_categorytree', 'categorytree_callback' );
 
 // metaboxes category_order and category_color;
 // require_once 'metabox_category.php';
-require_once 'metabox_order.php';
+
 require_once 'metabox_color.php';
+require_once 'metabox_order.php';
 
 ?>
