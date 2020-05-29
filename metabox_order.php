@@ -112,11 +112,11 @@ function tree_order_setup_term_meta_box() {
 
     $tree_taxonomy  = get_option( 'tree_taxonomy' );
 
-    add_action( $tree_taxonomy . '_add_form_fields', 'tree_order_edit_term_field', 10 );
-    add_action( $tree_taxonomy . '_edit_form_fields','tree_order_edit_term_field', 10 );
+    add_action( "{$tree_taxonomy}_add_form_fields", 'tree_order_edit_term_field', 10 );
+    add_action( "{$tree_taxonomy}_edit_form_fields",'tree_order_edit_term_field', 10 );
 
-    add_action( 'edited_' . $tree_taxonomy, 'tree_order_save_term_meta', 10, 2 );
-    add_action( 'create_' . $tree_taxonomy, 'tree_order_save_term_meta', 10, 2 );
+    add_action( "edited_{$tree_taxonomy}", 'tree_order_save_term_meta', 10, 2 );
+    add_action( "create_{$tree_taxonomy}", 'tree_order_save_term_meta', 10, 2 );
 
 }
 
@@ -124,21 +124,21 @@ function tree_order_edit_term_field( $term ) {
 
 	// Retrieve the existing value(s) for this meta field.
 	$term_meta = $term && !empty( $term->term_id ) ?
-                 get_term_meta( $term->term_id, 'tree_taxonomy_order', true ) :
+                 get_term_meta( $term->term_id, 'tree_term_order', true ) :
                  false;
 
     wp_nonce_field( 'update_term_meta', 'term_meta_nonce' ); ?>
 
 	<tr class="form-field">
         <th scope="row" valign="top">
-            <label for="term_meta[tree_taxonomy_order]">
+            <label for="term_meta[tree_term_order]">
                 <?php _e( "Taxonomy Order", '' ); ?>
             </label>
         </th>
         <td><input type="number"
-                   name="term_meta[tree_taxonomy_order]" id="term_meta[tree_taxonomy_order]"
+                   name="term_meta[tree_term_order]" id="term_meta[tree_term_order]"
                    value="<?php echo $term_meta ? $term_meta : 1;?>" />
-                   <!-- NOTE: term_meta[tree_taxonomy_order] really necessary? -->
+                   <!-- NOTE: term_meta[tree_term_order] really necessary? -->
             <p class="description">
                 <?php _e( 'Change the post order to structure them in the tree.', '' ); ?>
             </p>

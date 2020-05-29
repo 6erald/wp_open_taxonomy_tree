@@ -67,12 +67,12 @@ function buildrectree($root) {
 	$tree_post_type = get_option("tree_post_type");
 	$tree_taxonomy = get_option("tree_taxonomy");
 	/*
-	$tree_taxonomy_order = get_option("tree_category_$l1cat->term_id");
+	$tree_term_order = get_option("tree_category_$l1cat->term_id");
 	*/
 
 	$args = array(
 		'parent'      => $root,
-		'meta_key'    => 'tree_taxonomy_order', //acf-order
+		'meta_key'    => 'tree_term_order', //acf-order
 		'orderby'     => 'meta_value_num',
 		'order'       => 'ASC',
 		'hide_empty'  => 0,
