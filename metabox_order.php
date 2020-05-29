@@ -6,10 +6,13 @@
  */
 
 /**
- * -------------------------- NOTES --------------------------
- * Created with:
- * https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
+ * Source: https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
  */
+
+
+/* Fire our meta box setup function on the post editor screen. */
+add_action( 'load-post.php',     'tree_order_setup_post_meta_box' );
+add_action( 'load-post-new.php', 'tree_order_setup_post_meta_box' );
 
 /* Meta box setup function. */
 function tree_order_setup_post_meta_box() {
@@ -27,7 +30,7 @@ function tree_order_add_post_meta_box() {
     $tree_post_type = get_option( 'tree_post_type' );
 
     add_meta_box(
-        'tree-taxonomy-order',                         // Unique ID
+        'tree-order-post',                         // Unique ID
          esc_html__( 'Taxonomy-Tree Post Order', '' ), // Title
         'tree_order_post_meta_box',                    // Callback function
          $tree_post_type,                              // Admin page (or post type)
@@ -39,21 +42,16 @@ function tree_order_add_post_meta_box() {
 /* Display the post meta box. */
 function tree_order_post_meta_box( $post ) {
 
-    $post_meta = $post && !empty( $post->ID) ?
-                 get_post_meta( $post->ID, 'tree_post_order', true) :
-                 false;
+    $post_meta = $post && !empty( $post->ID) ? get_post_meta( $post->ID, 'tree_order', true) : false;
 
-    // TODO: nonce_field vereinheitlichen
-    wp_nonce_field( basename( __FILE__ ), 'tree_post_order_nonce' ); ?>
+    wp_nonce_field( basename( __FILE__ ), 'tree_order_nonce' ); ?>
 
     <!-- TODO: Form-Felder vereinheitlichen -->
-    <p><label for="tree-taxonomy-order">
+    <p><label for="tree-order-post">
             <?php _e( "Change the post order to structure them in the tree.", '' ); ?>
         </label>
         <br />
-        <input class="widefat" type="number" size="30"
-               name="tree-taxonomy-order" id="tree-taxonomy-order"
-               value="<?php echo $post_meta ? $post_meta : 1; ?>" />
+        <input class="widefat" type="number" size="30" name="tree-order-post" id="tree-order-post" value="<?php echo $post_meta ? $post_meta : 1; ?>" />
     </p>
 
 <?php }
@@ -62,8 +60,8 @@ function tree_order_post_meta_box( $post ) {
 function tree_order_save_post_meta( $post_id, $post ) {
 
   /* Verify the nonce before proceeding. */
-  if ( !isset( $_POST['tree_post_order_nonce'] ) ||
-       !wp_verify_nonce( $_POST['tree_post_order_nonce'], basename( __FILE__ ) ) )
+  if ( !isset( $_POST['tree_order_nonce'] ) ||
+       !wp_verify_nonce( $_POST['tree_order_nonce'], basename( __FILE__ ) ) )
      return $post_id;
 
   /* Get the post type object. */
@@ -74,10 +72,10 @@ function tree_order_save_post_meta( $post_id, $post ) {
     return $post_id;
 
   /* Get the posted data and sanitize it for use as an HTML class. */
-  $new_meta_value = ( isset( $_POST['tree-taxonomy-order'] ) ? sanitize_html_class( $_POST['tree-taxonomy-order'] ) : ’ );
+  $new_meta_value = ( isset( $_POST['tree-order-post'] ) ? sanitize_html_class( $_POST['tree-order-post'] ) : ’ );
 
   /* Get the meta key. */
-  $meta_key = 'tree_post_order';
+  $meta_key = 'tree_order';
 
   /* Get the meta value of the custom field key. */
   $meta_value = get_post_meta( $post_id, $meta_key, true );
@@ -95,71 +93,69 @@ function tree_order_save_post_meta( $post_id, $post ) {
     delete_post_meta( $post_id, $meta_key, $meta_value );
 }
 
-/* Fire our meta box setup function on the post editor screen. */
-add_action( 'load-post.php',     'tree_order_setup_post_meta_box' );
-add_action( 'load-post-new.php', 'tree_order_setup_post_meta_box' );
 
 /**
  * Order Term Metabox
  */
 
-/**
- * -------------------------- NOTES --------------------------
- * From: https://gist.github.com/dtbaker/7563c8bdba24b9fdbbb975175f461035
- */
+ /**
+  * Source: https://gist.github.com/dtbaker/7563c8bdba24b9fdbbb975175f461035
+  * TODO: Form fields anpassen
+  * TODO: bezeichnungen anpassen
+  */
 
-function tree_order_setup_term_meta_box() {
+$tree_taxonomy  = get_option( 'tree_taxonomy' );
 
-    $tree_taxonomy  = get_option( 'tree_taxonomy' );
+add_action( "{$tree_taxonomy}_add_form_fields", 'tree_order_add_term_field' );
 
-    add_action( "{$tree_taxonomy}_add_form_fields", 'tree_order_edit_term_field', 10 );
-    add_action( "{$tree_taxonomy}_edit_form_fields",'tree_order_edit_term_field', 10 );
+function tree_order_add_term_field(){ ?>
 
-    add_action( "edited_{$tree_taxonomy}", 'tree_order_save_term_meta', 10, 2 );
-    add_action( "create_{$tree_taxonomy}", 'tree_order_save_term_meta', 10, 2 );
+    <div class="form-field tree-term-order-wrap">
+        <label for="term_meta[tree_order]"> <?php _e( 'Tree Order', 'tree' ); ?> </label>
+        <?php wp_nonce_field( basename( __FILE__ ), 'term_meta_nonce' ); ?>
+        <input type="number" name="term_meta[tree_order]" id="term_meta[tree_order]" value="1" class="tree-order-field" data-default-color="#ffffff" />
+        <p class="description">
+            <!-- TODO: Beschreibung einfügen -->
+            <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
+        </p>
+    </div>
+<?php }
 
-}
+add_action( "{$tree_taxonomy}_edit_form_fields",'tree_order_edit_term_field' );
 
 function tree_order_edit_term_field( $term ) {
 
 	// Retrieve the existing value(s) for this meta field.
-	$term_meta = $term && !empty( $term->term_id ) ?
-                 get_term_meta( $term->term_id, 'tree_term_order', true ) :
-                 false;
+	$term_meta = $term && !empty( $term->term_id ) ? get_term_meta( $term->term_id, 'tree_order', true ) : false; ?>
 
-    wp_nonce_field( 'update_term_meta', 'term_meta_nonce' ); ?>
-
-	<tr class="form-field">
+	<tr class="form-field tree-term-order-wrap">
         <th scope="row" valign="top">
-            <label for="term_meta[tree_term_order]">
-                <?php _e( "Taxonomy Order", '' ); ?>
-            </label>
+            <label for="term_meta[tree_order]"> <?php _e( 'Tree Order', 'tree' ); ?> </label>
         </th>
-        <td><input type="number"
-                   name="term_meta[tree_term_order]" id="term_meta[tree_term_order]"
-                   value="<?php echo $term_meta ? $term_meta : 1;?>" />
-                   <!-- NOTE: term_meta[tree_term_order] really necessary? -->
+        <td>
+            <?php wp_nonce_field( basename( __FILE__ ), 'term_meta_nonce' ); ?>
+            <input type="number" name="term_meta[tree_order]" id="term_meta[tree_order]" value="<?php echo $term_meta ? $term_meta : 1;?>" />
             <p class="description">
-                <?php _e( 'Change the post order to structure them in the tree.', '' ); ?>
+                <!-- TODO: Beschreibung einfügen -->
+                <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
             </p>
 		</td>
 	</tr>
 
 <?php }
 
+add_action( "edited_{$tree_taxonomy}", 'tree_order_save_term_meta' );
+add_action( "create_{$tree_taxonomy}", 'tree_order_save_term_meta' );
+
 function tree_order_save_term_meta( $term_id ) {
 	if (
 		isset( $_POST['term_meta'] ) && is_array( $_POST['term_meta'] ) &&
-		! empty( $_POST['term_meta_nonce'] ) && wp_verify_nonce( $_POST['term_meta_nonce'], 'update_term_meta' )
+		! empty( $_POST['term_meta_nonce'] ) && wp_verify_nonce( $_POST['term_meta_nonce'], basename( __FILE__ ) )
 	) {
 		foreach ( $_POST['term_meta'] as $key => $value ) {
 			update_term_meta( $term_id, $key, sanitize_text_field( $value ) );
 		}
 	}
 }
-
-add_action( 'edit-tags.php',      'tree_order_setup_term_meta_box' );
-add_action( 'load-edit-tags.php', 'tree_order_setup_term_meta_box' );
-
 
 ?>

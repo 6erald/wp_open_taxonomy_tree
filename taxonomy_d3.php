@@ -72,7 +72,7 @@ function buildrectree($root) {
 
 	$args = array(
 		'parent'      => $root,
-		'meta_key'    => 'tree_term_order', //acf-order
+		'meta_key'    => 'tree_order', //acf-order
 		'orderby'     => 'meta_value_num',
 		'order'       => 'ASC',
 		'hide_empty'  => 0,
@@ -88,7 +88,7 @@ function buildrectree($root) {
 		if(empty ($l1cat->children)) {
 			$l1posts = get_posts( array(
 				'post_type'    => $tree_post_type,
-				'meta_key'     => 'tree_post_order',
+				'meta_key'     => 'tree_order',
 				'orderby'      => 'meta_value_num',
 				'order'        => 'ASC',
 				'tax_query'    => array(
