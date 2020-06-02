@@ -10,6 +10,7 @@
  * IDEA: auch mit hilfe von https://wordpress.org/plugins/wp-term-colors/
  * NOTE: check 'wp-admin/edit-tag-form.php' and 'admin/edit-tags.php' to find the most appropriate hook for your use case
  * TODO: check "register_meta" & "delete_term_meta" wirklich nötig?
+ * TODO: Nach "create_${taxonomy}" wird die default farbe nicht mehr angezeigt
  */
 
 $tree_taxonomy = get_option("tree_taxonomy");
@@ -56,7 +57,7 @@ add_action( "{$tree_taxonomy}_edit_form_fields", 'tree_color_edit_term_field' );
 function tree_color_edit_term_field( $term ) {
 
     // only terms of first level can display colors
-    if( 0 != $term->parent )
+    if ( 0 != $term->parent )
         return;
 
     $default = '#ffffff';
@@ -78,7 +79,7 @@ function tree_color_edit_term_field( $term ) {
     </tr>
 <?php }
 
-add_action( "edit_{$tree_taxonomy}",   'tree_color_save_term_meta' );
+add_action( "edited_{$tree_taxonomy}", 'tree_color_save_term_meta' );
 add_action( "create_{$tree_taxonomy}", 'tree_color_save_term_meta' );
 
 function tree_color_save_term_meta( $term_id ) {

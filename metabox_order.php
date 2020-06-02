@@ -111,9 +111,9 @@ add_action( "{$tree_taxonomy}_add_form_fields", 'tree_order_add_term_field' );
 function tree_order_add_term_field(){ ?>
 
     <div class="form-field tree-term-order-wrap">
-        <label for="term_meta[tree_order]"> <?php _e( 'Tree Order', 'tree' ); ?> </label>
-        <?php wp_nonce_field( basename( __FILE__ ), 'term_meta_nonce' ); ?>
-        <input type="number" name="term_meta[tree_order]" id="term_meta[tree_order]" value="1" class="tree-order-field" data-default-color="#ffffff" />
+        <label for="tree-term-order"> <?php _e( 'Tree Order', 'tree' ); ?> </label>
+        <?php wp_nonce_field( basename( __FILE__ ), 'tree_term_order_nonce' ); ?>
+        <input type="number" name="tree_term_order" id="tree-term-order" value="1" class="tree-order-field" data-default-color="#ffffff" />
         <p class="description">
             <!-- TODO: Beschreibung einfügen -->
             <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
@@ -126,15 +126,14 @@ add_action( "{$tree_taxonomy}_edit_form_fields",'tree_order_edit_term_field' );
 function tree_order_edit_term_field( $term ) {
 
 	// Retrieve the existing value(s) for this meta field.
-	$term_meta = $term && !empty( $term->term_id ) ? get_term_meta( $term->term_id, 'tree_order', true ) : false; ?>
+    $default   = 1;
+	$term_order = $term && !empty( $term->term_id ) ? get_term_meta( $term->term_id, 'tree_order', true ) : false; ?>
 
 	<tr class="form-field tree-term-order-wrap">
-        <th scope="row" valign="top">
-            <label for="term_meta[tree_order]"> <?php _e( 'Tree Order', 'tree' ); ?> </label>
-        </th>
+        <th scope="row"><label for="tree-term-order"><?php _e( 'Tree Order', 'tree' ); ?></label></th>
         <td>
-            <?php wp_nonce_field( basename( __FILE__ ), 'term_meta_nonce' ); ?>
-            <input type="number" name="term_meta[tree_order]" id="term_meta[tree_order]" value="<?php echo $term_meta ? $term_meta : 1;?>" />
+            <?php wp_nonce_field( basename( __FILE__ ), 'tree_term_order_nonce' ); ?>
+            <input type="number" name="tree_term_order" id="tree-term-order" value="<?php echo esc_attr( $term_order ); ?>" class="tree-color-field" data-default-color="<?php echo esc_attr( $default ); ?>" />
             <p class="description">
                 <!-- TODO: Beschreibung einfügen -->
                 <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
@@ -148,14 +147,17 @@ add_action( "edited_{$tree_taxonomy}", 'tree_order_save_term_meta' );
 add_action( "create_{$tree_taxonomy}", 'tree_order_save_term_meta' );
 
 function tree_order_save_term_meta( $term_id ) {
-	if (
-		isset( $_POST['term_meta'] ) && is_array( $_POST['term_meta'] ) &&
-		! empty( $_POST['term_meta_nonce'] ) && wp_verify_nonce( $_POST['term_meta_nonce'], basename( __FILE__ ) )
-	) {
-		foreach ( $_POST['term_meta'] as $key => $value ) {
-			update_term_meta( $term_id, $key, sanitize_text_field( $value ) );
-		}
-	}
+    if ( ! isset( $_POST['tree_term_order_nonce'] ) || ! wp_verify_nonce( $_POST['tree_term_order_nonce'], basename( __FILE__ ) ) )
+        return;
+
+    $old_term_order = get_term_meta( $term_id );
+    $new_term_order = isset( $_POST['tree_term_order'] ) ? $_POST['tree_term_order'] : '';
+
+    if ( $old_term_order && '' === $new_term_order )
+        delete_term_meta( $term_id, 'tree_order' );
+
+    else if ( $old_term_order !== $new_term_order )
+        update_term_meta( $term_id, 'tree_order', $new_term_order );
 }
 
 ?>
