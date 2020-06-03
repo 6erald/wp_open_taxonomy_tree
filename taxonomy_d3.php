@@ -68,28 +68,25 @@ function buildrectree( $root ) {
 
 	$tree_post_type = get_option( 'tree_post_type' );
 	$tree_taxonomy  = get_option( 'tree_taxonomy' );
-	/*
-	$tree_term_order = get_option( "tree_category_$l1cat->term_id" );
-	*/
 
 	$args = array(
 		'parent'      => $root,
-		'meta_key'    => 'tree_order', //acf-order
+		'meta_key'    => 'tree_order',
 		'orderby'     => 'meta_value_num',
 		'order'       => 'ASC',
 		'hide_empty'  => 0,
 		'taxonomy'    => $tree_taxonomy,
 	);
 
-	$l1cats = get_categories( $args );
+	$tree_terms = get_categories( $args );
 
-	foreach ( $l1cats as $l1cat ) {
+	foreach ( $tree_terms as $tree_term ) {
 
-		$l1cat->children = buildrectree( $l1cat->term_id );
+		$tree_term->children = buildrectree( $tree_term->term_id );
 
 		// push blogposts into $tree in category of last level
-		if ( empty ( $l1cat->children ) ) {
-			$l1posts = get_posts( array(
+		if ( empty ( $tree_term->children ) ) {
+			$tree_posts = get_posts( array(
 				'post_type'    => $tree_post_type,
 				'meta_key'     => 'tree_order',
 				'orderby'      => 'meta_value_num',
@@ -97,33 +94,26 @@ function buildrectree( $root ) {
 				'tax_query'    => array(
 					array(
 						'taxonomy'     => $tree_taxonomy,
-						'terms'        => $l1cat->term_id
+						'terms'        => $tree_term->term_id
 					)
 				)
 			));
 
-			foreach ( $l1posts as $l1post ) {
+			foreach ( $tree_posts as $tree_post ) {
 
-				$l1post->name      = $l1post->post_title;
-				$l1cat->children[] = $l1post;
+				$tree_post->name = $tree_post->post_title;
+				$tree_term->children[] = $tree_post;
 			}
 		}
 
-		// push $color into $l1cat of first level
-		$default   = '#ffffff';
-		$cat_color = tree_color_get_term_meta( $l1cat->term_id, true );
+		// push the term_color for terms of first level into $tree
+		if ( 0 == $tree_term->parent )
+			$tree_term->taxonomy_color = tree_color_get_term_meta( $tree_term->term_id, true );
 
-		if ( 0 == $l1cat->parent ) {
-			if ( isset( $cat_color ) && $cat_color != '' ) {
-				$l1cat->taxonomy_color = $cat_color;
-			} else { //default color
-				$l1cat->taxonomy_color = $default;
-			}
-		}
-
-		// push $l1cat innto $tree
-		$tree[] = $l1cat;
+		// push $tree_term innto $tree
+		$tree[] = $tree_term;
 	}
+
 	return $tree;
 }
 
