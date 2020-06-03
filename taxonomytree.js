@@ -20,7 +20,7 @@ var diagonal = d3.svg.diagonal()
     .projection(function(d) {return [d.y, d.x];});
 
 // create the svg
-var svg = d3.select('#categorytree').append("svg")
+var svg = d3.select('#taxonomytree').append("svg")
     .attr("viewBox", "0 0 " + width + " " + height)
     .attr("preserveAspectRatio", "xMinYMin")
     .append("g")
@@ -28,9 +28,9 @@ var svg = d3.select('#categorytree').append("svg")
 
 // ajax
 jQuery.ajax({
-    url: MyAjax.ajaxurl,
+    url: TaxononmyTreeAjax.ajaxurl,
     data: {
-	    'action': 'categorytree', //TODO: Change name to name_in_taxonomy_d3.php
+	    'action': 'taxonomytree',
     },
     dataType: 'JSON',
     success: function(data) {
@@ -468,7 +468,7 @@ function hideGradient() {
 
 		// TODO: margin über element holen?
 		// get treeContainerWidth
-		treeContainerWidth = document.getElementById('categorytree').offsetWidth;
+		treeContainerWidth = document.getElementById('taxonomytree').offsetWidth;
 		treeContainerWidth = treeContainerWidth * 1.10;
 
 		// #scrollcontainer scrollLeft

@@ -19,15 +19,15 @@ function taxonomytree_shortcode( $atts ) {
 	update_option( 'tree_post_type', $atts['post_type'] );
 	update_option( 'tree_taxonomy',  $atts['taxonomy'] );
 
-	return "<div id ='categorytree'></div>";
+	return "<div id ='taxonomytree'></div>";
 }
 
-add_shortcode( 'taxonomy_d3', 'taxonomytree_shortcode' );
+add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
 
-function taxonomytree_scripts( ) {
+function taxonomytree_d3_scripts( ) {
 
-	wp_register_script( 'categoryd3tree_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
-	wp_enqueue_script(  'categoryd3tree_js' );
+	wp_register_script( 'taxonomytree_d3_js', plugins_url( 'taxonomytree.js', __FILE__ ), array( 'd3_js' ) );
+	wp_enqueue_script(  'taxonomytree_d3_js' );
 
 	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
     wp_enqueue_script(  'd3_js' );
@@ -36,12 +36,12 @@ function taxonomytree_scripts( ) {
     wp_enqueue_style(  'style_css' );
 
 	// declare the URL to the file that handles the AJAX request ( wp-admin/admin-ajax.php )
-	wp_localize_script( 'categoryd3tree_js', 'MyAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	wp_localize_script( 'taxonomytree_d3_js', 'TaxononmyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
 
-add_action( 'wp_footer', 'taxonomytree_scripts' );
+add_action( 'wp_footer', 'taxonomytree_d3_scripts' );
 
-function categorytree_callback( ) {
+function taxonomytree_callback( ) {
 
 	$tree_taxonomy      = get_option( 'tree_taxonomy' );
 	$tree_taxonomy_arr  = get_taxonomy( $tree_taxonomy );
@@ -55,7 +55,7 @@ function categorytree_callback( ) {
 
 	// generate the response
 	//$tree['children']=buildtree( );
-	$tree['children'] = buildrectree( 0 );
+	$tree['children'] = taxonomytree_build_tree( 0 );
 	$response = json_encode( $tree );
 
 	// response output
@@ -64,7 +64,7 @@ function categorytree_callback( ) {
 	die( );
 }
 
-function buildrectree( $root ) {
+function taxonomytree_build_tree( $root ) {
 
 	$tree_post_type = get_option( 'tree_post_type' );
 	$tree_taxonomy  = get_option( 'tree_taxonomy' );
@@ -82,7 +82,7 @@ function buildrectree( $root ) {
 
 	foreach ( $tree_terms as $tree_term ) {
 
-		$tree_term->children = buildrectree( $tree_term->term_id );
+		$tree_term->children = taxonomytree_build_tree( $tree_term->term_id );
 
 		// push blogposts into $tree in category of last level
 		if ( empty ( $tree_term->children ) ) {
@@ -117,8 +117,8 @@ function buildrectree( $root ) {
 	return $tree;
 }
 
-add_action( 'wp_ajax_categorytree', 'categorytree_callback' );
-add_action( 'wp_ajax_nopriv_categorytree', 'categorytree_callback' );
+add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
+add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
 
 require_once 'metabox_color.php';
 require_once 'metabox_order.php';
