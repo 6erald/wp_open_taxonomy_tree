@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Order Post Metabox
  */
@@ -33,8 +32,9 @@ function tree_order_post_meta_box( $post ) {
     $default   = 1;
     $post_meta = get_post_meta( $post->ID, 'tree_order', true);
 
-    if ( ! $post_meta )
-        $post_meta = $default; ?>
+    if ( ! $post_meta ) {
+        $post_meta = $default;
+    } ?>
 
     <!-- TODO: ggf. Beschreibung einfügen -->
     <p><label for="tree-order-post"><?php _e( "ggf. Beschreibung einfügen", 'tree' ); ?></label>
@@ -49,20 +49,20 @@ function tree_order_post_meta_box( $post ) {
 
 function tree_order_save_post_meta( $post_id, $post ) {
 
-    if ( ! isset( $_POST['tree_order_nonce'] ) || !wp_verify_nonce( $_POST['tree_order_nonce'], basename( __FILE__ ) ) )
+    if ( ! isset( $_POST['tree_order_nonce'] ) || !wp_verify_nonce( $_POST['tree_order_nonce'], basename( __FILE__ ) ) ) {
         return;
+    }
 
     $meta_key       = 'tree_order';
     $old_meta_value = get_post_meta( $post_id, $meta_key );
     $new_meta_value = isset( $_POST['tree_order_post'] ) ? $_POST['tree_order_post'] : '';
 
-    if ( $old_meta_value && '' === $new_meta_value )
+    if ( $old_meta_value && '' === $new_meta_value ) {
         delete_post_meta( $post_id, $meta_key );
-
-    else if ( $new_meta_value !== $old_meta_value )
+    } elseif ( $new_meta_value !== $old_meta_value ) {
         update_post_meta( $post_id, $meta_key, $new_meta_value );
+    }
 }
-
 
 /**
  * Order Term Metabox
@@ -92,8 +92,9 @@ function tree_order_edit_term_field( $term ) {
     $default   = 1;
 	$term_meta = get_term_meta( $term->term_id, 'tree_order', true );
 
-    if ( ! $term_meta )
-        $term_meta = $default; ?>
+    if ( ! $term_meta ) {
+        $term_meta = $default;
+    } ?>
 
 	<tr class="form-field tree-order-term-wrap">
         <th scope="row"><label for="tree-order-term"><?php _e( 'Tree Order', 'tree' ); ?></label></th>
@@ -112,16 +113,17 @@ add_action( "edited_{$tree_taxonomy}", 'tree_order_save_term_meta' );
 add_action( "create_{$tree_taxonomy}", 'tree_order_save_term_meta' );
 
 function tree_order_save_term_meta( $term_id ) {
-    if ( ! isset( $_POST['tree_order_term_nonce'] ) || ! wp_verify_nonce( $_POST['tree_order_term_nonce'], basename( __FILE__ ) ) )
+    if ( ! isset( $_POST['tree_order_term_nonce'] ) || ! wp_verify_nonce( $_POST['tree_order_term_nonce'], basename( __FILE__ ) ) ){
         return;
+    }
 
     $meta_key       = 'tree_order';
     $old_meta_value = get_term_meta( $term_id );
     $new_meta_value = isset( $_POST['tree_order_term'] ) ? $_POST['tree_order_term'] : '';
 
-    if ( $old_meta_value && '' === $new_meta_value )
+    if ( $old_meta_value && '' === $new_meta_value ) {
         delete_term_meta( $term_id, $meta_key );
-
-    else if ( $old_meta_value !== $new_meta_value )
+    } elseif ( $old_meta_value !== $new_meta_value ) {
         update_term_meta( $term_id, $meta_key, $new_meta_value );
+    }
 } ?>

@@ -30,12 +30,14 @@ function tree_color_get_term_meta( $term_id, $hash = false ) {
 
 add_action( "{$tree_taxonomy}_add_form_fields",  'tree_color_add_term_field' );
 
-function tree_color_add_term_field() { ?>
+function tree_color_add_term_field() {
+
+    $default = '#ffffff'; ?>
 
     <div class="form-field tree-term-color-wrap">
         <label for="tree-term-color"><?php _e( 'Tree Color', 'tree' ); ?></label>
         <?php wp_nonce_field( basename( __FILE__ ), 'tree_term_color_nonce' ); ?>
-        <input type="text" name="tree_term_color" id="tree-term-color" value="#ffffff" class="tree-color-field" />
+        <input type="text" name="tree_term_color" id="tree-term-color" value="<?php echo esc_attr( $default ); ?>" class="tree-color-field" />
         <p class="description">
             <!-- TODO: Beschreibung einfügen -->
             <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
@@ -54,8 +56,9 @@ function tree_color_edit_term_field( $term ) {
     $default = '#ffffff';
     $tree_color   = tree_color_get_term_meta( $term->term_id, true );
 
-    if ( ! $tree_color )
-        $tree_color = $default; ?>
+    if ( ! $tree_color ) {
+        $tree_color = $default;
+    } ?>
 
     <tr class="form-field tree-term-color-wrap">
         <th scope="row"><label for="tree-term-color"><?php _e( 'Tree Color', 'tree' ); ?></label></th>
@@ -82,9 +85,9 @@ function tree_color_save_term_meta( $term_id ) {
     $old_tree_color = tree_color_get_term_meta( $term_id );
     $new_tree_color = isset( $_POST['tree_term_color'] ) ? tree_color_sanitize_hex( $_POST['tree_term_color'] ) : '';
 
-    if ( $old_tree_color && '' === $new_tree_color )
+    if ( $old_tree_color && '' === $new_tree_color ){
         delete_term_meta( $term_id, $meta_key );
-
-    else if ( $old_tree_color !== $new_tree_color )
+    } elseif ( $old_tree_color !== $new_tree_color ) {
         update_term_meta( $term_id, $meta_key, $new_tree_color );
+    }
 } ?>

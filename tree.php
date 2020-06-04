@@ -7,6 +7,7 @@ Author: Gerald Wagner
 
 */
 
+add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
 
 function taxonomytree_shortcode( $atts ) {
 
@@ -22,11 +23,11 @@ function taxonomytree_shortcode( $atts ) {
 	return "<div id ='taxonomytree'></div>";
 }
 
-add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
+add_action( 'wp_footer', 'taxonomytree_d3_scripts' );
 
 function taxonomytree_d3_scripts( ) {
 
-	wp_register_script( 'taxonomytree_d3_js', plugins_url( 'taxonomytree.js', __FILE__ ), array( 'd3_js' ) );
+	wp_register_script( 'taxonomytree_d3_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
 	wp_enqueue_script(  'taxonomytree_d3_js' );
 
 	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
@@ -39,7 +40,8 @@ function taxonomytree_d3_scripts( ) {
 	wp_localize_script( 'taxonomytree_d3_js', 'TaxononmyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
 
-add_action( 'wp_footer', 'taxonomytree_d3_scripts' );
+add_action( 'wp_ajax_taxonomytree',        'taxonomytree_callback' );
+add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
 
 function taxonomytree_callback( ) {
 
@@ -107,8 +109,9 @@ function taxonomytree_build_tree( $root ) {
 		}
 
 		// add term_color for terms of first level into $tree_term
-		if ( 0 == $tree_term->parent )
+		if ( 0 == $tree_term->parent ) {
 			$tree_term->taxonomy_color = tree_color_get_term_meta( $tree_term->term_id, true );
+		}
 
 		// push $tree_term innto $tree
 		$tree[] = $tree_term;
@@ -117,10 +120,7 @@ function taxonomytree_build_tree( $root ) {
 	return $tree;
 }
 
-add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
-add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
-
-require_once 'metabox_color.php';
-require_once 'metabox_order.php';
+require_once 'tree-metabox-color.php';
+require_once 'tree-metabox-order.php';
 
 ?>
