@@ -81,7 +81,7 @@ function tree_color_save_term_meta( $term_id ) {
     if ( ! isset( $_POST['tree_term_color_nonce'] ) || ! wp_verify_nonce( $_POST['tree_term_color_nonce'], basename( __FILE__ ) ) )
         return;
 
-    $meta_key  = 'tree_color';
+    $meta_key       = 'tree_color';
     $old_tree_color = tree_color_get_term_meta( $term_id );
     $new_tree_color = isset( $_POST['tree_term_color'] ) ? tree_color_sanitize_hex( $_POST['tree_term_color'] ) : '';
 

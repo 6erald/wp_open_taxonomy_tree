@@ -49,7 +49,7 @@ function tree_order_post_meta_box( $post ) {
 
 function tree_order_save_post_meta( $post_id, $post ) {
 
-    if ( ! isset( $_POST['tree_order_nonce'] ) || !wp_verify_nonce( $_POST['tree_order_nonce'], basename( __FILE__ ) ) ) {
+    if ( ! isset( $_POST['tree_order_nonce'] ) || ! wp_verify_nonce( $_POST['tree_order_nonce'], basename( __FILE__ ) ) ) {
         return;
     }
 
