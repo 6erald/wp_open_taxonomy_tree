@@ -4,15 +4,6 @@
  * Color Metabox
  */
 
-/**
- * Source: https://themehybrid.com/weblog/introduction-to-wordpress-term-meta
- * IDEA: colorpicker eifügen https://themehybrid.com/weblog/introduction-to-wordpress-term-meta
- * IDEA: auch mit hilfe von https://wordpress.org/plugins/wp-term-colors/
- * NOTE: check 'wp-admin/edit-tag-form.php' and 'admin/edit-tags.php' to find the most appropriate hook for your use case
- * TODO: check "register_meta" & "delete_term_meta" wirklich nötig?
- * TODO: Nach "create_${taxonomy}" wird die default farbe nicht mehr angezeigt
- */
-
 $tree_taxonomy = get_option("tree_taxonomy");
 
 add_action( 'init', 'tree_color_register_meta' );

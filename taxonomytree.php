@@ -106,7 +106,7 @@ function taxonomytree_build_tree( $root ) {
 			}
 		}
 
-		// push the term_color for terms of first level into $tree
+		// add term_color for terms of first level into $tree_term
 		if ( 0 == $tree_term->parent )
 			$tree_term->taxonomy_color = tree_color_get_term_meta( $tree_term->term_id, true );
 

@@ -3,7 +3,6 @@
 
 /**
  * Order Post Metabox
- * Source: https://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/
  */
 
 add_action( 'load-post.php',     'tree_order_setup_post_meta_box' );
@@ -36,7 +35,7 @@ function tree_order_post_meta_box( $post ) {
 
     if ( ! $post_meta )
         $post_meta = $default; ?>
-        
+
     <!-- TODO: ggf. Beschreibung einfügen -->
     <p><label for="tree-order-post"><?php _e( "ggf. Beschreibung einfügen", 'tree' ); ?></label>
         <?php wp_nonce_field( basename( __FILE__ ), 'tree_order_nonce' ); ?>
@@ -67,7 +66,6 @@ function tree_order_save_post_meta( $post_id, $post ) {
 
 /**
  * Order Term Metabox
- * Source: https://gist.github.com/dtbaker/7563c8bdba24b9fdbbb975175f461035
  */
 
 $tree_taxonomy  = get_option( 'tree_taxonomy' );
