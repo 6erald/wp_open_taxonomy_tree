@@ -16,15 +16,17 @@ add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
 
 function taxonomytree_shortcode( $atts ) {
 
+	// Define shorcode atts and default atts
 	$atts = shortcode_atts( array(
 		'post_type'  => 'posts',
 		'taxonomy'   => 'category'
 	), $atts );
 
- 	// Save post type and taxonomy in wp_options table to access later
+ 	// Save post type and taxonomy slug in wp_options table to access later
 	update_option( 'tree_post_type', $atts['post_type'] );
 	update_option( 'tree_taxonomy',  $atts['taxonomy'] );
 
+	// Replace the shortcode with a div to build the tree with d3.js  later
 	return '<div id ="taxonomytree"></div>';
 }
 
@@ -33,18 +35,18 @@ add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
 
 function taxonomytree_callback( ) {
 
-
+	// Extract taxonomy name tree parent
 	$tree_taxonomy      = get_option( 'tree_taxonomy' );
 	$tree_taxonomy_arr  = get_taxonomy( $tree_taxonomy );
 	$tree_taxonomy_name = $tree_taxonomy_arr->labels->singular_name;
 
 	// Create main parent element of the tree
 	$tree = array(
-		'parent'      => -1,
-		'name'        => $tree_taxonomy_name,
+		'parent'  => -1,
+		'name'    => $tree_taxonomy_name,
 	);
 
-	// Start recursion and build the tree
+	// Start recursion and build the tree as child element
 	$tree['children'] = taxonomytree_build_tree( 0 );
 	$response = json_encode( $tree );
 
@@ -56,8 +58,8 @@ function taxonomytree_callback( ) {
 
 function taxonomytree_build_tree( $root ) {
 
+	// Define args for query
 	$tree_taxonomy  = get_option( 'tree_taxonomy' );
-
 	$args = array(
 		'parent'      => $root,
 		'meta_key'    => 'tree_order',
@@ -67,32 +69,32 @@ function taxonomytree_build_tree( $root ) {
 		'taxonomy'    => $tree_taxonomy,
 	);
 
+	// Query the terms of the actual parent
 	$tree_terms = get_categories( $args );
 
 	foreach ( $tree_terms as $tree_term ) {
 
-		// Call recusion next every child term element
+		// Call recusion for every child term element
 		$tree_term->children = taxonomytree_build_tree( $tree_term->term_id );
 
 		// Add term color in term elements of first level
-		if ( 0 == $tree_term->parent ) {
+		if ( 0 === $tree_term->parent ) {
 			$tree_term->taxonomy_color = tree_color_get_term_meta( $tree_term->term_id, true );
 		}
 
-		// Add blogposts in term elements of last level
+		// Get blogposts for term elements of last level
 		if ( empty ( $tree_term->children ) ) {
 
 			$tree_post_type = get_option( 'tree_post_type' );
-
-			$tree_posts = get_posts( array(
-				'post_type'    => $tree_post_type,
-				'meta_key'     => 'tree_order',
-				'orderby'      => 'meta_value_num',
-				'order'        => 'ASC',
-				'tax_query'    => array(
+			$tree_posts     = get_posts( array(
+				'post_type'  => $tree_post_type,
+				'meta_key'   => 'tree_order',
+				'orderby'    => 'meta_value_num',
+				'order'      => 'ASC',
+				'tax_query'  => array(
 					array(
-						'taxonomy'     => $tree_taxonomy,
-						'terms'        => $tree_term->term_id
+						'taxonomy'  => $tree_taxonomy,
+						'terms'     => $tree_term->term_id
 					)
 				)
 			));
