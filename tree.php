@@ -33,7 +33,7 @@ function taxonomytree_shortcode( $atts ) {
 add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
 add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
 
-function taxonomytree_callback( ) {
+function taxonomytree_callback() {
 
 	// Extract taxonomy name tree parent
 	$tree_taxonomy      = get_option( 'tree_taxonomy' );
@@ -53,7 +53,7 @@ function taxonomytree_callback( ) {
 	// Response output
 	header( "Content-Type: application/json" );
 	echo $response;
-	die( );
+	die();
 }
 
 function taxonomytree_build_tree( $root ) {
@@ -116,7 +116,7 @@ function taxonomytree_build_tree( $root ) {
 
 add_action( 'wp_footer', 'taxonomytree_scripts' );
 
-function taxonomytree_scripts( ) {
+function taxonomytree_scripts() {
 
 	wp_register_script( 'taxonomytree_d3_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
 	wp_enqueue_script( 'taxonomytree_d3_js' );
