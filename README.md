@@ -32,19 +32,19 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 
 ```
 Levels and Objecs:
-==================             4 Post
+==================             3 Post
                               /
-                      3 Term • 4 Post
+                      2 Term • 3 Post
                      /        \
-             2 Term •          4 Post
+             1 Term •          3 Post
             /        \
-1 Taxonomy •          3 Term
+0 Taxonomy •          2 Term
             \
-             2 Term
+             1 Term
 ```
-* Level 2 term has no parent than the taxonomy itself
-* Level 3 term has level 2 term as parent
-* Level 4 post has level 3 term as parent
+* Level 1 term has no parent than the taxonomy itself
+* Level 2 term has level 1 term as parent
+* Level 3 post has level 2 term as parent
 * Layout changes with d3.js can be made in tree.js
 
 

@@ -12,8 +12,13 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
-
+/**
+ * Taxonomy Tree Shortcode
+ *
+ * Request the post type and taxonomy which shall be displayed and stores them
+ * in wp_options table. Return the div where d3.js builds and displays the final tree later.
+ *
+ */
 function taxonomytree_shortcode( $atts ) {
 
 	// Define shorcode atts and default atts
@@ -26,36 +31,39 @@ function taxonomytree_shortcode( $atts ) {
 	update_option( 'tree_post_type', $atts['post_type'] );
 	update_option( 'tree_taxonomy',  $atts['taxonomy'] );
 
-	// Replace the shortcode with a div to build the tree with d3.js  later
+	// Replace the shortcode with a div to build the tree with d3.js later
 	return '<div id ="taxonomytree"></div>';
 }
+add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
 
-add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
-add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
+/**
+ * Register and Enqueue Scripts/Styles
+ *
+ */
+function taxonomytree_scripts() {
 
-function taxonomytree_callback() {
+	wp_register_script( 'taxonomytree_d3_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
+	wp_enqueue_script( 'taxonomytree_d3_js' );
 
-	// Extract taxonomy name tree parent
-	$tree_taxonomy      = get_option( 'tree_taxonomy' );
-	$tree_taxonomy_arr  = get_taxonomy( $tree_taxonomy );
-	$tree_taxonomy_name = $tree_taxonomy_arr->labels->singular_name;
+	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
+    wp_enqueue_script( 'd3_js' );
 
-	// Create main parent element of the tree
-	$tree = array(
-		'parent'  => -1,
-		'name'    => $tree_taxonomy_name,
-	);
+	wp_register_style( 'style_css', plugins_url( 'style.css', __FILE__ ) );
+    wp_enqueue_style( 'style_css' );
 
-	// Start recursion and build the tree as child element
-	$tree['children'] = taxonomytree_build_tree( 0 );
-	$response = json_encode( $tree );
-
-	// Response output
-	header( "Content-Type: application/json" );
-	echo $response;
-	die();
+	wp_localize_script( 'taxonomytree_d3_js', 'TaxononmyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
+add_action( 'wp_footer', 'taxonomytree_scripts' );
 
+/**
+* Taxonomy Tree Recursion
+*
+* Query the term for the actual root/parent element. Call the Taxonomy Tree
+* Recusion again for every term element as child. Add colors for level 1 terms.
+* Add posts at the end of the tree if exists. Structure terms and posts by
+* meta key 'tree_order'. Return the final tree array.
+*
+*/
 function taxonomytree_build_tree( $root ) {
 
 	// Define args for query
@@ -114,22 +122,46 @@ function taxonomytree_build_tree( $root ) {
 	return $tree;
 }
 
-add_action( 'wp_footer', 'taxonomytree_scripts' );
+/**
+ * Taxonomy Tree Ajax callback
+ *
+ * Get call by tree.js. Create the main element of the tree and call
+ * the function taxonomytree_build_tree to build the child tree elements.
+ * Responses with an json object.
+ *
+ */
+function taxonomytree_callback() {
 
-function taxonomytree_scripts() {
+	// Extract taxonomy name tree parent
+	$tree_taxonomy      = get_option( 'tree_taxonomy' );
+	$tree_taxonomy_arr  = get_taxonomy( $tree_taxonomy );
+	$tree_taxonomy_name = $tree_taxonomy_arr->labels->singular_name;
 
-	wp_register_script( 'taxonomytree_d3_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
-	wp_enqueue_script( 'taxonomytree_d3_js' );
+	// Create main parent element of the tree
+	$tree = array(
+		'parent'  => -1,
+		'name'    => $tree_taxonomy_name,
+	);
 
-	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
-    wp_enqueue_script( 'd3_js' );
+	// Start recursion and build the tree as child element
+	$tree['children'] = taxonomytree_build_tree( 0 );
+	$response = json_encode( $tree );
 
-	wp_register_style( 'style_css', plugins_url( 'style.css', __FILE__ ) );
-    wp_enqueue_style( 'style_css' );
-
-	wp_localize_script( 'taxonomytree_d3_js', 'TaxononmyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	// Response output
+	header( "Content-Type: application/json" );
+	echo $response;
+	die();
 }
+add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
+add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
 
+
+/**
+ * Taxonomy Tree Metaboxes
+ *
+ * Add metabox color terms. Add metabox order for terms and posts.
+ *
+ */
 require_once 'tree-metabox-color.php';
 require_once 'tree-metabox-order.php';
 
