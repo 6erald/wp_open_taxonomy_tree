@@ -12,6 +12,7 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
 
+add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
 /**
  * Taxonomy Tree Shortcode
  *
@@ -34,8 +35,8 @@ function taxonomytree_shortcode( $atts ) {
 	// Replace the shortcode with a div to build the tree with d3.js later
 	return '<div id ="taxonomytree"></div>';
 }
-add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
 
+add_action( 'wp_footer', 'taxonomytree_scripts' );
 /**
  * Register and Enqueue Scripts/Styles
  *
@@ -53,7 +54,39 @@ function taxonomytree_scripts() {
 
 	wp_localize_script( 'taxonomytree_d3_js', 'TaxononmyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
-add_action( 'wp_footer', 'taxonomytree_scripts' );
+
+add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
+add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
+/**
+ * Taxonomy Tree Ajax callback
+ *
+ * Get call by tree.js. Create the main element of the tree and call
+ * the function taxonomytree_build_tree to build the child tree elements.
+ * Responses with an json object.
+ *
+ */
+function taxonomytree_callback() {
+
+	// Extract taxonomy name for tree main parent
+	$tree_taxonomy      = get_option( 'tree_taxonomy' );
+	$tree_taxonomy_arr  = get_taxonomy( $tree_taxonomy );
+	$tree_taxonomy_name = $tree_taxonomy_arr->labels->singular_name;
+
+	// Create main parent element of the tree
+	$tree = array(
+		'parent'  => -1,
+		'name'    => $tree_taxonomy_name,
+	);
+
+	// Start recursion and build the tree as child element
+	$tree['children'] = taxonomytree_build_tree( 0 );
+	$response = json_encode( $tree );
+
+	// Response output
+	header( "Content-Type: application/json" );
+	echo $response;
+	die();
+}
 
 /**
 * Taxonomy Tree Recursion
@@ -104,57 +137,23 @@ function taxonomytree_build_tree( $root ) {
 						'taxonomy'  => $tree_taxonomy,
 						'terms'     => $tree_term->term_id
 					)
-				)
-			));
+					)
+					));
 
-			// Add post title in term elements
-			foreach ( $tree_posts as $tree_post ) {
+					// Add post title in term elements
+					foreach ( $tree_posts as $tree_post ) {
 
-				$tree_post->name = $tree_post->post_title;
-				$tree_term->children[] = $tree_post;
+						$tree_post->name = $tree_post->post_title;
+						$tree_term->children[] = $tree_post;
+					}
+				}
+
+				// Add term element in tree
+				$tree[] = $tree_term;
 			}
+
+			return $tree;
 		}
-
-		// Add term element in tree
-		$tree[] = $tree_term;
-	}
-
-	return $tree;
-}
-
-/**
- * Taxonomy Tree Ajax callback
- *
- * Get call by tree.js. Create the main element of the tree and call
- * the function taxonomytree_build_tree to build the child tree elements.
- * Responses with an json object.
- *
- */
-function taxonomytree_callback() {
-
-	// Extract taxonomy name tree parent
-	$tree_taxonomy      = get_option( 'tree_taxonomy' );
-	$tree_taxonomy_arr  = get_taxonomy( $tree_taxonomy );
-	$tree_taxonomy_name = $tree_taxonomy_arr->labels->singular_name;
-
-	// Create main parent element of the tree
-	$tree = array(
-		'parent'  => -1,
-		'name'    => $tree_taxonomy_name,
-	);
-
-	// Start recursion and build the tree as child element
-	$tree['children'] = taxonomytree_build_tree( 0 );
-	$response = json_encode( $tree );
-
-	// Response output
-	header( "Content-Type: application/json" );
-	echo $response;
-	die();
-}
-add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
-add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
-
 
 /**
  * Taxonomy Tree Metaboxes
