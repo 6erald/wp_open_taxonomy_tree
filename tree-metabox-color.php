@@ -39,8 +39,7 @@ function tree_color_add_term_field() {
         <?php wp_nonce_field( basename( __FILE__ ), 'tree_term_color_nonce' ); ?>
         <input type="text" name="tree_term_color" id="tree-term-color" value="<?php echo esc_attr( $default ); ?>" class="tree-color-field" />
         <p class="description">
-            <!-- TODO: Beschreibung einfügen -->
-            <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
+            <?php _e( 'Fill in a hex color with the format #ffffff or #fff to style the main branches of your tree. Tree colors only affect categories of the first level (without parent categories).', 'tree' ); ?>
         </p>
     </div>
 <?php }
@@ -66,8 +65,7 @@ function tree_color_edit_term_field( $term ) {
             <?php wp_nonce_field( basename( __FILE__ ), 'tree_term_color_nonce' ); ?>
             <input type="text" name="tree_term_color" id="tree-term-color" value="<?php echo esc_attr( $tree_color ); ?>" class="tree-color-field" />
             <p class="description">
-                <!-- TODO: Beschreibung einfügen -->
-                <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
+                <?php _e( 'Fill in a hex color with the format #ffffff or #fff to style the main branches of your tree.', 'tree' ); ?>
             </p>
         </td>
     </tr>

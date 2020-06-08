@@ -19,7 +19,7 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 
 2. Activate plugin in Wordpress > Plugins > Installed Plugins
 
-3. Place a shortcode at the where the taxonomy tree shall display this way:
+3. Place a shortcode where the taxonomy tree shall display this way:
 
 ```
 [taxonomytree post_type="my_post_type_slug" taxonomy="my_taxonomy_slug"]

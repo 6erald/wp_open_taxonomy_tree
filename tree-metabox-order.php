@@ -36,13 +36,10 @@ function tree_order_post_meta_box( $post ) {
         $post_meta = $default;
     } ?>
 
-    <!-- TODO: ggf. Beschreibung einfügen -->
-    <p><label for="tree-order-post"><?php _e( "ggf. Beschreibung einfügen", 'tree' ); ?></label>
-        <?php wp_nonce_field( basename( __FILE__ ), 'tree_order_nonce' ); ?>
+    <p><?php wp_nonce_field( basename( __FILE__ ), 'tree_order_nonce' ); ?>
         <input type="number" name="tree_order_post" id="tree-order-post" value="<?php echo esc_attr( $post_meta ); ?>" class="tree-order-field" />
         <p class="description">
-            <!-- TODO: Beschreibung einfügen -->
-            <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
+            <?php _e( 'Enter a number to structure the posts in your tree.', 'tree' ); ?>
         </p>
     </p>
 <?php }
@@ -79,8 +76,7 @@ function tree_order_add_term_field(){ ?>
         <?php wp_nonce_field( basename( __FILE__ ), 'tree_order_term_nonce' ); ?>
         <input type="number" name="tree_order_term" id="tree-order-term" value="1" class="tree-order-field" />
         <p class="description">
-            <!-- TODO: Beschreibung einfügen -->
-            <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
+            <?php _e( 'Enter a number to structure the catergories in your tree.', 'tree' ); ?>
         </p>
     </div>
 <?php }
@@ -102,8 +98,7 @@ function tree_order_edit_term_field( $term ) {
             <?php wp_nonce_field( basename( __FILE__ ), 'tree_order_term_nonce' ); ?>
             <input type="number" name="tree_order_term" id="tree-order-term" value="<?php echo esc_attr( $term_meta ); ?>" class="tree-order-field" />
             <p class="description">
-                <!-- TODO: Beschreibung einfügen -->
-                <?php _e( 'Beschreibung einfügen', 'tree' ); ?>
+                <?php _e( 'Enter a number to structure the catergories in your tree.', 'tree' ); ?>
             </p>
 		</td>
 	</tr>
@@ -113,6 +108,7 @@ add_action( "edited_{$tree_taxonomy}", 'tree_order_save_term_meta' );
 add_action( "create_{$tree_taxonomy}", 'tree_order_save_term_meta' );
 
 function tree_order_save_term_meta( $term_id ) {
+
     if ( ! isset( $_POST['tree_order_term_nonce'] ) || ! wp_verify_nonce( $_POST['tree_order_term_nonce'], basename( __FILE__ ) ) ){
         return;
     }
