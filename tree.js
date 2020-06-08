@@ -172,8 +172,8 @@ nodes.forEach(function(d){
 			.filter(function(e) {
                 return (d.post_title==e.name);
             })
-			.insert("a")									   // Append a-element
-			.attr("xlink:href", location.href + d.post_name)		  // Create link element
+			.insert("a")
+			.attr("xlink:href", location.href + d.post_name)
 			.attr("class", "blog-link")
 			.insert("circle")
 			.attr("class", "mycircle")
@@ -181,7 +181,7 @@ nodes.forEach(function(d){
 			.attr("cx", lineLength -5 -1.5)
 			.attr("cy", -5 -3*1.5)
 			.style("stroke", d.parent.parent.taxonomy_color)
-			.style("stroke", d.parent.parent.taxonomy_color)
+            .style("fill", "none");
 
 		// Insert line in circle
 		svg.selectAll(".circle")
@@ -300,7 +300,7 @@ function handleMouseOut (d) {
         .style("stroke-width", "1");
 
     d3.selectAll(".mycircle")
-        .style("fill", "white");
+        .style("fill", "none");
 
     d3.selectAll(".highlight")
 		.classed("highlight", false)
@@ -332,39 +332,58 @@ function handleMouseClick (d) {
 	}
 }
 
-} // update()
 
-}); // jQuery()
 
-function removeMe() {
+addAlertBox();
 
-	$("#alert-box-inner-inner").animate({opacity: "0"}, 500);
+function addAlertBox() {
 
-	setTimeout(function(){
-		$("#alert-box-inner").animate({opacity: "0"}, 300);
-	}, 500);
+    var taxonomyTree = document.getElementById("taxonomytree");
+        taxonomyTree.insertAdjacentHTML('afterend', '<div id="alertbox" style="display: none;"></div>');
+    var alertBox = document.getElementById("alertbox");
+        alertbox.innerHTML += '<div id="alert-box-inner" class="hide-me"></div>';
+    var alertBoxInner = document.getElementById("alert-box-inner");
+        alertBoxInner.innerHTML += '<div id="alert-box-inner-inner" class="hide-me"></div>';
+    var alertBoxInnerInner = document.getElementById("alert-box-inner-inner");
+        alertBoxInnerInner.innerHTML += '<span id="alert-skip">X</span>';
+        alertBoxInnerInner.innerHTML += '<div id="alert-text"></div>';
+        alertBoxInnerInner.innerHTML += '<div id="alert-thumbnail"></div>';
 
-	setTimeout(function() {
-		// TODO: variablen nur einmal deklarieren?
-		var alertBox = document.getElementById("alertbox");
-		    alertBox.style.display = "none";
-	}, 800);
+
+    var removeAlertBox = document.getElementById("alert-skip");
+        removeAlertBox.addEventListener('click', function() {
+
+            $("#alert-box-inner-inner").animate({opacity: "0"}, 500);
+
+            setTimeout(function(){
+                $("#alert-box-inner").animate({opacity: "0"}, 300);
+            }, 500);
+
+            setTimeout(function() {
+                // TODO: variablen nur einmal deklarieren?
+                var alertBox = document.getElementById("alertbox");
+                alertBox.style.display = "none";
+            }, 800);
+
+        });
 }
 
-// Wraps texts //QUESTION: warum fehlen hier so viele SEMIKOLONS???
+
+// Wraps texts
+//QUESTION: warum fehlen hier so viele SEMIKOLONS???
 function wrap(text, width, mydy) {
 
     text.each(function() {
 
         var text = d3.select(this),
-            words = text.text().split(/\s+/).reverse(),
-            word,
-            line = [],
-            lineNumber = 0,
-            lineHeight = 1.1, // ems
-            y = text.attr("y"),
-            dy = parseFloat(text.attr("dy")),
-            tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy /-2 + "px")
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy /-2 + "px")
 
         while (word = words.pop()) {
             line.push(word)
@@ -377,5 +396,9 @@ function wrap(text, width, mydy) {
                 tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy + "px").text(word)
             }
         }
- })
+    })
 }
+
+} // update()
+
+}); // jQuery()
