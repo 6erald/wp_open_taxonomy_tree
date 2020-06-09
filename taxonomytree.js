@@ -89,18 +89,14 @@ svg.selectAll(".link")
     .attr("class", "diagonal")
     .append("path")
     .attr("class", "link")
-    .style("stroke-width", "1")
-    .style("fill", "none")
+    // .style("stroke-width", "1")
+    // .style("fill", "none")
     .style("stroke", function(d) {
-		if (d.target.taxonomy_color) {
-		    return d.target.taxonomy_color
-		}
-		if (d.target.parent.taxonomy_color ) {
-		    return d.target.parent.taxonomy_color
-		}
-		if (d.target.parent.parent.taxonomy_color ) {
-		    return d.target.parent.parent.taxonomy_color
-		}
+        var myTarget = d.target;
+        while (! myTarget.taxonomy_color) {
+            myTarget = myTarget.parent;
+        }
+        return myTarget.taxonomy_color;
 	})
     .attr("d", diagonal)
     .attr("z-index", "-100");
@@ -118,13 +114,14 @@ var node = svg.selectAll(".node")
 	.attr("z-index", "0");
 
 // Append names on g.node
-node.filter(function(d) {return d.depth==0 || d.depth==3})
+var label = node.filter(function(d) {return d.depth==0 || d.depth==3})
 	.append("text")
-	.attr("class", "labels")
-	.text(function(d) {return d.name;}) // Appends the name of the node as text
+	.attr("class", "labels");
+
+label.text(function(d) {return d.name;}) // Appends the name of the node as text
 	.style("text-anchor", function(d) {if (d.depth==0) {return "end";}}) // Switches the textanchor of depth 1 and 2
 	.attr("transform", "translate(0, -5)")
-	.style("fill", "black")
+	// .style("fill", "black")
 	.filter(function(d) {return d.depth==0;})
 	.call(wrap, 90, 15);
 
@@ -148,8 +145,7 @@ nodes.forEach(function(d){
         var lineLength = 1.7 * unitLenght;
 
 		// Create Link
-		svg.selectAll(".labels")
-			.filter(function(e) {return (d.post_title==e.name);})
+		label.filter(function(e) {return (d.post_title==e.name);})
 			.text(d.post_title)								// Insert text content in a-element
 			.style("fill", d.parent.parent.taxonomy_color );
 
@@ -159,7 +155,7 @@ nodes.forEach(function(d){
             })
 			.insert("line")
 			.attr("class", "inline")
-			.attr("stroke-width", 1)
+			// .attr("stroke-width", 1)
 			.attr("x1", function(d) {return 0})
 			.attr("y1", function(d) {return 0})
 			.attr("x2", function(d) {return 0  + lineLength})
@@ -174,12 +170,12 @@ nodes.forEach(function(d){
 			.attr("xlink:href", location.href + d.post_name)
 			.attr("class", "blog-link")
 			.insert("circle")
+            // .style("fill", "none")
 			.attr("class", "mycircle")
 			.attr('r', 5)
 			.attr("cx", lineLength -5 -1.5)
 			.attr("cy", -5 -3*1.5)
-			.style("stroke", d.parent.parent.taxonomy_color)
-            .style("fill", "none");
+			.style("stroke", d.parent.parent.taxonomy_color);
 
 		// Insert horizontal ine in circle
         circle.filter(function(e) {
@@ -187,7 +183,7 @@ nodes.forEach(function(d){
             })
 			.insert("line")
 			.attr("class", "horizontal-line")
-			.attr("stroke-width", 1)
+			// .attr("stroke-width", 1)
 			.attr("x1", lineLength -9.5 )
 			.attr("y1", -5 -3*1.5)
 			.attr("x2", lineLength -3.5)
@@ -200,8 +196,8 @@ nodes.forEach(function(d){
                 return ( d.post_title==e.name );
             })
 			.insert("line")
-			.attr("class", "vertiacal-line")
-			.attr("stroke-width", 1)
+			.attr("class", "vertical-line")
+			// .attr("stroke-width", 1)
 			.attr("x1", lineLength -6.5 )
 			.attr("y1", -5 -5*1.5)
 			.attr("x2", lineLength -6.5)
@@ -241,8 +237,7 @@ var curvyText = svg.selectAll('.textCurvy')
 		if (d.parent.taxonomy_color) {
             return d.parent.taxonomy_color
         }
-        else { return "black" }}
-    );
+    });
 
 /*
  *
@@ -265,44 +260,50 @@ function handleMouseOver (d) {
     			   ((d.parent.name==e.name)		   && (e.source === e.parent) || (e.target === d.parent)) ||
     			   ((d.parent.parent.name==e.name) && (e.source === e.parent) || (e.target === d.parent.parent));
         })
-    	.style("stroke-width", "2.25");
+    	// .style("stroke-width", "2.25");
+        .classed("highlight", true);
 
 	// Highlight text of element
 	svg.selectAll(".textCurvy, .labels")
         .filter(function(j) {return (d.name==j.name);})
-		.style("font-weight", "600");
+		// .style("font-weight", "600");
+        .classed("highlight", true);
 
 	// Highlight line of element
 	svg.selectAll(".inline")
 		.filter(function(j) {return (d.name==j.name);})
-		.style("stroke-width", "2.25");
+		// .style("stroke-width", "2.25");
+        .classed("highlight" , true);
 
 	// Highlight circle of element
 	svg.selectAll(".mycircle")
 		.filter(function(j) {return (d.name==j.name);})
-		.style("fill", d.parent.parent.taxonomy_color);
+        .classed("highlight", true);
+		// .style("fill", d.parent.parent.taxonomy_color);
 
-	svg.selectAll(".vertiacal-line, .horizontal-line")
+	svg.selectAll(".vertical-line, .horizontal-line")
 		.filter(function(j) {return (d.name==j.name);})
 		.classed("highlight", true)
-		.style("stroke", "white");
+		// .style("stroke-width", "2.25");
 }
 
 function handleMouseOut (d) {
 
 	// unhighlight text and path of mouseover element
-	d3.selectAll(".link, .mycircle, .inline")
-        .style("stroke-width", "1");
+	// d3.selectAll(".link, .mycircle, .inline")
+    //     // .style("stroke-width", "1");
+    //     .classed("highlight", false);
 
-    d3.selectAll(".mycircle")
-        .style("fill", "none");
+    // d3.selectAll(".mycircle")
+    //     .style("fill", "none");
 
     d3.selectAll(".highlight")
-		.classed("highlight", false)
-		.style("stroke", d.parent.parent.taxonomy_color);
+		.classed("highlight", false);
+		// .style("stroke", d.parent.parent.taxonomy_color);
 
-    d3.selectAll(".textCurvy, .labels")
-        .style("font-weight", "400");
+    // d3.selectAll(".textCurvy, .labels")
+    //     // .style("font-weight", "400");
+    //     .classed("highlight", false);
 }
 
 node.on("click", handleMouseClick);

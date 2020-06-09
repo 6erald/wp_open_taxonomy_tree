@@ -14,16 +14,68 @@
     cursor: pointer;
 }
 // lines
-.link { }
+.link {
+    fill: none;
+    stroke-width: 1;
 
-.textCurvy { cursor: default; }
+    &.highlight {
+        stroke-width: 2.25;
+    }
+}
+.inline {
+    stroke-width: 1;
+
+    &.highlight {
+        stroke-width: 2.25;
+    }
+}
+.textCurvy {
+    cursor: pointer;
+    font-weight: 400;
+
+    &.highlight {
+        font-weight: 600;
+    }
+}
+.labels {
+    cursor: pointer;
+    font-weight: 400;
+
+    &.highlight {
+        font-weight: 600;
+    }
+}
+
+.vertical-line,
+.horizontal-line {
+    stroke-width: 1;
+
+    &.highlight {
+        stroke-width: 2.25;
+    }
+
+}
+
 .infoCurvy { }
-.circle { }
+.circle {
+    cursor: pointer;
+    fill: none;
+}
+.mycircle {
+    fill: none;
+    stroke-width: 1;
+
+    &.highlight{
+        stroke-width: 2.25;
+    }
+}
+
+// alertbox
 
 .hide-me {
     opacity: 0;
 }
-// alertbox
+
 #alertbox {
     z-index: 400;
     position: fixed;
