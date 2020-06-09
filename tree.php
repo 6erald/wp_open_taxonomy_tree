@@ -43,8 +43,8 @@ add_action( 'wp_footer', 'taxonomytree_scripts' );
  */
 function taxonomytree_scripts() {
 
-	wp_register_script( 'taxonomytree_d3_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
-	wp_enqueue_script( 'taxonomytree_d3_js' );
+	wp_register_script( 'taxonomytree_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
+	wp_enqueue_script( 'taxonomytree_js' );
 
 	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
     wp_enqueue_script( 'd3_js' );
@@ -52,7 +52,7 @@ function taxonomytree_scripts() {
 	wp_register_style( 'style_css', plugins_url( 'style.css', __FILE__ ) );
     wp_enqueue_style( 'style_css' );
 
-	wp_localize_script( 'taxonomytree_d3_js', 'TaxononmyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	wp_localize_script( 'taxonomytree_js', 'TaxononmyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
 
 add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
@@ -120,7 +120,7 @@ function taxonomytree_build_tree( $root ) {
 
 		// Add term color in term elements of first level
 		if ( 0 === $tree_term->parent ) {
-			$tree_term->taxonomy_color = tree_color_get_term_meta( $tree_term->term_id, true );
+			$tree_term->taxonomy_color = taxonomytree_color_get_term_meta( $tree_term->term_id, true );
 		}
 
 		// Get blogposts for term elements of last level

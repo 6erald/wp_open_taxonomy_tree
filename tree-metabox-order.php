@@ -4,30 +4,30 @@
  * Order Post Metabox
  */
 
-add_action( 'load-post.php',     'tree_order_setup_post_meta_box' );
-add_action( 'load-post-new.php', 'tree_order_setup_post_meta_box' );
+add_action( 'load-post.php',     'taxonomytree_order_setup_post_meta_box' );
+add_action( 'load-post-new.php', 'taxonomytree_order_setup_post_meta_box' );
 
-function tree_order_setup_post_meta_box() {
+function taxonomytree_order_setup_post_meta_box() {
 
-    add_action( 'add_meta_boxes', 'tree_order_add_post_meta_box' );
-    add_action( 'save_post', 'tree_order_save_post_meta', 10, 2 );
+    add_action( 'add_meta_boxes', 'taxonomytree_order_add_post_meta_box' );
+    add_action( 'save_post', 'taxonomytree_order_save_post_meta', 10, 2 );
 }
 
-function tree_order_add_post_meta_box() {
+function taxonomytree_order_add_post_meta_box() {
 
     $tree_post_type = get_option( 'tree_post_type' );
 
     add_meta_box(
         'tree_order_post',
          esc_html__( 'Tree Order', 'tree' ),
-        'tree_order_post_meta_box',
+        'taxonomytree_order_post_meta_box',
          $tree_post_type,
         'side',
         'default'
     );
 }
 
-function tree_order_post_meta_box( $post ) {
+function taxonomytree_order_post_meta_box( $post ) {
 
     $default   = 1;
     $post_meta = get_post_meta( $post->ID, 'tree_order', true);
@@ -44,7 +44,7 @@ function tree_order_post_meta_box( $post ) {
     </p>
 <?php }
 
-function tree_order_save_post_meta( $post_id, $post ) {
+function taxonomytree_order_save_post_meta( $post_id, $post ) {
 
     if ( ! isset( $_POST['tree_order_nonce'] ) || ! wp_verify_nonce( $_POST['tree_order_nonce'], basename( __FILE__ ) ) ) {
         return;
@@ -67,9 +67,9 @@ function tree_order_save_post_meta( $post_id, $post ) {
 
 $tree_taxonomy  = get_option( 'tree_taxonomy' );
 
-add_action( "{$tree_taxonomy}_add_form_fields", 'tree_order_add_term_field' );
+add_action( "{$tree_taxonomy}_add_form_fields", 'taxonomytree_order_add_term_field' );
 
-function tree_order_add_term_field(){ ?>
+function taxonomytree_order_add_term_field(){ ?>
 
     <div class="form-field tree-order-term-wrap">
         <label for="tree-order-term"> <?php _e( 'Tree Order', 'tree' ); ?> </label>
@@ -81,9 +81,9 @@ function tree_order_add_term_field(){ ?>
     </div>
 <?php }
 
-add_action( "{$tree_taxonomy}_edit_form_fields",'tree_order_edit_term_field' );
+add_action( "{$tree_taxonomy}_edit_form_fields",'taxonomytree_order_edit_term_field' );
 
-function tree_order_edit_term_field( $term ) {
+function taxonomytree_order_edit_term_field( $term ) {
 
     $default   = 1;
 	$term_meta = get_term_meta( $term->term_id, 'tree_order', true );
@@ -104,10 +104,10 @@ function tree_order_edit_term_field( $term ) {
 	</tr>
 <?php }
 
-add_action( "edited_{$tree_taxonomy}", 'tree_order_save_term_meta' );
-add_action( "create_{$tree_taxonomy}", 'tree_order_save_term_meta' );
+add_action( "edited_{$tree_taxonomy}", 'taxonomytree_order_save_term_meta' );
+add_action( "create_{$tree_taxonomy}", 'taxonomytree_order_save_term_meta' );
 
-function tree_order_save_term_meta( $term_id ) {
+function taxonomytree_order_save_term_meta( $term_id ) {
 
     if ( ! isset( $_POST['tree_order_term_nonce'] ) || ! wp_verify_nonce( $_POST['tree_order_term_nonce'], basename( __FILE__ ) ) ){
         return;
