@@ -43,7 +43,7 @@ add_action( 'wp_footer', 'taxonomytree_scripts' );
  */
 function taxonomytree_scripts() {
 
-	wp_register_script( 'taxonomytree_js', plugins_url( 'tree.js', __FILE__ ), array( 'd3_js' ) );
+	wp_register_script( 'taxonomytree_js', plugins_url( 'taxonomytree.js', __FILE__ ), array( 'd3_js' ) );
 	wp_enqueue_script( 'taxonomytree_js' );
 
 	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
@@ -60,7 +60,7 @@ add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
 /**
  * Taxonomy Tree Ajax callback
  *
- * Get call by tree.js. Create the main element of the tree and call
+ * Get call by taxonomytree.js. Create the main element of the tree and call
  * the function taxonomytree_build_tree to build the child tree elements.
  * Responses with an json object.
  *
@@ -136,24 +136,23 @@ function taxonomytree_build_tree( $root ) {
 					array(
 						'taxonomy'  => $tree_taxonomy,
 						'terms'     => $tree_term->term_id
-					)
-					)
-					));
+					) )
+			));
 
-					// Add post title in term elements
-					foreach ( $tree_posts as $tree_post ) {
+			// Add post title in term elements
+			foreach ( $tree_posts as $tree_post ) {
 
-						$tree_post->name = $tree_post->post_title;
-						$tree_term->children[] = $tree_post;
-					}
-				}
-
-				// Add term element in tree
-				$tree[] = $tree_term;
+				$tree_post->name = $tree_post->post_title;
+				$tree_term->children[] = $tree_post;
 			}
-
-			return $tree;
 		}
+
+		// Add term element in tree
+		$tree[] = $tree_term;
+	}
+
+	return $tree;
+}
 
 /**
  * Taxonomy Tree Metaboxes
@@ -161,7 +160,7 @@ function taxonomytree_build_tree( $root ) {
  * Add metabox color terms. Add metabox order for terms and posts.
  *
  */
-require_once 'tree-metabox-color.php';
-require_once 'tree-metabox-order.php';
+require_once 'taxonomytree-metabox-color.php';
+require_once 'taxonomytree-metabox-order.php';
 
 ?>
