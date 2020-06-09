@@ -129,12 +129,12 @@ node.filter(function(d) {return d.depth==0 || d.depth==3})
 	.call(wrap, 90, 15);
 
 // Append g.circle to level 3
-node.filter(function(d) {return d.depth==3;})
+var circle = node.filter(function(d) {return d.depth==3;}) // TODO: return d.post_content;
 	.append("g")
 	.attr("class", "circle");
 
 // Append g.line to level 3
-node.filter(function(d) {return d.depth==3;})
+var line = node.filter(function(d) {return d.depth==3;}) // TODO: return d.post_content;
 	.append("g")
 	.attr("class", "line");
 
@@ -154,8 +154,7 @@ nodes.forEach(function(d){
 			.style("fill", d.parent.parent.taxonomy_color );
 
 		// Create line
-		svg.selectAll(".line")
-			.filter(function(e) {
+		line.filter(function(e) {
                 return (d.post_title==e.name);
             })
 			.insert("line")
@@ -168,8 +167,7 @@ nodes.forEach(function(d){
 			.style("stroke", d.parent.parent.taxonomy_color)
 
 		// Create circle
-		svg.selectAll(".circle")
-			.filter(function(e) {
+		circle.filter(function(e) {
                 return (d.post_title==e.name);
             })
 			.insert("a")
@@ -183,9 +181,8 @@ nodes.forEach(function(d){
 			.style("stroke", d.parent.parent.taxonomy_color)
             .style("fill", "none");
 
-		// Insert line in circle
-		svg.selectAll(".circle")
-			.filter(function(e) {
+		// Insert horizontal ine in circle
+        circle.filter(function(e) {
                 return (d.post_title==e.name);
             })
 			.insert("line")
@@ -198,9 +195,8 @@ nodes.forEach(function(d){
 			.style("stroke", d.parent.parent.taxonomy_color)
 			.style("z-index", 100)
 
-        // Insert line in circle
-		svg.selectAll(".circle")
-			.filter(function(e) {
+        // Insert vertical line in circle
+        circle.filter(function(e) {
                 return ( d.post_title==e.name );
             })
 			.insert("line")
@@ -256,7 +252,6 @@ var curvyText = svg.selectAll('.textCurvy')
 
 node.on("mouseover", handleMouseOver);
 node.on("mouseout", handleMouseOut);
-node.on("click", handleMouseClick);
 
 curvyText.on("mouseover", handleMouseOver);
 curvyText.on("mouseout", handleMouseOut);
@@ -310,62 +305,71 @@ function handleMouseOut (d) {
         .style("font-weight", "400");
 }
 
+node.on("click", handleMouseClick);
+
 function handleMouseClick (d) {
 
 	if (d.post_content) {
 
-		var alertBox = document.getElementById("alertbox");
-		    alertBox.style.display = "block";
+		var alertBoxText  = document.getElementById("alert-text");
 
-		$("#alert-box-inner").animate({opacity: "1"}, 100);
-		$("#alert-box-inner-inner").animate({opacity: "1"}, 500);
-
-		var alertBoxText = document.getElementById("alert-text");
-		var ourHTMLString = "";
-		    ourHTMLString += "<h3>" + d.post_title + "</h3>";
+		var ourHTMLString = '<h3><a id="alert-link">' + d.post_title + "</a></h3>";
 		    ourHTMLString += "<p>" + d.post_excerpt + "</p>";
 
 		alertBoxText.innerHTML = ourHTMLString;
 
 		var taxonomyBoxLink = document.getElementById("alert-link");
-		    taxonomyBoxLink.href = location.href + d.post_name;
+		    taxonomyBoxLink.href = d.guid;
+
+        showAlertBox();
 	}
 }
 
+buildAlertBox();
 
-
-addAlertBox();
-
-function addAlertBox() {
+function buildAlertBox() {
 
     var taxonomyTree = document.getElementById("taxonomytree");
-        taxonomyTree.insertAdjacentHTML('afterend', '<div id="alertbox" style="display: none;"></div>');
+        taxonomyTree.insertAdjacentHTML('afterend', '<div id="alertbox" class="hide-me"></div>');
+
     var alertBox = document.getElementById("alertbox");
-        alertbox.innerHTML += '<div id="alert-box-inner" class="hide-me"></div>';
+        alertBox.innerHTML += '<div id="alert-box-inner" class="hide-me"></div>';
+
     var alertBoxInner = document.getElementById("alert-box-inner");
         alertBoxInner.innerHTML += '<div id="alert-box-inner-inner" class="hide-me"></div>';
+
     var alertBoxInnerInner = document.getElementById("alert-box-inner-inner");
         alertBoxInnerInner.innerHTML += '<span id="alert-skip">X</span>';
         alertBoxInnerInner.innerHTML += '<div id="alert-text"></div>';
         alertBoxInnerInner.innerHTML += '<div id="alert-thumbnail"></div>';
 
+}
 
-    var removeAlertBox = document.getElementById("alert-skip");
-        removeAlertBox.addEventListener('click', function() {
+function showAlertBox() {
 
-            $("#alert-box-inner-inner").animate({opacity: "0"}, 500);
+    var alertBox = document.getElementById("alertbox");
+        alertBox.classList.remove("hide-me");
 
-            setTimeout(function(){
-                $("#alert-box-inner").animate({opacity: "0"}, 300);
-            }, 500);
+    var alertBoxInner = document.getElementById("alert-box-inner");
+        alertBoxInner.classList.remove("hide-me");
 
-            setTimeout(function() {
-                // TODO: variablen nur einmal deklarieren?
-                var alertBox = document.getElementById("alertbox");
-                alertBox.style.display = "none";
-            }, 800);
+    var alertBoxInnerInner = document.getElementById("alert-box-inner-inner");
+        alertBoxInnerInner.classList.remove("hide-me");
+}
 
-        });
+var alertSkip = document.getElementById("alert-skip");
+    alertSkip.addEventListener("click", hideAlertBox);
+
+function hideAlertBox() {
+
+    var alertBoxInnerInner = document.getElementById("alert-box-inner-inner");
+        alertBoxInnerInner.classList.add("hide-me");
+
+    var alertBoxInner = document.getElementById("alert-box-inner");
+        alertBoxInner.classList.add("hide-me");
+
+    var alertBox = document.getElementById("alertbox");
+        alertBox.classList.add("hide-me");
 }
 
 
