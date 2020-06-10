@@ -32,14 +32,14 @@ add_action( "{$tree_taxonomy}_add_form_fields",  'tree_color_add_term_field' );
 
 function tree_color_add_term_field() {
 
-    $default = '#ffffff'; ?>
+    $default = '#000000'; ?>
 
     <div class="form-field tree-term-color-wrap">
         <label for="tree-term-color"><?php _e( 'Tree Color', 'tree' ); ?></label>
         <?php wp_nonce_field( basename( __FILE__ ), 'tree_term_color_nonce' ); ?>
         <input type="text" name="tree_term_color" id="tree-term-color" value="<?php echo esc_attr( $default ); ?>" class="tree-color-field" />
         <p class="description">
-            <?php _e( 'Fill in a hex color with the format #ffffff or #fff to style the main branches of your tree. Tree colors only affect categories of the first level (without parent categories).', 'tree' ); ?>
+            <?php _e( 'Fill in a hex color with the format #000000 or #000 to style the main branches of your tree. Tree colors only affect categories of the first level (without parent categories).', 'tree' ); ?>
         </p>
     </div>
 <?php }
@@ -52,7 +52,7 @@ function taxonomytree_color_edit_term_field( $term ) {
     if ( 0 != $term->parent )
         return;
 
-    $default = '#ffffff';
+    $default = '#000000';
     $tree_color   = taxonomytree_color_get_term_meta( $term->term_id, true );
 
     if ( ! $tree_color ) {
@@ -65,7 +65,7 @@ function taxonomytree_color_edit_term_field( $term ) {
             <?php wp_nonce_field( basename( __FILE__ ), 'tree_term_color_nonce' ); ?>
             <input type="text" name="tree_term_color" id="tree-term-color" value="<?php echo esc_attr( $tree_color ); ?>" class="tree-color-field" />
             <p class="description">
-                <?php _e( 'Fill in a hex color with the format #ffffff or #fff to style the main branches of your tree.', 'tree' ); ?>
+                <?php _e( 'Fill in a hex color with the format #000000 or #000 to style the main branches of your tree.', 'tree' ); ?>
             </p>
         </td>
     </tr>
