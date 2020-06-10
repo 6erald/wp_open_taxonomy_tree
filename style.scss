@@ -9,12 +9,9 @@
     svg { }
 }
 
-// texts
-.node {
-    cursor: pointer;
-}
 // lines
 .link {
+    z-index: -100;
     fill: none;
     stroke-width: 1;
 
@@ -22,7 +19,28 @@
         stroke-width: 2.25;
     }
 }
-.inline {
+
+// texts
+.node {
+    cursor: pointer;
+    z-index: 0;
+}
+
+.labels {
+    cursor: pointer;
+    transform: translate(0,-5px);
+    font-weight: 400;
+
+    &.highlight {
+        font-weight: 600;
+    }
+}
+
+.taxonomy {
+    fill: black;
+}
+
+.line {
     stroke-width: 1;
 
     &.highlight {
@@ -37,17 +55,10 @@
         font-weight: 600;
     }
 }
-.labels {
-    cursor: pointer;
-    font-weight: 400;
-
-    &.highlight {
-        font-weight: 600;
-    }
-}
 
 .vertical-line,
 .horizontal-line {
+    z-index: 100;
     stroke-width: 1;
 
     &.highlight {

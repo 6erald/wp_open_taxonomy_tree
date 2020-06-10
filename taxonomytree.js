@@ -81,135 +81,114 @@ var unitLenght = 150;
  *
  */
 
-// Create and style digaonals of all links
-svg.selectAll(".link")
+function selectParentNodeColor(el) {
+    // Get the color of reference category
+    var colorCategory = el;
+    while (! colorCategory.taxonomy_color) {
+        colorCategory = colorCategory.parent;
+    }
+    return colorCategory.taxonomy_color;
+}
+
+function selectParentLinkColor(el) {
+    // Get the color of reference category
+    var colorCategory = el.target;
+    while (! colorCategory.taxonomy_color) {
+        colorCategory = colorCategory.parent;
+    }
+    return colorCategory.taxonomy_color;
+}
+
+// Create and style link
+var link = svg.selectAll(".link")              // Level 1 - Import & Setup
     .data(links)
     .enter()
-    .append("g")
+    .append("g")                               // Level 2 - Elements & Attributes
     .attr("class", "diagonal")
     .append("path")
     .attr("class", "link")
-    // .style("stroke-width", "1")
-    // .style("fill", "none")
-    .style("stroke", function(d) {
-        var myTarget = d.target;
-        while (! myTarget.taxonomy_color) {
-            myTarget = myTarget.parent;
-        }
-        return myTarget.taxonomy_color;
-	})
     .attr("d", diagonal)
-    .attr("z-index", "-100");
+    .style("stroke", selectParentLinkColor);
 
-// Create g.node
+// Create node
 var node = svg.selectAll(".node")
 	.data(nodes)
 	.enter()
 	.append("g")
 	.attr("class", "node")
 	.attr("transform", function(d) {
-        // Rotate the coordinates d.x and d.y for horizontal layout
+        // Rotate coordinates d.x and d.y for horizontal layout
 		return "translate(" + d.y + "," + d.x  + ")";
-    })
-	.attr("z-index", "0");
+    });
 
-// Append names on g.node
-var label = node.filter(function(d) {return d.depth==0 || d.depth==3})
-	.append("text")
-	.attr("class", "labels");
+// Create Taxonomy Label
+var labelTaxonomy = node.filter(function(d) {return d.depth==0;})
+    .append("text")
+    .text(function(d){return d.name;})
+    .attr("class", "labels taxonomy")
+    .style("text-anchor", "end")
+    .call(wrap, 90, 15);
 
-label.text(function(d) {return d.name;}) // Appends the name of the node as text
-	.style("text-anchor", function(d) {if (d.depth==0) {return "end";}}) // Switches the textanchor of depth 1 and 2
-	.attr("transform", "translate(0, -5)")
-	// .style("fill", "black")
-	.filter(function(d) {return d.depth==0;})
-	.call(wrap, 90, 15);
 
-// Append g.circle to level 3
-var circle = node.filter(function(d) {return d.depth==3;}) // TODO: return d.post_content;
+/* *
+ * Create Post elements
+ */
+
+// Create Post Label
+var labelPost = node.filter(function(d) {return d.post_title;})
+    .append("text")
+    .attr("class", "labels post")
+    .text(function(d){return d.name;})
+    .style("fill", selectParentNodeColor);
+
+// Lenght of Post underline
+var underlineLength = 1.7 * unitLenght;
+
+// Creat Post Underline
+var linePost = node.filter(function(d) {return d.post_title;}) // TODO: return d.post_content;
+    .insert("line")
+    .attr("class", "line")
+    .attr("x1", function(d) {return 0})
+    .attr("y1", function(d) {return 0})
+    .attr("x2", function(d) {return 0  + underlineLength})
+    .attr("y2", function(d) {return 0})
+    .style("stroke", selectParentNodeColor);
+
+// Create Button
+var circle = node.filter(function(d) {return d.post_title;}) // TODO: return d.post_content;
 	.append("g")
 	.attr("class", "circle");
 
-// Append g.line to level 3
-var line = node.filter(function(d) {return d.depth==3;}) // TODO: return d.post_content;
-	.append("g")
-	.attr("class", "line");
+    circle.insert("a")
+    .attr("xlink:href", function(d) {return location.href + d.post_name;})
+    .attr("class", "blog-link")
+    .insert("circle")
+    .attr("class", "mycircle")
+    .attr('r', 5)
+    .attr("cx", underlineLength -5 -1.5)
+    .attr("cy", -5 -3*1.5)
+    .style("stroke", selectParentNodeColor);
 
+    circle.insert("line")
+    .attr("class", "horizontal-line")
+    .attr("x1", underlineLength -9.5 )
+    .attr("y1", -5 -3*1.5)
+    .attr("x2", underlineLength -3.5)
+    .attr("y2", -5 -3*1.5)
+    .style("stroke", selectParentNodeColor);
 
-// Create Links for blogposts
-nodes.forEach(function(d){
+    circle.insert("line")
+    .attr("class", "vertical-line")
+    .attr("x1", underlineLength -6.5 )
+    .attr("y1", -5 -5*1.5)
+    .attr("x2", underlineLength -6.5)
+    .attr("y2", -5 -1*1.5)
+    .style("stroke", selectParentNodeColor)
+    .style("z-index", 100)
 
-	// Request and save post_name
-	if ( d.post_content ) {
-
-        var lineLength = 1.7 * unitLenght;
-
-		// Create Link
-		label.filter(function(e) {return (d.post_title==e.name);})
-			.text(d.post_title)								// Insert text content in a-element
-			.style("fill", d.parent.parent.taxonomy_color );
-
-		// Create line
-		line.filter(function(e) {
-                return (d.post_title==e.name);
-            })
-			.insert("line")
-			.attr("class", "inline")
-			// .attr("stroke-width", 1)
-			.attr("x1", function(d) {return 0})
-			.attr("y1", function(d) {return 0})
-			.attr("x2", function(d) {return 0  + lineLength})
-			.attr("y2", function(d) {return 0})
-			.style("stroke", d.parent.parent.taxonomy_color)
-
-		// Create circle
-		circle.filter(function(e) {
-                return (d.post_title==e.name);
-            })
-			.insert("a")
-			.attr("xlink:href", location.href + d.post_name)
-			.attr("class", "blog-link")
-			.insert("circle")
-            // .style("fill", "none")
-			.attr("class", "mycircle")
-			.attr('r', 5)
-			.attr("cx", lineLength -5 -1.5)
-			.attr("cy", -5 -3*1.5)
-			.style("stroke", d.parent.parent.taxonomy_color);
-
-		// Insert horizontal ine in circle
-        circle.filter(function(e) {
-                return (d.post_title==e.name);
-            })
-			.insert("line")
-			.attr("class", "horizontal-line")
-			// .attr("stroke-width", 1)
-			.attr("x1", lineLength -9.5 )
-			.attr("y1", -5 -3*1.5)
-			.attr("x2", lineLength -3.5)
-			.attr("y2", -5 -3*1.5)
-			.style("stroke", d.parent.parent.taxonomy_color)
-			.style("z-index", 100)
-
-        // Insert vertical line in circle
-        circle.filter(function(e) {
-                return ( d.post_title==e.name );
-            })
-			.insert("line")
-			.attr("class", "vertical-line")
-			// .attr("stroke-width", 1)
-			.attr("x1", lineLength -6.5 )
-			.attr("y1", -5 -5*1.5)
-			.attr("x2", lineLength -6.5)
-			.attr("y2", -5 -1*1.5)
-			.style("stroke", d.parent.parent.taxonomy_color)
-			.style("z-index", 100)
-	}
-});
-
-// Path names
+// Create Path lables
 // Create defs with ID
-svg.selectAll('.infoCurvy')
+var infoCurvy = svg.selectAll('.infoCurvy')
 	.data(links)
 	.enter()
 	.append("defs").append("path")
@@ -270,7 +249,7 @@ function handleMouseOver (d) {
         .classed("highlight", true);
 
 	// Highlight line of element
-	svg.selectAll(".inline")
+	svg.selectAll(".line")
 		.filter(function(j) {return (d.name==j.name);})
 		// .style("stroke-width", "2.25");
         .classed("highlight" , true);
@@ -290,7 +269,7 @@ function handleMouseOver (d) {
 function handleMouseOut (d) {
 
 	// unhighlight text and path of mouseover element
-	// d3.selectAll(".link, .mycircle, .inline")
+	// d3.selectAll(".link, .mycircle, .line")
     //     // .style("stroke-width", "1");
     //     .classed("highlight", false);
 
