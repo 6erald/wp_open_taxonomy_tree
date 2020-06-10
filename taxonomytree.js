@@ -67,12 +67,12 @@ console.log(nodes);
 console.log(links);
 
 // Create length units
-var unitLenght = 150;
-    nodes.forEach(function(d) {return d.y = d.depth * unitLenght + unitLenght;});
+var unitLength = 150;
+    nodes.forEach(function(d) {return d.y = d.depth * unitLength + unitLength;});
     nodes.forEach(function(d) {
-		if (d.depth==0) {return d.y = d.y - unitLenght/3;}
-		if (d.depth==2) {return d.y = d.y + unitLenght/2;}
-		if (d.depth==3) {return d.y = d.y - unitLenght/6;}
+		if (d.depth==0) {return d.y = d.y - unitLength/3;}
+		if (d.depth==2) {return d.y = d.y + unitLength/2;}
+		if (d.depth==3) {return d.y = d.y - unitLength/6;}
     });
 
 
@@ -82,7 +82,7 @@ var unitLenght = 150;
  */
 
 function selectParentNodeColor(el) {
-    // Get the color of reference category
+
     var colorCategory = el;
     while (! colorCategory.taxonomy_color) {
         colorCategory = colorCategory.parent;
@@ -91,7 +91,7 @@ function selectParentNodeColor(el) {
 }
 
 function selectParentLinkColor(el) {
-    // Get the color of reference category
+
     var colorCategory = el.target;
     while (! colorCategory.taxonomy_color) {
         colorCategory = colorCategory.parent;
@@ -99,7 +99,7 @@ function selectParentLinkColor(el) {
     return colorCategory.taxonomy_color;
 }
 
-// Create and style link
+// Create link
 var link = svg.selectAll(".link")              // Level 1 - Import & Setup
     .data(links)
     .enter()
@@ -141,8 +141,8 @@ var labelPost = node.filter(function(d) {return d.post_title;})
     .text(function(d){return d.name;})
     .style("fill", selectParentNodeColor);
 
-// Lenght of Post underline
-var underlineLength = 1.7 * unitLenght;
+// Length of Post underline
+var underlineLength = 1.7 * unitLength;
 
 // Creat Post Underline
 var linePost = node.filter(function(d) {return d.post_title;}) // TODO: return d.post_content;
@@ -193,7 +193,7 @@ var infoCurvy = svg.selectAll('.infoCurvy')
 	.enter()
 	.append("defs").append("path")
 	.attr("class", "infoCurvy")
-	.attr("id", function(d){return d.target.term_id})
+	.attr("id", function(d) {return d.target.term_id})
 	.attr("d", diagonal);
 
 // Create textCurvy related to defs
@@ -232,57 +232,24 @@ curvyText.on("mouseout", handleMouseOut);
 
 function handleMouseOver (d) {
 
-	// Highlight taxonomy path of element
+	// Highlight path of d
 	svg.selectAll(".link")
     	.filter(function(e) {
     		return ((d.name==e.name)			   && (e.source === d.parent) || (e.target === d)) ||
     			   ((d.parent.name==e.name)		   && (e.source === e.parent) || (e.target === d.parent)) ||
     			   ((d.parent.parent.name==e.name) && (e.source === e.parent) || (e.target === d.parent.parent));
         })
-    	// .style("stroke-width", "2.25");
         .classed("highlight", true);
 
-	// Highlight text of element
-	svg.selectAll(".textCurvy, .labels")
+	// Highlight text of d
+	svg.selectAll(".textCurvy, .labels, .line, .mycircle, .vertical-line, .horizontal-line")
         .filter(function(j) {return (d.name==j.name);})
-		// .style("font-weight", "600");
         .classed("highlight", true);
-
-	// Highlight line of element
-	svg.selectAll(".line")
-		.filter(function(j) {return (d.name==j.name);})
-		// .style("stroke-width", "2.25");
-        .classed("highlight" , true);
-
-	// Highlight circle of element
-	svg.selectAll(".mycircle")
-		.filter(function(j) {return (d.name==j.name);})
-        .classed("highlight", true);
-		// .style("fill", d.parent.parent.taxonomy_color);
-
-	svg.selectAll(".vertical-line, .horizontal-line")
-		.filter(function(j) {return (d.name==j.name);})
-		.classed("highlight", true)
-		// .style("stroke-width", "2.25");
 }
 
 function handleMouseOut (d) {
 
-	// unhighlight text and path of mouseover element
-	// d3.selectAll(".link, .mycircle, .line")
-    //     // .style("stroke-width", "1");
-    //     .classed("highlight", false);
-
-    // d3.selectAll(".mycircle")
-    //     .style("fill", "none");
-
-    d3.selectAll(".highlight")
-		.classed("highlight", false);
-		// .style("stroke", d.parent.parent.taxonomy_color);
-
-    // d3.selectAll(".textCurvy, .labels")
-    //     // .style("font-weight", "400");
-    //     .classed("highlight", false);
+    d3.selectAll(".highlight").classed("highlight", false);
 }
 
 node.on("click", handleMouseClick);
