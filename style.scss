@@ -9,46 +9,24 @@
     svg { }
 }
 
-// lines
-.link {
-    z-index: -100;
-    fill: none;
-    stroke-width: 1;
-
-    &.highlight {
-        stroke-width: 2.25;
-    }
-}
-
-// texts
-.node {
-    cursor: pointer;
-    z-index: 0;
-}
-
-.labels {
-    cursor: pointer;
-    transform: translate(0,-5px);
-    font-weight: 400;
-
-    &.highlight {
-        font-weight: 600;
-    }
-}
-
-.taxonomy {
-    fill: black;
-}
-
-.line {
-    stroke-width: 1;
-
-    &.highlight {
-        stroke-width: 2.25;
-    }
-}
+// hover elements
+.node,
+.labels,
+.circle,
 .textCurvy {
     cursor: pointer;
+}
+
+// text elements
+.labels {
+    transform: translate(0,-5px);
+    &.taxonomy {
+        fill: #000000;
+    }
+}
+
+.labels,
+.textCurvy {
     font-weight: 400;
 
     &.highlight {
@@ -56,31 +34,27 @@
     }
 }
 
+// lines
+.link,
+.line,
+.my-circle,
 .vertical-line,
 .horizontal-line {
-    z-index: 100;
+    fill: none;
     stroke-width: 1;
 
     &.highlight {
         stroke-width: 2.25;
     }
-
 }
 
-.infoCurvy { }
+// others
 .circle {
-    cursor: pointer;
     fill: none;
 }
-.mycircle {
-    fill: none;
-    stroke-width: 1;
 
-    &.highlight{
-        stroke-width: 2.25;
-    }
-}
 
+/* ------------------------ */
 // alertbox
 
 .hide-me {
@@ -124,7 +98,6 @@
 }
 
 #alert-skip {
-     cursor: pointer;
      svg{
           height: 20px;
           width: 20px;
@@ -134,9 +107,7 @@
      padding: 5px;
 }
 
-#alert-link,
-#alert-link:link,
-#alert-link:visited {
+#alert-skip,
+#alert-link {
     cursor: pointer;
-    text-decoration: none;
 }
