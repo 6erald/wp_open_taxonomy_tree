@@ -145,7 +145,7 @@ var labelPost = node.filter(function(d) {return d.post_title;})
 var underlineLength = 1.7 * unitLength;
 
 // Creat Post Underline
-var linePost = node.filter(function(d) {return d.post_title;}) // TODO: return d.post_content;
+var linePost = node.filter(function(d) {return d.post_title;})
     .insert("line")
     .attr("class", "line")
     .attr("x1", function(d) {return 0})
@@ -155,9 +155,8 @@ var linePost = node.filter(function(d) {return d.post_title;}) // TODO: return d
     .style("stroke", selectParentNodeColor);
 
 // Create Button
-var circle = node.filter(function(d) {return d.post_title;}) // TODO: return d.post_content;
-    .append("a")
-    .attr("xlink:href", function(d) {return location.href + d.post_name;})
+var circle = node.filter(function(d) {return d.post_title;})
+    .append("g")
     .attr("class", "blog-link");
 
     circle.insert("circle")
@@ -224,6 +223,7 @@ var curvyText = svg.selectAll('.textCurvy')
 
 node.on("mouseover", handleMouseOver);
 node.on("mouseout", handleMouseOut);
+node.on("click", handleMouseClick);
 
 curvyText.on("mouseover", handleMouseOver);
 curvyText.on("mouseout", handleMouseOut);
@@ -250,8 +250,6 @@ function handleMouseOut (d) {
     d3.selectAll(".highlight").classed("highlight", false);
 }
 
-node.on("click", handleMouseClick);
-
 function handleMouseClick (d) {
 
 	if (d.post_content) {
@@ -275,43 +273,31 @@ buildAlertBox();
 function buildAlertBox() {
 
     var taxonomyTree = document.getElementById("taxonomytree");
-        taxonomyTree.insertAdjacentHTML('afterend', '<div id="alertbox" class="hide-me"></div>');
+        taxonomyTree.insertAdjacentHTML('afterend', '<div id="alertbox"></div>');
 
     var alertBox = document.getElementById("alertbox");
-        alertBox.innerHTML += '<div id="alert-box-inner" class="hide-me"></div>';
+        alertBox.classList.add("hide-me");
+        alertBox.innerHTML += '<div id="alert-box-inner">'
+                            +     '<div id="alert-box-inner-inner">'
+                            +         '<span id="alert-skip">'
+                            +           'close'
+                            +         '</span>'
+                            +         '<div id="alert-text"></div>'
+                            +         '<div id="alert-thumbnail"></div>'
+                            +     '</div>'
+                            + '</div>';
 
-    var alertBoxInner = document.getElementById("alert-box-inner");
-        alertBoxInner.innerHTML += '<div id="alert-box-inner-inner" class="hide-me"></div>';
-
-    var alertBoxInnerInner = document.getElementById("alert-box-inner-inner");
-        alertBoxInnerInner.innerHTML += '<span id="alert-skip">X</span>';
-        alertBoxInnerInner.innerHTML += '<div id="alert-text"></div>';
-        alertBoxInnerInner.innerHTML += '<div id="alert-thumbnail"></div>';
-
+    var alertSkip = document.getElementById("alert-skip");
+        alertSkip.addEventListener("click", hideAlertBox);
 }
 
 function showAlertBox() {
 
     var alertBox = document.getElementById("alertbox");
         alertBox.classList.remove("hide-me");
-
-    var alertBoxInner = document.getElementById("alert-box-inner");
-        alertBoxInner.classList.remove("hide-me");
-
-    var alertBoxInnerInner = document.getElementById("alert-box-inner-inner");
-        alertBoxInnerInner.classList.remove("hide-me");
 }
 
-var alertSkip = document.getElementById("alert-skip");
-    alertSkip.addEventListener("click", hideAlertBox);
-
 function hideAlertBox() {
-
-    var alertBoxInnerInner = document.getElementById("alert-box-inner-inner");
-        alertBoxInnerInner.classList.add("hide-me");
-
-    var alertBoxInner = document.getElementById("alert-box-inner");
-        alertBoxInner.classList.add("hide-me");
 
     var alertBox = document.getElementById("alertbox");
         alertBox.classList.add("hide-me");

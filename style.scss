@@ -3,9 +3,7 @@
  */
 
 // main div
-#taxonomytree {
-    // background-color: #008080;
-}
+#taxonomytree { }
 
 // hover elements
 .node,
@@ -15,17 +13,18 @@
     cursor: pointer;
 }
 
-// text elements
+// horizontal text elements
 .labels {
     transform: translate(0,-5px);
+
     &.taxonomy {
         fill: #000000;
     }
 }
 
+// all text elements
 .labels,
 .textCurvy {
-    // font-family: helvetica;
     font-weight: 400;
 
     &.highlight {
@@ -48,20 +47,8 @@
     }
 }
 
-// others
-.circle {
-    // fill: none;
-    // stroke: green!important;
-    // z-index: 10000;
-}
-
-
 /* ------------------------ */
 // alertbox
-
-.hide-me {
-    opacity: 0;
-}
 
 #alertbox {
     z-index: 400;
@@ -70,6 +57,7 @@
     left: 0;
     width: 100vh;
     height: 100vw;
+
     &.hide-me {
         display: none;
     }
