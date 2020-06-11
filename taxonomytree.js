@@ -29,7 +29,7 @@ var svg = d3.select('#taxonomytree').append("svg")
 
 // Ajax
 jQuery.ajax({
-    url: TaxononmyTreeAjax.ajaxurl,
+    url: TaxonomyTreeAjax.ajaxurl,
     data: {
 	    'action': 'taxonomytree',
     },
@@ -156,13 +156,11 @@ var linePost = node.filter(function(d) {return d.post_title;}) // TODO: return d
 
 // Create Button
 var circle = node.filter(function(d) {return d.post_title;}) // TODO: return d.post_content;
-	.append("g")
-	.attr("class", "circle");
-
-    circle.insert("a")
+    .append("a")
     .attr("xlink:href", function(d) {return location.href + d.post_name;})
-    .attr("class", "blog-link")
-    .insert("circle")
+    .attr("class", "blog-link");
+
+    circle.insert("circle")
     .attr("class", "mycircle")
     .attr('r', 5)
     .attr("cx", underlineLength -5 -1.5)
@@ -184,7 +182,7 @@ var circle = node.filter(function(d) {return d.post_title;}) // TODO: return d.p
     .attr("x2", underlineLength -6.5)
     .attr("y2", -5 -1*1.5)
     .style("stroke", selectParentNodeColor)
-    .style("z-index", 100)
+    .style("z-index", 100);
 
 // Create Path lables
 // Create defs with ID
@@ -242,7 +240,7 @@ function handleMouseOver (d) {
         .classed("highlight", true);
 
 	// Highlight text of d
-	svg.selectAll(".textCurvy, .labels, .line, .mycircle, .vertical-line, .horizontal-line")
+	svg.selectAll(".textCurvy, .labels, .line, .blog-link, .mycircle, .vertical-line, .horizontal-line")
         .filter(function(j) {return (d.name==j.name);})
         .classed("highlight", true);
 }

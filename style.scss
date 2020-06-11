@@ -4,9 +4,7 @@
 
 // main div
 #taxonomytree {
-
-    // inner svg
-    svg { }
+    // background-color: #008080;
 }
 
 // hover elements
@@ -27,6 +25,7 @@
 
 .labels,
 .textCurvy {
+    // font-family: helvetica;
     font-weight: 400;
 
     &.highlight {
@@ -38,6 +37,7 @@
 .link,
 .line,
 .my-circle,
+.blog-link,
 .vertical-line,
 .horizontal-line {
     fill: none;
@@ -50,7 +50,9 @@
 
 // others
 .circle {
-    fill: none;
+    // fill: none;
+    // stroke: green!important;
+    // z-index: 10000;
 }
 
 
