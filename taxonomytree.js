@@ -277,15 +277,14 @@ function buildAlertBox() {
 
     var alertBox = document.getElementById("alertbox");
         alertBox.classList.add("hide-me");
-        alertBox.innerHTML += '<div id="alert-box-inner">'
-                            +     '<div id="alert-box-inner-inner">'
+        alertBox.innerHTML += ''
+                            // + '<div id="alert-box-inner">'
                             +         '<span id="alert-skip">'
                             +           'close'
                             +         '</span>'
                             +         '<div id="alert-text"></div>'
-                            +         '<div id="alert-thumbnail"></div>'
-                            +     '</div>'
-                            + '</div>';
+                            +         '<div id="alert-thumbnail"></div>';
+                            // + '</div>';
 
     var alertSkip = document.getElementById("alert-skip");
         alertSkip.addEventListener("click", hideAlertBox);
