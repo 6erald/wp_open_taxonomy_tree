@@ -1,44 +1,32 @@
 /**
- * Taxonomy Tree
+ * Taxonomy Tree Styles
  */
 
-// main div
+// tree elements
 #taxonomytree { }
+.label { transform: translate(0,-5px); }
+.taxonomy { fill: rgba(255,255,255, 1); }
 
-// hover elements
+// hover
 .node,
-.labels,
-.circle,
-.textCurvy {
-    cursor: pointer;
-}
+.label,
+.label-button,
+.label-curvyText { cursor: pointer; }
 
-// horizontal text elements
-.labels {
-    transform: translate(0,-5px);
-
-    &.taxonomy {
-        fill: rgba(255,255,255, 1);
-    }
-}
-
-// all text elements
-.labels,
-.textCurvy {
+// highlight
+.label,
+.label-curvyText {
     font-weight: 400;
 
     &.highlight {
         font-weight: 600;
     }
 }
-
-// lines
 .link,
-.line,
-.my-circle,
-.blog-link,
-.vertical-line,
-.horizontal-line {
+.label-line,
+.label-button,
+.label-button-circle,
+.label-button-line {
     fill: none;
     stroke-width: 1;
 
@@ -47,9 +35,7 @@
     }
 }
 
-/* ------------------------ */
-// infobox
-
+// infobox elements
 #infobox {
     z-index: 400;
     position: fixed;
@@ -65,10 +51,6 @@
         display: none;
     }
 }
-#infobox-skip,
-#infobox-link {
-    cursor: pointer;
-}
 #infobox-skip {
     display: block;
     text-align: right;
@@ -79,3 +61,7 @@
     h3 {}
     p {}
 }
+
+// hover
+#infobox-skip,
+#infobox-link { cursor: pointer; }

@@ -125,7 +125,7 @@ var node = svg.selectAll(".node")
 var labelTaxonomy = node.filter(function(d) {return d.depth==0;})
     .append("text")
     .text(function(d){return d.name;})
-    .attr("class", "labels taxonomy")
+    .attr("class", "label taxonomy")
     .style("text-anchor", "end")
     .call(wrap, 90, 15);
 
@@ -137,7 +137,7 @@ var labelTaxonomy = node.filter(function(d) {return d.depth==0;})
 // Create Post Label
 var labelPost = node.filter(function(d) {return d.post_title;})
     .append("text")
-    .attr("class", "labels post")
+    .attr("class", "label post")
     .text(function(d){return d.name;})
     .style("fill", selectParentNodeColor);
 
@@ -147,7 +147,7 @@ var underlineLength = 1.7 * unitLength;
 // Creat Post Underline
 var linePost = node.filter(function(d) {return d.post_title;})
     .insert("line")
-    .attr("class", "line")
+    .attr("class", "label-line")
     .attr("x1", function(d) {return 0})
     .attr("y1", function(d) {return 0})
     .attr("x2", function(d) {return 0  + underlineLength})
@@ -157,17 +157,17 @@ var linePost = node.filter(function(d) {return d.post_title;})
 // Create Button
 var circle = node.filter(function(d) {return d.post_title;})
     .append("g")
-    .attr("class", "blog-link");
+    .attr("class", "label-button");
 
     circle.insert("circle")
-    .attr("class", "mycircle")
+    .attr("class", "label-button-circle")
     .attr('r', 5)
     .attr("cx", underlineLength -5 -1.5)
     .attr("cy", -5 -3*1.5)
     .style("stroke", selectParentNodeColor);
 
     circle.insert("line")
-    .attr("class", "horizontal-line")
+    .attr("class", "label-button-line")
     .attr("x1", underlineLength -9.5 )
     .attr("y1", -5 -3*1.5)
     .attr("x2", underlineLength -3.5)
@@ -175,7 +175,7 @@ var circle = node.filter(function(d) {return d.post_title;})
     .style("stroke", selectParentNodeColor);
 
     circle.insert("line")
-    .attr("class", "vertical-line")
+    .attr("class", "label-button-line")
     .attr("x1", underlineLength -6.5 )
     .attr("y1", -5 -5*1.5)
     .attr("x2", underlineLength -6.5)
@@ -185,22 +185,22 @@ var circle = node.filter(function(d) {return d.post_title;})
 
 // Create Path lables
 // Create defs with ID
-var infoCurvy = svg.selectAll('.infoCurvy')
+var infoCurvy = svg.selectAll('.label-curvyInfo')
 	.data(links)
 	.enter()
 	.append("defs").append("path")
-	.attr("class", "infoCurvy")
+	.attr("class", "label-curvyInfo")
 	.attr("id", function(d) {return d.target.term_id})
 	.attr("d", diagonal);
 
-// Create textCurvy related to defs
-var curvyText = svg.selectAll('.textCurvy')
+// Create label-curvyText related to defs
+var curvyText = svg.selectAll('.label-curvyText')
 	.data(nodes)
 	.enter()
 	.append('g')
 	.append("text")
 	.attr("dy", "-0.35em")
-	.attr("class", "textCurvy")
+	.attr("class", "label-curvyText")
 	.append("textPath")
 	.attr("xlink:href",function(d) {return "#"+d.term_id;})
 	.text(function(d) {return d.name})
@@ -240,7 +240,7 @@ function handleMouseOver (d) {
         .classed("highlight", true);
 
 	// Highlight text of d
-	svg.selectAll(".textCurvy, .labels, .line, .blog-link, .mycircle, .vertical-line, .horizontal-line")
+	svg.selectAll(".label-curvyText, .label, .label-line, .label-button, .label-button-circle, .label-button-line")
         .filter(function(j) {return (d.name==j.name);})
         .classed("highlight", true);
 }
