@@ -254,14 +254,14 @@ function handleMouseClick (d) {
 
 	if (d.post_content) {
 
-		var alertBoxText  = document.getElementById("alert-text");
+		var alertBoxText  = document.getElementById("infobox-text");
 
-		var ourHTMLString = '<h3><a id="alert-link">' + d.post_title + "</a></h3>";
+		var ourHTMLString = '<h3><a id="infobox-link">' + d.post_title + "</a></h3>";
 		    ourHTMLString += "<p>" + d.post_excerpt + "</p>";
 
 		alertBoxText.innerHTML = ourHTMLString;
 
-		var taxonomyBoxLink = document.getElementById("alert-link");
+		var taxonomyBoxLink = document.getElementById("infobox-link");
 		    taxonomyBoxLink.href = d.guid;
 
         showAlertBox();
@@ -273,32 +273,29 @@ buildAlertBox();
 function buildAlertBox() {
 
     var taxonomyTree = document.getElementById("taxonomytree");
-        taxonomyTree.insertAdjacentHTML('afterend', '<div id="alertbox"></div>');
+        taxonomyTree.insertAdjacentHTML('afterend', '<div id="infobox"></div>');
 
-    var alertBox = document.getElementById("alertbox");
+    var alertBox = document.getElementById("infobox");
         alertBox.classList.add("hide-me");
-        alertBox.innerHTML += ''
-                            // + '<div id="alert-box-inner">'
-                            +         '<span id="alert-skip">'
-                            +           'close'
-                            +         '</span>'
-                            +         '<div id="alert-text"></div>'
-                            +         '<div id="alert-thumbnail"></div>';
-                            // + '</div>';
+        alertBox.innerHTML += '<span id="infobox-skip">'
+                            + 'close'
+                            + '</span>'
+                            + '<div id="infobox-text"></div>'
+                            + '<div id="alert-thumbnail"></div>';
 
-    var alertSkip = document.getElementById("alert-skip");
+    var alertSkip = document.getElementById("infobox-skip");
         alertSkip.addEventListener("click", hideAlertBox);
 }
 
 function showAlertBox() {
 
-    var alertBox = document.getElementById("alertbox");
+    var alertBox = document.getElementById("infobox");
         alertBox.classList.remove("hide-me");
 }
 
 function hideAlertBox() {
 
-    var alertBox = document.getElementById("alertbox");
+    var alertBox = document.getElementById("infobox");
         alertBox.classList.add("hide-me");
 }
 
