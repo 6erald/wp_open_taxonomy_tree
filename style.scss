@@ -2,40 +2,41 @@
  * Taxonomy Tree Styles
  */
 
-// tree elements
-#taxonomytree { }
-.label { transform: translate(0,-5px); }
-.taxonomy { fill: rgba(255,255,255, 1); }
+// tree
+#taxonomytree {
+    .label { transform: translate(0,-5px); }
+    .taxonomy { fill: rgba(255,255,255, 1); }
 
-// hover
-.node,
-.label,
-.label-button,
-.label-curvyText { cursor: pointer; }
+    // hover
+    .node,
+    .label,
+    .label-button,
+    .label-curvyText { cursor: pointer; }
 
-// highlight
-.label,
-.label-curvyText {
-    font-weight: 400;
+    // highlight
+    .label,
+    .label-curvyText {
+        font-weight: 400;
 
-    &.highlight {
-        font-weight: 600;
+        &.highlight {
+            font-weight: 600;
+        }
+    }
+    .link,
+    .label-line,
+    .label-button,
+    .label-button-circle,
+    .label-button-line {
+        fill: none;
+        stroke-width: 1;
+
+        &.highlight {
+            stroke-width: 2.25;
+        }
     }
 }
-.link,
-.label-line,
-.label-button,
-.label-button-circle,
-.label-button-line {
-    fill: none;
-    stroke-width: 1;
 
-    &.highlight {
-        stroke-width: 2.25;
-    }
-}
-
-// infobox elements
+// infobox
 #infobox {
     z-index: 400;
     position: fixed;

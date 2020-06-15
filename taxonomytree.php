@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:       Open Taxonomy Tree
- * Plugin URI:        TODO: https://mypluginurl.com/
+ * Plugin URI:        https://github.com/6erald/wp_taxonomytree
  * Description:       The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its categries and posts structure using d3.js
  * Version:           1.1
- * Requires at least: TODO: 5.2 Welche Version? -> 5.4.1 ist die aktuelle version // benötgigt rest API
- * Requires PHP:      TODO: 7.2 Welche Version?
+ * Requires at least: 5.2
+ * Requires PHP:      7.2
  * Author:            Gerald Wagner
  * Author URI:        https://gerald-wagner.com/
  * License:           GPL v2 or later
