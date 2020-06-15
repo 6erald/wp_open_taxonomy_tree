@@ -1,6 +1,4 @@
 # Open Taxonomy Tree Wordpress Plugin
--------------------------------------
-
 
 ## Description
 
@@ -16,11 +14,11 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 3. Place a shortcode where the taxonomy tree shall display this way:
 
 ```
-[taxonomytree post_type="my_post_type_slug" taxonomy="my_taxonomy_slug"]
+[taxonomytree taxonomy="my_taxonomy_slug" post_type="my_post_type_slug"]
 ```
 * taxonomytree (required): Identifies the shortcode
-* post_type (optional): Identifies the target post type by his slug
 * taxonomy (optional): Identifies the target taxonomy by his slug
+* post_type (optional): Identifies the target post type by his slug and displays its posts
 
 4. The following layout is necessary to display the post elements.
 
@@ -70,11 +68,6 @@ Levels and Objecs:
 ## License
 
 [GPL v2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
-
-    <!--
-    * Git Styleguide
-    * https://udacity.github.io/git-styleguide/
-     -->
 
 ## Credits
 
