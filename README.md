@@ -1,19 +1,13 @@
-### Date created
-
-June 5, 2020
-
-
-### Project Title
-
-Open Taxonomy Tree Wordpress Plugin
+# Open Taxonomy Tree Wordpress Plugin
+-------------------------------------
 
 
-### Description
+## Description
 
 The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms and posts structure using [d3.js](https://d3js.org/).
 
 
-### Installation
+## Installation
 
 1. Download the files into a folder of your wordpress plugin directory
 
@@ -48,7 +42,7 @@ Levels and Objecs:
 * Layout changes with d3.js can be made in tree.js
 
 
-### Files used
+## Files used
 
 * README.md
 * style.css
@@ -73,16 +67,16 @@ Levels and Objecs:
 * d3.v3.min.js
 
 
-### License
+## License
 
 [GPL v2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 
     <!--
-    Git Styleguide
-    https://udacity.github.io/git-styleguide/
+    * Git Styleguide
+    * https://udacity.github.io/git-styleguide/
      -->
 
-### Credits
+## Credits
 
 * A Project by the [open source lab](https://opensourcelab.dfki.de/)
 * Author: [Gerald Wagner](https://github.com/6erald/)
