@@ -24,7 +24,7 @@ function taxonomytree_shortcode( $atts ) {
 
 	// Define shorcode atts and default atts
 	$atts = shortcode_atts( array(
-		'post_type'  => 'posts',
+		'post_type'  => 'post',
 		'taxonomy'   => 'category'
 	), $atts );
 
