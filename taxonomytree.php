@@ -49,7 +49,7 @@ function taxonomytree_scripts() {
 	wp_register_script( 'd3_js', plugins_url( 'd3.v3.min.js', __FILE__ ), array( 'jquery' ) );
     wp_enqueue_script( 'd3_js' );
 
-	wp_register_style( 'style_css', plugins_url( 'style.css', __FILE__ ) );
+	wp_register_style( 'style_css', plugins_url( 'styles/style.css', __FILE__ ) );
     wp_enqueue_style( 'style_css' );
 
 	wp_localize_script( 'taxonomytree_js', 'TaxonomyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
@@ -160,20 +160,10 @@ function taxonomytree_build_tree( $root ) {
  * Add metabox color terms. Add metabox order for terms and posts.
  *
  */
-require_once 'taxonomytree-metabox-color.php';
-require_once 'taxonomytree-metabox-order.php';
+define('__METABOX__', dirname(__FILE__).'/metaboxes');
 
-
-
-add_action( 'init', 'taxonomytree_add_excerpt_support_for_post' );
-/**
- * Enable the Excerpt meta box in post type edit screen.
- */
-function taxonomytree_add_excerpt_support_for_post() {
-
-	$tree_post_type = get_option( 'tree_post_type' );
-    add_post_type_support( $tree_post_type, 'excerpt' );
-}
-
+require_once ( __METABOX__ . '/metabox-color.php' );
+require_once ( __METABOX__ . '/metabox-order.php' );
+require_once ( __METABOX__ . '/metabox-excerpt.php' );
 
 ?>
