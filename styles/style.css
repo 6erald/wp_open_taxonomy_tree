@@ -10,15 +10,15 @@
 #taxonomytree .node,
 #taxonomytree .label,
 #taxonomytree .label-button,
-#taxonomytree .label-curvyText {
+#taxonomytree .label-curvy {
   cursor: pointer;
 }
 #taxonomytree .label,
-#taxonomytree .label-curvyText {
+#taxonomytree .label-curvy {
   font-weight: 400;
 }
 #taxonomytree .label.highlight,
-#taxonomytree .label-curvyText.highlight {
+#taxonomytree .label-curvy.highlight {
   font-weight: 600;
 }
 #taxonomytree .link,

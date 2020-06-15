@@ -11,11 +11,11 @@
     .node,
     .label,
     .label-button,
-    .label-curvyText { cursor: pointer; }
+    .label-curvy { cursor: pointer; }
 
     // highlight
     .label,
-    .label-curvyText {
+    .label-curvy {
         font-weight: 400;
 
         &.highlight {

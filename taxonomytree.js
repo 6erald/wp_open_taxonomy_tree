@@ -167,11 +167,11 @@ var nodePostButton = node.filter(function(d) {return d.post_title;})
 
 
 /**
- * Create term elements
+ * Create (curvy) term elements
  */
 
 // Defs with ID
-var infoCurvy = svg.selectAll('.label-curvyInfo')
+var linkTerm = svg.selectAll('.label-curvyInfo')
 	.data(links)
 	.enter()
 	.append("defs").append("path")
@@ -180,13 +180,13 @@ var infoCurvy = svg.selectAll('.label-curvyInfo')
 	.attr("d", diagonal);
 
 // Label related to defs id
-var curvyText = svg.selectAll('.label-curvyText')
+var nodeTerm = svg.selectAll('.label-curvy')
 	.data(nodes)
 	.enter()
 	.append('g')
 	.append("text")
 	.attr("dy", "-0.35em")
-	.attr("class", "label-curvyText")
+	.attr("class", "label-curvy")
 	.append("textPath")
 	.attr("xlink:href",function(d) {return "#"+d.term_id;})
 	.text(function(d) {return d.name})
@@ -234,14 +234,14 @@ function selectParentLinkColor(el) {
  * Mouse interaction
  */
 
-node.on("mouseover", handleMouseOver);
-node.on("mouseout", handleMouseOut);
-node.on("click", handleMouseClick);
+node.on("mouseover", nodeMouseOver);
+node.on("mouseout", nodeMouseOut);
+node.on("click", nodeMouseClick);
 
-curvyText.on("mouseover", handleMouseOver);
-curvyText.on("mouseout", handleMouseOut);
+nodeTerm.on("mouseover", nodeMouseOver);
+nodeTerm.on("mouseout", nodeMouseOut);
 
-function handleMouseOver (d) {
+function nodeMouseOver (d) {
 
 	// Highlight path
 	svg.selectAll(".link")
@@ -253,31 +253,31 @@ function handleMouseOver (d) {
         .classed("highlight", true);
 
 	// Highlight label
-	svg.selectAll(".label, .label-curvyText, .label-line, .label-button, .label-button-circle, .label-button-line")
+	svg.selectAll(".label, .label-curvy, .label-line, .label-button, .label-button-circle, .label-button-line")
         .filter(function(j) {return (d.name==j.name);})
         .classed("highlight", true);
 }
 
-function handleMouseOut (d) {
+function nodeMouseOut (d) {
 
     d3.selectAll(".highlight").classed("highlight", false);
 }
 
-function handleMouseClick (d) {
+function nodeMouseClick (d) {
 
-	if (d.post_content) {
+	if (d.post_title) {
 
-		var alertBoxText  = document.getElementById("infobox-text");
+		var infoBoxText = document.getElementById("infobox-text");
 
-		var ourHTMLString = '<h3><a id="infobox-link">' + d.post_title + "</a></h3>";
-		    ourHTMLString += "<p>" + d.post_excerpt + "</p>";
+		var textContent = '<h3><a id="infobox-link">' + d.post_title + "</a></h3>";
+		    textContent += "<p>" + d.post_excerpt + "</p>";
 
-		    alertBoxText.innerHTML = ourHTMLString;
+		    infoBoxText.innerHTML = textContent;
 
-		var taxonomyBoxLink = document.getElementById("infobox-link");
-		    taxonomyBoxLink.href = d.guid;
+		var infoBoxLink = document.getElementById("infobox-link");
+		    infoBoxLink.href = d.guid;
 
-        showAlertBox();
+        showInfoBox();
 	}
 }
 
@@ -286,39 +286,39 @@ function handleMouseClick (d) {
  * Info box
  */
 
-buildAlertBox();
+makeInfoBox();
 
-function buildAlertBox() {
+function makeInfoBox() {
 
     var taxonomyTree = document.getElementById("taxonomytree");
         taxonomyTree.insertAdjacentHTML('afterend', '<div id="infobox"></div>');
 
-    var alertBox = document.getElementById("infobox");
-        alertBox.classList.add("hide-me");
-        alertBox.innerHTML += '<span id="infobox-skip">'
+    var infoBox = document.getElementById("infobox");
+        infoBox.classList.add("hide-me");
+        infoBox.innerHTML += '<span id="infobox-skip">'
                             + 'close'
                             + '</span>'
                             + '<div id="infobox-text"></div>';
 
-    var alertSkip = document.getElementById("infobox-skip");
-        alertSkip.addEventListener("click", hideAlertBox);
+    var infoBoxSkip = document.getElementById("infobox-skip");
+        infoBoxSkip.addEventListener("click", hideInfoBox);
 }
 
-function showAlertBox() {
+function showInfoBox() {
 
-    var alertBox = document.getElementById("infobox");
-        alertBox.classList.remove("hide-me");
+    var infoBox = document.getElementById("infobox");
+        infoBox.classList.remove("hide-me");
 }
 
-function hideAlertBox() {
+function hideInfoBox() {
 
-    var alertBox = document.getElementById("infobox");
-        alertBox.classList.add("hide-me");
+    var infoBox = document.getElementById("infobox");
+        infoBox.classList.add("hide-me");
 }
 
 
 /**
- * Text wrap of root category
+ * Text wrap of root term
  */
 
 function wrap(text, width, mydy) {
@@ -326,26 +326,26 @@ function wrap(text, width, mydy) {
     text.each(function() {
 
         var text = d3.select(this),
-        words = text.text().split(/\s+/).reverse(),
-        word,
-        line = [],
-        lineNumber = 0,
-        lineHeight = 1.1, // ems
-        y = text.attr("y"),
-        dy = parseFloat(text.attr("dy")),
-        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy /-2 + "px")
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            y = text.attr("y"),
+            dy = parseFloat(text.attr("dy")),
+            tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy /-2 + "px")
 
-        while (word = words.pop()) {
-            line.push(word)
-            tspan.text(line.join(" "))
-
-            if (tspan.node().getComputedTextLength() > width) {
-                line.pop()
+            while (word = words.pop()) {
+                line.push(word)
                 tspan.text(line.join(" "))
-                line = [word]
-                tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy + "px").text(word)
+
+                if (tspan.node().getComputedTextLength() > width) {
+                    line.pop()
+                    tspan.text(line.join(" "))
+                    line = [word]
+                    tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy + "px").text(word)
+                }
             }
-        }
     })
 }
 
