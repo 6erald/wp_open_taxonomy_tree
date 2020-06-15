@@ -1,0 +1,69 @@
+/**
+ * Taxonomy Tree Styles
+ */
+#taxonomytree .label {
+  transform: translate(0, -5px);
+}
+#taxonomytree .taxonomy {
+  fill: white;
+}
+#taxonomytree .node,
+#taxonomytree .label,
+#taxonomytree .label-button,
+#taxonomytree .label-curvyText {
+  cursor: pointer;
+}
+#taxonomytree .label,
+#taxonomytree .label-curvyText {
+  font-weight: 400;
+}
+#taxonomytree .label.highlight,
+#taxonomytree .label-curvyText.highlight {
+  font-weight: 600;
+}
+#taxonomytree .link,
+#taxonomytree .label-line,
+#taxonomytree .label-button,
+#taxonomytree .label-button-circle,
+#taxonomytree .label-button-line {
+  fill: none;
+  stroke-width: 1;
+}
+#taxonomytree .link.highlight,
+#taxonomytree .label-line.highlight,
+#taxonomytree .label-button.highlight,
+#taxonomytree .label-button-circle.highlight,
+#taxonomytree .label-button-line.highlight {
+  stroke-width: 2.25;
+}
+
+#infobox {
+  z-index: 400;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 10vh 10vw;
+  width: 80vw;
+  height: 80vh;
+  background-color: white;
+  border: 2px solid black;
+}
+#infobox.hide-me {
+  display: none;
+}
+
+#infobox-skip {
+  display: block;
+  text-align: right;
+  margin: 10px;
+}
+
+#infobox-text {
+  margin: 0px 15px;
+}
+#infobox-skip,
+#infobox-link {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
