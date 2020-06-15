@@ -80,12 +80,12 @@ function taxonomytree_color_save_term_meta( $term_id ) {
         return;
 
     $meta_key       = 'tree_color';
-    $old_tree_color = taxonomytree_color_get_term_meta( $term_id );
-    $new_tree_color = isset( $_POST['tree_term_color'] ) ? taxonomytree_color_sanitize_hex( $_POST['tree_term_color'] ) : '';
+    $old_meta_value = taxonomytree_color_get_term_meta( $term_id );
+    $new_meta_value = isset( $_POST['tree_term_color'] ) ? taxonomytree_color_sanitize_hex( $_POST['tree_term_color'] ) : '';
 
-    if ( $old_tree_color && '' === $new_tree_color ){
+    if ( $old_meta_value && '' === $new_meta_value ){
         delete_term_meta( $term_id, $meta_key );
-    } elseif ( $old_tree_color !== $new_tree_color ) {
-        update_term_meta( $term_id, $meta_key, $new_tree_color );
+    } elseif ( $old_meta_value !== $new_meta_value ) {
+        update_term_meta( $term_id, $meta_key, $new_meta_value );
     }
 } ?>

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Open Taxonomy Tree
- * Plugin URI:        https://github.com/6erald/wp_taxonomytree
+ * Plugin URI:        https://github.com/open-source-lab-DFKI
  * Description:       The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its categries and posts structure using d3.js
  * Version:           1.1
  * Requires at least: 5.2
@@ -12,14 +12,13 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
+
 /**
- * Taxonomy Tree Shortcode
- *
- * Request the post type and taxonomy which shall be displayed and stores them
- * in wp_options table. Return the div where d3.js builds and displays the final tree later.
- *
+ * Shortcode
  */
+
+add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
+
 function taxonomytree_shortcode( $atts ) {
 
 	// Define shorcode atts and default atts
@@ -32,15 +31,16 @@ function taxonomytree_shortcode( $atts ) {
 	update_option( 'tree_post_type', $atts['post_type'] );
 	update_option( 'tree_taxonomy',  $atts['taxonomy'] );
 
-	// Replace the shortcode with a div to build the tree with d3.js later
+	// Replace the shortcode with a div to build the tree inside later
 	return '<div id ="taxonomytree"></div>';
 }
 
-add_action( 'wp_footer', 'taxonomytree_scripts' );
 /**
- * Register and Enqueue Scripts/Styles
- *
+ * Scripts & styles
  */
+
+add_action( 'wp_footer', 'taxonomytree_scripts' );
+
 function taxonomytree_scripts() {
 
 	wp_register_script( 'taxonomytree_js', plugins_url( 'taxonomytree.js', __FILE__ ), array( 'd3_js' ) );
@@ -55,16 +55,13 @@ function taxonomytree_scripts() {
 	wp_localize_script( 'taxonomytree_js', 'TaxonomyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
 
+/**
+ * Callback & tree recursion
+ */
+
 add_action( 'wp_ajax_taxonomytree', 'taxonomytree_callback' );
 add_action( 'wp_ajax_nopriv_taxonomytree', 'taxonomytree_callback' );
-/**
- * Taxonomy Tree Ajax callback
- *
- * Get call by taxonomytree.js. Create the main element of the tree and call
- * the function taxonomytree_build_tree to build the child tree elements.
- * Responses with an json object.
- *
- */
+
 function taxonomytree_callback() {
 
 	// Extract taxonomy name for tree main parent
@@ -88,15 +85,6 @@ function taxonomytree_callback() {
 	die();
 }
 
-/**
-* Taxonomy Tree Recursion
-*
-* Query the term for the actual root/parent element. Call the Taxonomy Tree
-* Recusion again for every term element as child. Add colors for level 1 terms.
-* Add posts at the end of the tree if exists. Structure terms and posts by
-* meta key 'tree_order'. Return the final tree array.
-*
-*/
 function taxonomytree_build_tree( $root ) {
 
 	// Define args for query
@@ -136,7 +124,7 @@ function taxonomytree_build_tree( $root ) {
 					array(
 						'taxonomy'  => $tree_taxonomy,
 						'terms'     => $tree_term->term_id
-					) )
+					))
 			));
 
 			// Add post title in term elements
@@ -155,11 +143,9 @@ function taxonomytree_build_tree( $root ) {
 }
 
 /**
- * Taxonomy Tree Metaboxes
- *
- * Add metabox color terms. Add metabox order for terms and posts.
- *
+ * Metaboxes
  */
+
 define('__METABOX__', dirname(__FILE__).'/metaboxes');
 
 require_once ( __METABOX__ . '/metabox-color.php' );

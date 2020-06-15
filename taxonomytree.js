@@ -38,31 +38,29 @@ jQuery.ajax({
     },
     dataType: 'JSON',
     success: function(data) {
-	    // alert(JSON.stringify(data));
 	    root = data;
 	    root.x0 = height / 2;
 	    root.y0 = 0;
 
-	    update(root);
+	    process_d3_tree(root);
     },
     error: function(errorThrown) {
-	   //alert(JSON.stringify(errorThrown));
 	   console.log(errorThrown);
     }
 });
 
 /**
- * Process
+ * Process the tree layout
  */
 
-function update(source) {
+function process_d3_tree(source) {
 
 /**
  * Create data and measurements
  */
 
 // Data
-var nodes = tree.nodes(root);
+var nodes = tree.nodes(source);
 var links = tree.links(nodes);
 
 // Length Units
@@ -320,7 +318,7 @@ function hideAlertBox() {
 
 
 /**
- * Text wrap
+ * Text wrap of root category
  */
 
 function wrap(text, width, mydy) {
@@ -351,6 +349,6 @@ function wrap(text, width, mydy) {
     })
 }
 
-} // update()
+} // process_d3_tree()
 
 }); // jQuery()

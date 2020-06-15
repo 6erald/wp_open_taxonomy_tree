@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Order Post Metabox
+ * Metabox Post Order
  */
 
 add_action( 'load-post.php',     'taxonomytree_order_setup_post_meta_box' );
@@ -62,7 +62,8 @@ function taxonomytree_order_save_post_meta( $post_id, $post ) {
 }
 
 /**
- * Order Term Metabox
+ * Metabox Term Order  
+ *
  */
 
 $tree_taxonomy  = get_option( 'tree_taxonomy' );
