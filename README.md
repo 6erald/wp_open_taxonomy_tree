@@ -3,7 +3,7 @@
 
 ## Description
 
-The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms and posts structure using [d3.js](https://d3js.org/). It is originated in the context of the open source website to display the [Sustainable Open Mobility Taxonomy](https://opensourcelab.dfki.de/taxonomy/).
+The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms and posts structure using [d3.js](https://d3js.org/). It is originated in the context of the Open Source Lab website to display the [Sustainable Open Mobility Taxonomy](https://opensourcelab.dfki.de/taxonomy/).
 
 
 ## Installation
@@ -54,5 +54,5 @@ Levels and Objecs:
 
 ## Credits
 
-* A Project of [open source lab](https://opensourcelab.dfki.de/)
+* A Project of the [Open Source Lab](https://opensourcelab.dfki.de/)
 * Author: [Gerald Wagner](https://github.com/6erald/)
