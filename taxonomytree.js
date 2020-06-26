@@ -16,7 +16,7 @@ var margin = {top: 20, right: 20, bottom: 20, left: 20},
 var tree = d3.layout.tree()
     .size([height, width]);
 
-// Rotate the coordinates for horizontal layout
+// Rotate the coordinates for horizontal layout.
 var diagonal = d3.svg.diagonal()
     .projection(function(d) {return [d.y, d.x];});
 
