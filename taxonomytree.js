@@ -64,12 +64,17 @@ var nodes = tree.nodes(source);
 var links = tree.links(nodes);
 
 // Length Units
-var unitLength = 150;
+var maxDepth = nodes.reduce((acc, val) => {
+        acc = (acc === undefined || val.depth > acc ) ? val.depth : acc;
+        return acc;
+    },[]);
+
+var unitLength = width / (maxDepth + 3);
     nodes.forEach(function(d) {return d.y = d.depth * unitLength + unitLength;});
     nodes.forEach(function(d) {
 		if (d.depth==0) {return d.y = d.y - unitLength/3;}
-		if (d.depth==2) {return d.y = d.y + unitLength/2;}
-		if (d.depth==3) {return d.y = d.y - unitLength/6;}
+		else if (d.post_title) {return d.y = d.y - unitLength/6;}
+        else {return d.y = d.y + unitLength/2;}
     });
 
 
@@ -218,7 +223,7 @@ function selectParentNodeColor(el) {
     //     colorCategory = colorCategory.parent;
     // }
     // return colorCategory.taxonomy_color;
-    
+
     while (typeof(el) != 'undefined' && el != null) {
 
         if (el.taxonomy_color) {
