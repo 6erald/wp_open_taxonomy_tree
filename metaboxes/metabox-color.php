@@ -17,7 +17,7 @@ function taxonomytree_color_sanitize_hex( $tree_color ) {
 
     $tree_color = ltrim( $tree_color, '#' );
 
-    return preg_match( '/([A-Fa-f0-9]{3}){1,2}$/', $tree_color ) ? $tree_color : '';
+    return preg_match( '/([A-Fa-f0-9]{3}){1,2}$/', $tree_color ) ? $tree_color : '000000';
 }
 
 function taxonomytree_color_get_term_meta( $term_id, $hash = false ) {

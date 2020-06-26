@@ -213,20 +213,39 @@ function selectParentNodeTermColor(el) {
 
 function selectParentNodeColor(el) {
 
-    var colorCategory = el;
-    while (! colorCategory.taxonomy_color) {
-        colorCategory = colorCategory.parent;
+    // var colorCategory = el;
+    // while (! colorCategory.taxonomy_color) {
+    //     colorCategory = colorCategory.parent;
+    // }
+    // return colorCategory.taxonomy_color;
+    
+    while (typeof(el) != 'undefined' && el != null) {
+
+        if (el.taxonomy_color) {
+            return el.taxonomy_color;
+        } else {
+            el = el.parent;
+        }
     }
-    return colorCategory.taxonomy_color;
 }
 
 function selectParentLinkColor(el) {
 
-    var colorCategory = el.target;
-    while (! colorCategory.taxonomy_color) {
-        colorCategory = colorCategory.parent;
+    var elTar = el.target;
+    // while (! colorCategory.taxonomy_color) {
+    //     colorCategory = colorCategory.parent;
+    // }
+    // return colorCategory.taxonomy_color;
+
+    while (typeof(elTar) != 'undefined' && el != null) {
+
+        if (elTar.taxonomy_color) {
+            return elTar.taxonomy_color;
+        } else {
+            elTar = elTar.parent;
+        }
     }
-    return colorCategory.taxonomy_color;
+
 }
 
 
