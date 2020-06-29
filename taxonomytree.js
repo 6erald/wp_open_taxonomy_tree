@@ -1,6 +1,5 @@
 /**
  * Open Taxonomy Tree Wordpress Plugin
- *
  */
 
 jQuery(document).ready(function($) {
@@ -26,7 +25,8 @@ jQuery(document).ready(function($) {
         .attr("viewBox", "0 0 " + width + " " + height)
         .attr("preserveAspectRatio", "xMinYMin")
         .append("g")
-        .attr("transform", "translate(" + margin.left + ","  + margin.top/2 + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top / 2 + ")");
+
 
     /**
      * Ajax
@@ -50,21 +50,10 @@ jQuery(document).ready(function($) {
         }
     });
 
+
     /**
      * Process the tree layout
      */
-
-    function determMaxDepth(nodes) {
-
-        var maxDepth = nodes.reduce((acc, val) => {
-
-                acc = (acc === undefined || val.depth > acc ) ? val.depth : acc;
-                return acc;
-
-            },[]);
-
-        return maxDepth;
-    }
 
     function process_d3_tree(source) {
 
@@ -78,6 +67,19 @@ jQuery(document).ready(function($) {
 
         // Length Units
         var maxDepth = determMaxDepth(nodes);
+
+        function determMaxDepth(nodes) {
+
+            var result = nodes.reduce((acc, val) => {
+
+                acc = (acc === undefined || val.depth > acc) ? val.depth : acc;
+                return acc;
+
+            },[]);
+
+            return result;
+        }
+
         var unitLength = width / (maxDepth + 3);
 
         nodes.forEach(function(d) {
@@ -272,15 +274,23 @@ jQuery(document).ready(function($) {
         	// Highlight path
         	svg.selectAll(".link")
             	.filter(function(e) {
-            		return ((d.name==e.name)			   && (e.source === d.parent) || (e.target === d)) ||
-            			   ((d.parent.name==e.name)		   && (e.source === e.parent) || (e.target === d.parent)) ||
-            			   ((d.parent.parent.name==e.name) && (e.source === e.parent) || (e.target === d.parent.parent));
+
+                    el = d;
+
+                    while (el != null && typeof(el) != 'undefined') {
+
+                        if ((e.source == el.parent) && (e.target == el)) {
+                            return true;
+                        }
+
+                        el = el.parent;
+                    }
                 })
                 .classed("highlight", true);
 
         	// Highlight label
         	svg.selectAll(".label, .label-curvy, .label-line, .label-button, .label-button-circle, .label-button-line")
-                .filter(function(j) { return (d.name==j.name); })
+                .filter(function(e) { return (d.name == e.name); })
                 .classed("highlight", true);
         }
 
@@ -295,13 +305,13 @@ jQuery(document).ready(function($) {
 
         		var infoBoxText = document.getElementById("infobox-text");
 
-        		var textContent = '<h3><a id="infobox-link">' + d.post_title + "</a></h3>";
-        		    textContent += "<p>" + d.post_excerpt + "</p>";
+        		var textContent = '<h3><a id="infobox-link">' + d.post_title + "</a></h3>"
+    		                    + "<p>" + d.post_excerpt + "</p>";
 
-        		    infoBoxText.innerHTML = textContent;
+    		    infoBoxText.innerHTML = textContent;
 
         		var infoBoxLink = document.getElementById("infobox-link");
-        		    infoBoxLink.href = d.guid;
+    		    infoBoxLink.href = d.guid;
 
                 showInfoBox();
         	}
@@ -317,29 +327,29 @@ jQuery(document).ready(function($) {
         function makeInfoBox() {
 
             var taxonomyTree = document.getElementById("taxonomytree");
-                taxonomyTree.insertAdjacentHTML('afterend', '<div id="infobox"></div>');
+            taxonomyTree.insertAdjacentHTML('afterend', '<div id="infobox"></div>');
 
             var infoBox = document.getElementById("infobox");
-                infoBox.classList.add("hide-me");
-                infoBox.innerHTML += '<span id="infobox-skip">'
-                                    + 'close'
-                                    + '</span>'
-                                    + '<div id="infobox-text"></div>';
+            infoBox.classList.add("hide-me");
+            infoBox.innerHTML = '<span id="infobox-skip">'
+                              + 'close'
+                              + '</span>'
+                              + '<div id="infobox-text"></div>';
 
             var infoBoxSkip = document.getElementById("infobox-skip");
-                infoBoxSkip.addEventListener("click", hideInfoBox);
+            infoBoxSkip.addEventListener("click", hideInfoBox);
         }
 
         function showInfoBox() {
 
             var infoBox = document.getElementById("infobox");
-                infoBox.classList.remove("hide-me");
+            infoBox.classList.remove("hide-me");
         }
 
         function hideInfoBox() {
 
             var infoBox = document.getElementById("infobox");
-                infoBox.classList.add("hide-me");
+            infoBox.classList.add("hide-me");
         }
 
 
@@ -359,20 +369,30 @@ jQuery(document).ready(function($) {
                     lineHeight = 1.1, // ems
                     y = text.attr("y"),
                     dy = parseFloat(text.attr("dy")),
-                    tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy /-2 + "px")
+                    tspan = text.text(null)
+                        .append("tspan")
+                        .attr("x", 0)
+                        .attr("y", y)
+                        .attr("dy", "" + mydy /-2 + "px");
 
-                    while (word = words.pop()) {
-                        line.push(word)
-                        tspan.text(line.join(" "))
+                while (word = words.pop()) {
 
-                        if (tspan.node().getComputedTextLength() > width) {
-                            line.pop()
-                            tspan.text(line.join(" "))
-                            line = [word]
-                            tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", "" + mydy + "px").text(word)
-                        }
+                    line.push(word);
+                    tspan.text(line.join(" "));
+
+                    if (tspan.node().getComputedTextLength() > width) {
+
+                        line.pop();
+                        tspan.text(line.join(" "));
+                        line = [word];
+                        tspan = text.append("tspan")
+                            .attr("x", 0)
+                            .attr("y", y)
+                            .attr("dy", "" + mydy + "px")
+                            .text(word);
                     }
-            })
+                }
+            });
         }
 
     } // process_d3_tree()
