@@ -23,8 +23,10 @@ function taxonomytree_shortcode( $atts ) {
 
 	// Define shorcode atts and default atts
 	$atts = shortcode_atts( array(
-		'post_type'  => 'post',
-		'taxonomy'   => 'category'
+		'post_type'  => 'structure',
+		'taxonomy'   => 'tax_structure'
+		// 'post_type'  => 'post',
+		// 'taxonomy'   => 'category'
 	), $atts );
 
  	// Save post type and taxonomy slug in wp_options table to access later
@@ -151,5 +153,15 @@ define('__METABOX__', dirname(__FILE__).'/metaboxes');
 require_once ( __METABOX__ . '/metabox-color.php' );
 require_once ( __METABOX__ . '/metabox-order.php' );
 require_once ( __METABOX__ . '/metabox-excerpt.php' );
+
+/**
+ * Register new taxonomy for custom post type "structure"
+ */
+
+if ( file_exists ( dirname(__FILE__).'/register-structure.php' ) ) {
+
+	require_once ( dirname(__FILE__).'/register-structure.php' );
+
+}
 
 ?>
