@@ -25,8 +25,6 @@ function taxonomytree_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
 		'post_type'  => 'structure',
 		'taxonomy'   => 'tax_structure'
-		// 'post_type'  => 'post',
-		// 'taxonomy'   => 'category'
 	), $atts );
 
  	// Save post type and taxonomy slug in wp_options table to access later
