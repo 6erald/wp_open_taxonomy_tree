@@ -50,7 +50,7 @@ function taxonomytree_scripts() {
     wp_enqueue_script( 'd3_js' );
 
 	wp_register_style( 'style_css', plugins_url( 'styles/style.css', __FILE__ ) );
-    wp_enqueue_style( 'style_css' );
+    wp_enqueue_style( 'style_css');
 
 	wp_localize_script( 'taxonomytree_js', 'TaxonomyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }

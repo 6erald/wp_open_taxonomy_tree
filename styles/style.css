@@ -66,4 +66,17 @@
   cursor: pointer;
 }
 
+div.footnote {
+  font-size: 70%;
+  opacity: 0.6;
+}
+div.footnote::before {
+  content: "";
+  display: block;
+  width: 25%;
+  height: 1em;
+  border-top: 1px solid black;
+  margin-top: 5em;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -66,3 +66,17 @@
 // hover
 #infobox-skip,
 #infobox-link { cursor: pointer; }
+
+
+div.footnote {
+     font-size: 70%;
+     opacity: .6;
+     &::before {
+          content: "" ;
+          display: block;
+          width: 25%;
+          height: 1em;
+          border-top: 1px solid black;
+          margin-top: 5em;
+     }
+}

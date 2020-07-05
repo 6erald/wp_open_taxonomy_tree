@@ -35,10 +35,6 @@
 	<wp:base_site_url>https://opensourcelab.dfki.de</wp:base_site_url>
 	<wp:base_blog_url>https://opensourcelab.dfki.de</wp:base_blog_url>
 
-	<wp:author><wp:author_id>3</wp:author_id><wp:author_login><![CDATA[dfki]]></wp:author_login><wp:author_email><![CDATA[sis@anschlaege.de]]></wp:author_email><wp:author_display_name><![CDATA[Simone Schöler]]></wp:author_display_name><wp:author_first_name><![CDATA[Simone]]></wp:author_first_name><wp:author_last_name><![CDATA[Schöler]]></wp:author_last_name></wp:author>
-	<wp:author><wp:author_id>12</wp:author_id><wp:author_login><![CDATA[Tina]]></wp:author_login><wp:author_email><![CDATA[Tinalee.Gallico@dfki.de]]></wp:author_email><wp:author_display_name><![CDATA[Tina Gallico]]></wp:author_display_name><wp:author_first_name><![CDATA[Tina]]></wp:author_first_name><wp:author_last_name><![CDATA[Gallico]]></wp:author_last_name></wp:author>
-
-
 	<!-- TERMS -->
 
 	<!-- Governance -->
@@ -176,23 +172,24 @@
 	<link>https://opensourcelab.dfki.de/taxonomy/mobility-strategy/</link>
 	<pubDate>Tue, 10 Dec 2019 17:34:50 +0000</pubDate>
 	<dc:creator><![CDATA[dfki]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3681</guid>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">Mobility policy is typically administered by dedicated national, state and local departments. Striving for greater integration between transport and urban planning practice is nothing new. Particularly in terms of creating urban densities and design that minimise the need to travel alongside the provision of a viable multi-modal transport network. Mobility strategy needs to continue to prioritise the accessibility and convenience of non-private vehicle forms of transport as well as provide new types of infrastructure and spatial planning for shared and electric transport modes to accelerate carbon reductions and maximise urban quality of life. </span>
 
 <span style="font-weight: 400;">The Shared Mobility Principles for Liveable Cities offers guidance to assist stakeholders in planning for shared mobility and associated emerging technologies (particularly autonomous vehicles) sustainably. It defines shared vehicles as all those used for hire to transport people, including mass transit, private shuttles, buses, taxis, auto-rickshaws, car and bike-sharing as well as urban delivery vehicles. The principles have been produced by a working group of international NGOs and can be applied to develop policy and design spaces that optimise shared mobility modes whilst ensuring public interest. </span><span style="font-weight: 400;">[1]</span><span style="font-weight: 400;"> </span><span style="font-weight: 400;">To implement principles such as these, the World Economic Forum’s Shared, Electric and Automated Mobility (SEAM) Governance Framework describes an array of policy, cost and space approaches. [2]</span><span style="font-weight: 400;"> </span>
-<p style="font-size: 90%;" class="test"><span style="font-weight: 400;">Best practice:
 
-[1] </span><a href="https://www.sharedmobilityprinciples.org/" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">Shared Mobility Principles for Livable Cities</span></a>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
-<span style="font-weight: 400;">[2] </span><a href="https://www.weforum.org/whitepapers/shared-electric-and-automated-mobility-seam-governance-framework-prototype-for-north-america-and-europe" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">Shared, Electric and Automated Mobility (SEAM) Governance Framework: Prototype for North America and Europe</span></a></p>]]></content:encoded>
+<span style="font-weight: 400;">[1] <a href="https://www.sharedmobilityprinciples.org/" target="_blank" rel="noopener noreferrer">Shared Mobility Principles for Livable Cities</a></span>
+
+<span style="font-weight: 400;">[2] <a href="https://www.weforum.org/whitepapers/shared-electric-and-automated-mobility-seam-governance-framework-prototype-for-north-america-and-europe" target="_blank" rel="noopener noreferrer">Shared, Electric and Automated Mobility (SEAM) Governance Framework: Prototype for North America and Europe</a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[The digitisation of the transport sector and urgency of carbon emissions reductions underscores the importance of transport and urban planning integration.]]></excerpt:encoded>
 	<wp:post_id>3681</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-10 17:34:50]]></wp:post_date>
 	<wp:post_date_gmt><![CDATA[2019-12-10 17:34:50]]></wp:post_date_gmt>
 	<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 	<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-	<wp:post_name><![CDATA[test]]></wp:post_name>
+	<wp:post_name><![CDATA[mobility-strategy]]></wp:post_name>
 	<wp:status><![CDATA[publish]]></wp:status>
 	<wp:post_parent>0</wp:post_parent>
 	<wp:menu_order>0</wp:menu_order>
@@ -229,16 +226,16 @@
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/</link>
 	<pubDate>Tue, 10 Dec 2019 17:50:21 +0000</pubDate>
 	<dc:creator><![CDATA[dfki]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3684</guid>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<p class="p1">This accelerates implementation at the local level and is conducive to spatial scalability or replication of mobility solutions that are successful in a given city or region. The overall framework could include regulatory, economic and information based policy mechanisms. In addition, the effective implementation of these policy mechanisms likely requires governance reforms such as simplifying government processes, devolving powers to local governments, reconsideration of transport funding and skills development within government departments.</p>
 <p class="p1">A recent study by LSE Cities and the Coalition for Urban Transitions into national transport policy and strategy interventions identified priorities national governments should have. These include infrastructure budget allocation, integrated transport and urban planning policy, road pricing and metropolitan level governance for transport. <span style="font-weight: 400;">[1]</span> To facilitate mobility transformations for sustainability and to encourage innovation in the mobility sector Finland adopted national legislation in July 2018 that steers the direction for the digitisation of the transport sector in Finland. <span style="font-weight: 400;">[2] </span>The Transport Code mandates open data from transport providers, requires open APIs for information on timetables, routes, ticket prices and real time location data. This legislation underpinned the world‘s first MaaS service trials in Helsinki.</p>
 
-<pre><span style="font-weight: 400;">Best practice:
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
-[1] Rode, P., Heeckt, C., da Cruz, N.F. 2019. National Transport Policy and Cities: Key policy interventions to drive compact and connected urban growth.Coalition for Urban Transitions. London and Washington, DC. Available at: </span><a href="http://newclimateeconomy.net/content/citiesworking-papers" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">http://newclimateeconomy.net/content/citiesworking-papers</span></a>
+<span style="font-weight: 400;">[1] Rode, P., Heeckt, C., da Cruz, N.F. 2019. National Transport Policy and Cities: Key policy interventions to drive compact and connected urban growth.Coalition for Urban Transitions. London and Washington, DC. Available at: <a href="http://newclimateeconomy.net/content/citiesworking-papers" target="_blank" rel="noopener noreferrer">http://newclimateeconomy.net/content/citiesworking-papers</a></span>
 
-<span style="font-weight: 400;">[2] <a href="https://www.lvm.fi/documents/20181/880492/3-2016+Transport+Code.pdf/930dbb2c-d4c2-4248-a61c-3cb4fed8eaf9" target="_blank" rel="noopener noreferrer">Finland Ministry of Transport and Communications. Transport Code Fact Sheet.</a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[2] <a href="https://www.lvm.fi/documents/20181/880492/3-2016+Transport+Code.pdf/930dbb2c-d4c2-4248-a61c-3cb4fed8eaf9" target="_blank" rel="noopener noreferrer">Finland Ministry of Transport and Communications. Transport Code Fact Sheet.</a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Ideally a sustainable open mobility ecosystem has emerged within a national context that has established a policy framework for mobility transformations.]]></excerpt:encoded>
 	<wp:post_id>3684</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-10 17:50:21]]></wp:post_date>
@@ -257,10 +254,10 @@
 		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
 		<wp:meta_value><![CDATA[3]]></wp:meta_value>
 	</wp:postmeta>
-	<wp:postmeta>
+	<!-- <wp:postmeta>
 		<wp:meta_key><![CDATA[dfki_gallery_id]]></wp:meta_key>
 		<wp:meta_value><![CDATA[a:1:{i:0;s:4:"3749";}]]></wp:meta_value>
-	</wp:postmeta>
+	</wp:postmeta> -->
 	<wp:postmeta>
 		<wp:meta_key><![CDATA[tree_order]]></wp:meta_key>
 		<wp:meta_value><![CDATA[1]]></wp:meta_value>
@@ -282,7 +279,7 @@
 	<link>https://opensourcelab.dfki.de/taxonomy/digital-strategy/</link>
 	<pubDate>Tue, 10 Dec 2019 18:18:01 +0000</pubDate>
 	<dc:creator><![CDATA[dfki]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3689</guid>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">These changes will reshape the urban economy and experience. The digital strategy should provide a framework for directing these transformations so that they are consistent with local social, political and cultural expectations and values. This includes provisions to ensure the adoption of digital technologies and partnerships with private digital service providers for programs and services are effective, accountable and in the public interest. The digital strategy should also include a pathway for ubiquitous internet access to benefit social and civic engagement, quality of life and educational achievement. </span>
 
@@ -297,12 +294,13 @@
 <span style="font-weight: 400;">To implement its digital strategy, Barcelona has developed a Digital Service Delivery Standard, a Data Strategy, a Public Tector Technology Buying Guide and a Technology Code of Practice. </span>
 
 <span style="font-weight: 400;">For their digital strategy Eindhoven in the Netherlands has established principles for data and digital infrastructure, to be applied in practice when replacing or improving existing IoT, technology platforms, services and applications. They were developed in partnership with the SmartImpact partners (a project involving 6 cities and funded by the EU) and include privacy first, embrace open standards, support modularity and maintain security.</span>
-<pre><span style="font-weight: 400;">Best practice:
 
-[1] National data strategy examples include the </span><a href="https://strategy.data.gov/action-plan/" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">US Federal Data Strategy</span></a>
-<span style="font-weight: 400;">[2] <a href="https://citiesfordigitalrights.org/" target="_blank" rel="noopener noreferrer">Cities for Digital Rights </a></span><span style="font-weight: 400;"> </span>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
+
+<span style="font-weight: 400;">[1] National data strategy examples include the <a href="https://strategy.data.gov/action-plan/" target="_blank" rel="noopener noreferrer">US Federal Data Strategy</a></span>
+<span style="font-weight: 400;">[2] <a href="https://citiesfordigitalrights.org/" target="_blank" rel="noopener noreferrer">Cities for Digital Rights </a></span>
 <span style="font-weight: 400;">[3] <a href="https://ajuntament.barcelona.cat/digital/sites/default/files/LE_MesuradeGovern_EN_9en.pdf" target="_blank" rel="noopener noreferrer">Barcelona City Council Digital Plan (PDF) </a></span>
-<span style="font-weight: 400;">[4] <a href="https://data.eindhoven.nl/explore/dataset/eindhoven-smart-society-iot-charter/information/" target="_blank" rel="noopener noreferrer">Eindhoven Smart Society IoT Charter </a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[4] <a href="https://data.eindhoven.nl/explore/dataset/eindhoven-smart-society-iot-charter/information/" target="_blank" rel="noopener noreferrer">Eindhoven Smart Society IoT Charter </a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Cities need overarching principles to shape their organisational digitisation as well as the city’s broader digital transformation.]]></excerpt:encoded>
 	<wp:post_id>3689</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-10 18:18:01]]></wp:post_date>
@@ -345,19 +343,20 @@
 	<title>Governance transformation</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/governance-transformation/</link>
 	<pubDate>Thu, 12 Dec 2019 20:24:04 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3705</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">Static, highly specialised organisations are a legacy of the industrial revolution, however, this structure is no longer the ideal way to operate in light of new tools for communication, the need for agility, innovation and efficiency. Networked companies link to networks of public and private stakeholders to expand their impact. They emphasise the empowering of networks of internal teams with distributed authority to undertake actions needed to achieve higher level organisational goals. </span>[1]
 
 <span style="font-weight: 400;">Similar to the private sector, centralised, bureaucratic government authorities struggle to meet the needs and expectations of citizens and stakeholders into the 21st century. Governments need to transform to distributed, connected formats involving diverse actors and the latest technologies to enable innovation in the common good, optimise public resources and achieve the highest standards of service delivery. Governance that is networked and distributed practices open communication, coordination and enhanced connections within government authorities as well as outside organisations and stakeholders. </span>
 
 <span style="font-weight: 400;">For city governments, Goldsmith &amp; Kleiman (2017) advocate open, collaborative and distributed governance to facilitate new opportunities and collaboration both internally and externally. This moves government from a focus on compliance to a position that can proactively initiate positive change and impact. Central to the transformation of the public sector from a top-down enterprise to a networked, open organisation is the empowerment of public employees as problem solvers, armed with data, deserving of discretion, and with the capacity to make decisions. As part of this</span><span style="font-weight: 400;"> the delivery of public services could be managed through networks of public and private service providers and the role of the government shifts from the role of sole service provider to one focused on setting roles and rules for conduct, quality, equity and privacy. [2]</span>
-<pre>Best practice:
 
-[1] Gr<span style="font-weight: 400;">ay, D. &amp; Vander Wal, T. (2014) </span><i><span style="font-weight: 400;">The Connected Company. </span></i><span style="font-weight: 400;">O'Reilly.</span>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
-<span style="font-weight: 400;">[2] Goldsmith, S. &amp; Kleiman, N. (2017) <i>A new city O/S. The Power of Open, Collaborative and Distributed Governance. </i>Brookings.</span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[1] Gray, D. &amp; Vander Wal, T. (2014) <i>The Connected Company.</i> O'Reilly.</span>
+
+<span style="font-weight: 400;">[2] Goldsmith, S. &amp; Kleiman, N. (2017) <i>A new city O/S. The Power of Open, Collaborative and Distributed Governance. </i>Brookings.</span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[In order to succeed in the digital economy governments and companies seeking innovation and competitiveness have begun transforming from hierarchical and rational to networked structures.]]></excerpt:encoded>
 	<wp:post_id>3705</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-12 20:24:04]]></wp:post_date>
@@ -400,15 +399,16 @@
 	<title>Transparency and citizen engagement</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/transparency-and-citizen-engagement/</link>
 	<pubDate>Thu, 12 Dec 2019 20:33:55 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3707</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">They are needed as part of the uptake of emergent technologies and governance formats to ensure these strategies serve the public good in practice. [1] An open culture of transparency promotes principles of information accessibility, financial and decision making accountability. Without transparency and stakeholder engagement proposals or plans are unlikely to have high levels of public support or stakeholder trust which might affect viability or implementation despite potential benefits. The proliferation of communication technologies and platforms in recent years provides an abundance of options and opportunities for government and organisations to employ transparency and enable engagement as never before.</span>
 
 <span style="font-weight: 400;">Recently established tools by governments for transparency, citizen engagement and to facilitate collective intelligence include vTawain a government crowdsourcing platform to ascertain citizen input on how to legislate emerging industries. Similarly, Barcelona city administration created Decidem, an open source platform used by planners to gather feedback on emerging policy. Barcelona’s city administration also undertakes open budgeting, two of a range of activities for implementing its digital strategy. The Forum Virium Helsinki, a smart city programme driven by Helsinki to enable the co-creation of urban services and businesses, includes an online platform with open source code, APIs and data regarding smart city pilot projects and other activities of the city government.</span>
-<pre>Best practice:
 
-[1] <a href="https://www.oecd.org/gov/open-government.htm" target="_blank" rel="noopener noreferrer"><span style="font-weight: 400;">OECD. </span><i><span style="font-weight: 400;">Open Government.</span></i></a></pre>]]></content:encoded>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
+
+<span style="font-weight: 400;">[1] <a href="https://www.oecd.org/gov/open-government.htm" target="_blank" rel="noopener noreferrer">OECD. <i>Open Government.</i></a></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Transparency and citizen engagement as part of governance transformations aligns with the open government movement.]]></excerpt:encoded>
 	<wp:post_id>3707</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-12 20:33:55]]></wp:post_date>
@@ -451,17 +451,18 @@
 	<title>Carbon neutrality pathway</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/carbon-neutrality-pathway/</link>
 	<pubDate>Mon, 16 Dec 2019 08:56:52 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3709</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[The ratification of the Paris Agreement in 2016 marked a global commitment to the reduction of greenhouse gas emissions to limit global average temperature under 2°C. Lack of progress being made to achieve this goal has seen growing public dissatisfaction and protests around the world, most notably the Fridays for Future and Global Climate strikes. To avoid catastrophic climate change transformations across sectors are needed, particularly in energy supply, transportation and industrial processes for raw materials production. Implementation of transformations to reduce greenhouse gas emissions caused by human activities are changing from being optional to essential due to government regulation or to ensure market competitiveness. Zero and low carbon products and services, and in the case of cities sustainable and livable built environments, will be essential for success.
 
 Local mobility ecosystems are also being shaped by these changes underway. Transport accounts for approximately 25% of global emissions and to address this an increasing number of city governments are introducing congestion charging, banning diesel engine vehicles as well as creating car-free areas or schedules.<span style="font-weight: 400;">[1,2]</span> These changes seek to elevate sustainable mobility modes to become the preference for city dwellers over private vehicles and to maximise the efficiency of urban freight logistics. Zero and low carbon options sought after include walking, public transport, car sharing, carpooling and cycling. The mix of these will vary according to each spatial context and will include strategies for land use planning, transport infrastructure as well as joint working with a range of service providers.
-<pre><span style="font-weight: 400;">Best practice:
 
-[1] <a href="https://www.iea.org/statistics" target="_blank" rel="noopener noreferrer">International Energy Agency (2016)</a> </span>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
-<span style="font-weight: 400;">[2] <a href="https://www.businessinsider.de/cities-going-car-free-ban-2018-12" target="_blank" rel="noopener noreferrer">Bendix, A (2019) <i>15 major cities around the world that are starting to ban cars.</i></a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[1] <a href="https://www.iea.org/statistics" target="_blank" rel="noopener noreferrer">International Energy Agency (2016)</a></span>
+
+<span style="font-weight: 400;">[2] <a href="https://www.businessinsider.de/cities-going-car-free-ban-2018-12" target="_blank" rel="noopener noreferrer">Bendix, A (2019) <i>15 major cities around the world that are starting to ban cars.</i></a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[The decoupling of carbon emissions from economic prosperity will be a fundamental influence in mobility ecosystems over coming decades.]]></excerpt:encoded>
 	<wp:post_id>3709</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 08:56:52]]></wp:post_date>
@@ -504,19 +505,20 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 	<title>Open technical architecture</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/open-technical-architecture/</link>
 	<pubDate>Mon, 16 Dec 2019 09:05:08 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3711</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">This commonly comprises legacy systems, different departmental technologies and ad hoc solutions. IT systems, security, processes and policies need to be revised to build and open technical infrastructure based on open industry standards, open APIs, open and source code. This infrastructure should be available to an open network of vendors and stakeholders.</span>
 
 <span style="font-weight: 400;">A technically agnostic reference architecture supports fast take-up of digitally based solutions in cities and local authorities, allows many city stakeholders to participate and enables different solutions to be easily integrated. It creates a vendor agnostic, interoperable, standards-based architecture and implementation. Examples of open technical architectures being developed for city governments include the EU funded European Innovation Partnership on Smart Cities and Communities (EIP SCC) Open Urban Platforms project [1]</span><span style="font-weight: 400;">, the City Enabler for Digital Urban Services (CEDUS) being supported by EIT Digital (European Institute of Innovation and Technology) as well as the Smart Columbus Operating System (SCOS), a federally funded smart city initiative in the U.S.</span><span style="font-weight: 400;"> [2]</span>
 
 <span style="font-weight: 400;">An open technical architecture is a prerequisite for an open mobility ecosystem emerge. Amongst other benefits, they provide the foundation for a city authority to accept and disseminate data from both public and private transport service providers and other systems, and to collect and analyze data to better understand and address urban challenges.</span>
-<pre>Best practice:
+
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
 <span style="font-weight: 400;">[1] <a href="https://eu-smartcities.eu/initiatives/68/description" target="_blank" rel="noopener noreferrer">EIP SCC Open Urban Platform</a></span>
 
-<span style="font-weight: 400;">[2] <a href="https://www.smartcolumbusos.com/about/about-smart-columbus" target="_blank" rel="noopener noreferrer">Smart Columbus</a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[2] <a href="https://www.smartcolumbusos.com/about/about-smart-columbus" target="_blank" rel="noopener noreferrer">Smart Columbus</a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[City authorities must modernize and open up the digital infrastructure of their organisations.]]></excerpt:encoded>
 	<wp:post_id>3711</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 09:05:08]]></wp:post_date>
@@ -559,8 +561,8 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 	<title>Open mobility platform</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/open-mobility-platform/</link>
 	<pubDate>Mon, 16 Dec 2019 09:19:45 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3715</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">It provides a seamless and personalized door-to-door journey and positive user experience regardless of travel mode. Open networked mobility platforms and services will be a key enabler for inciting transport behaviour change away from private car ownership towards shared and low emissions mobility formats. </span>
 
@@ -568,12 +570,11 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 
 <span style="font-weight: 400;">For sustainability and carbon reductions and to create “public value”, MaaS needs to be coupled with increases in public transport capacity and new public domain elements to enable electric vehicles and sharing or ride hailing. If led by a private sector service provider, a mobility platform might create an open marketplace, but it will not necessarily complement programs for sustainability and share data needed for better public transport planning and investment unless local governance requires it to, for example through policy measures. [2]</span>
 
-&nbsp;
-<pre><span style="font-weight: 400;">Best practice:</span>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
 <span style="font-weight: 400;">[1] <a href="https://smart-maas.eu/en/" target="_blank" rel="noopener noreferrer">Smart Mobility as a Service Platform</a> </span>
 
-<span style="font-weight: 400;">[2] <a href="https://www.emta.com/spip.php?article1319" target="_blank" rel="noopener noreferrer">Mobility as a Service: A Perspective on MaaS from Europe’s Transport Authorities</a> </span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[2] <a href="https://www.emta.com/spip.php?article1319" target="_blank" rel="noopener noreferrer">Mobility as a Service: A Perspective on MaaS from Europe’s Transport Authorities</a> </span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[An open mobility platform integrates different Mobility as a Service (MaaS) offerings by public and private providers.]]></excerpt:encoded>
 	<wp:post_id>3715</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 09:19:45]]></wp:post_date>
@@ -616,8 +617,8 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 	<title>Open standards</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/standards/</link>
 	<pubDate>Mon, 16 Dec 2019 09:34:18 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3718</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">Standards should include technical standards for open data, API standards, data security standards as well as legal standards concerning privacy and use licensing. As part of these, open data standards need to be driven by government to ensure interoperability and vendor neutrality. Data standards should set out how data should be structured and formatted and specify procedures for anonymisation, processing and protection. Standards are a core foundation of </span><span style="font-weight: 400;">data governance</span><span style="font-weight: 400;">. </span>
 
@@ -628,7 +629,8 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 <span style="font-weight: 400;">To create an open ecosystem, Mobility as a Service platforms and solutions need to use open, non-proprietary APIs and data formats. </span>
 
 <span style="font-weight: 400;">Projects that incorporate open API standards include the Open Mobility Foundation’s Mobility Data Specifications (MDS) [1] in the United States.</span><span style="font-weight: 400;"> In Europe OASC (Open &amp; Agile Smart Cities) [2] minimal interoperability mechanisms,</span><span style="font-weight: 400;"> CitySDK (City Service Development Kit) and 6Aika and bIoTope, developed as part of an EU (Horizon 2020) project.</span><span style="font-weight: 400;"> [3] More broadly, FIWARE is software technology and open APIs developed under EU funding to provide a universal set of standards for context data management for access to information coming from any potential data sources in a city, including mobility. [4]</span>
-<pre><span style="font-weight: 400;">Best practice: </span>
+
+<div class="footnote"><span style="font-weight: 400;">Best practice: </span>
 
 <span style="font-weight: 400;">[1]  <a href="https://www.openmobilityfoundation.org/" target="_blank" rel="noopener noreferrer">Open Mobility Foundation</a> </span>
 
@@ -636,7 +638,7 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 
 <span style="font-weight: 400;">[3] <a href="https://www.citysdk.eu/wp-content/uploads/2016/12/CookBook_web_v1.1.pdf" target="_blank" rel="noopener noreferrer">Harmonised Smart City APIs. A CookBook for Cities. City SDK and 6aika APIs </a></span>
 
-<span style="font-weight: 400;">[4]  <a href="https://biotope-project.eu" target="_blank" rel="noopener noreferrer">The bIoTope Project</a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[4]  <a href="https://biotope-project.eu" target="_blank" rel="noopener noreferrer">The bIoTope Project</a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Standards are needed to enable data sharing and connected service provision amongst system stakeholders.]]></excerpt:encoded>
 	<wp:post_id>3718</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 09:34:18]]></wp:post_date>
@@ -679,8 +681,8 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 	<title>Open innovation</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/open-innovation/</link>
 	<pubDate>Mon, 16 Dec 2019 12:30:21 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3723</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">Open innovation brings expertise from outside parties to generate ideas or solve problems to achieve outcomes that could not have been conceived by one stakeholder alone. </span><span style="font-weight: 400;">Diverse collaboration between stakeholders and fields of expertise within a context of open resources such as open source software, open access to knowledge and open data has enabled many important inventions and discoveries.</span>
 
@@ -689,9 +691,10 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 <span style="font-weight: 400;">Emerging open innovation concepts and projects concerning urban systems and mobility include MOD Cities by the Rocky Mountain Institute which are described as “living test sites where local municipal governments, developers, financiers, the vehicle-service industry, and urban designers and architects actively collaborate to co-innovate at the nexus of urban design, vehicles, and new mobility services.”</span><span style="font-weight: 400;"> [1]</span>
 
 <span style="font-weight: 400;">In Antwerp a living lab has been established as a collaboration between the City of Antwerp, Flanders and imec, a nano electronics company. It includes a startup incubator and accelerator, investment in new technologies as well as the piloting of new technologies in partnership with the city.</span>
-<pre><span style="font-weight: 400;">Best practice: </span>
 
-<span style="font-weight: 400;">[1] <a href="https://rmi.org/insight/cities-designed-to-shape-and-enable-new-mobility/" target="_blank" rel="noopener noreferrer">Rocky Mountain Institute (2018) Cities Designed to Shape and Enable New Urban Mobility</a></span></pre>]]></content:encoded>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
+
+<span style="font-weight: 400;">[1] <a href="https://rmi.org/insight/cities-designed-to-shape-and-enable-new-mobility/" target="_blank" rel="noopener noreferrer">Rocky Mountain Institute (2018) Cities Designed to Shape and Enable New Urban Mobility</a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Similar to transformations for networked governance, open innovation is based on networks of people and organisations collaborating to develop novel ideas and solutions to complex problems. ]]></excerpt:encoded>
 	<wp:post_id>3723</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 12:30:21]]></wp:post_date>
@@ -734,17 +737,16 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 	<title>User-centered design</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/user-centered-design/</link>
 	<pubDate>Mon, 16 Dec 2019 12:38:19 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3725</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">Both private and public sector actors should utilise user-centered design research and design methods to ensure that digital transformations address actual user or customer needs as well as improve the usability and accessibility of product offerings or service provision. User-centered design has become a standard approach for startups and organisations seeking to create viable businesses to identify problems to be solved and heighten customer satisfaction.</span>
 
 <span style="font-weight: 400;">The public sector has traditionally undertaken communicative and collaborative approaches to ascertain feedback on internally conceived plans or program implementation impacts. However there is increasing importance attributed to customer experience in government service provision to meet the public’s expectations of good governance. To ensure needs and expectations are adequately met subject citizens and stakeholders are ideal collaborators to identify problems and possible solutions at the earliest conception and design stages of a program or project. One example is collaborative solution building for civic projects involving new technologies undertaken by City Tech Collaborative through user testing and focus groups. [1]</span>
 
-&nbsp;
-<pre><span style="font-weight: 400;">Best practice:</span>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
-<span style="font-weight: 400;">[1] <a href="https://www.citytech.org/cutgroup" target="_blank" rel="noopener noreferrer">City Tech Collaborative. </a></span><i><span style="font-weight: 400;">Civic Design and User Testing.</span></i></pre>]]></content:encoded>
+<span style="font-weight: 400;">[1] <a href="https://www.citytech.org/cutgroup" target="_blank" rel="noopener noreferrer">City Tech Collaborative.</a> <i>Civic Design and User Testing.</i></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[User-centered design focuses on the needs and desires of the users of products and services to ensure they are met and even exceeded. ]]></excerpt:encoded>
 	<wp:post_id>3725</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 12:38:19]]></wp:post_date>
@@ -787,8 +789,8 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 	<title>Open source software</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/open-source-software/</link>
 	<pubDate>Mon, 16 Dec 2019 12:41:44 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3726</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">Open source represents a development model and way for individuals, companies and communities to work together. Encouraging open source in an open mobility ecosystem might take the form of an organisation utilising open source software rather than proprietary software or contributing to open source repositories or resources. Some argue that open source has been an essential element driving forward progress in the computing landscape until now, enabling the creation of software ecosystems and new technologies.</span><span style="font-weight: 400;"> [1]</span>
 
@@ -872,13 +874,14 @@ Local mobility ecosystems are also being shaped by these changes underway. Trans
 <span style="font-weight: 400;">There are a number of open source licenses that can be applied to open source software or artistic works, which specify how it can be used by others. [2] They can contain limitations in use to varying degrees. For instance some licenses allow any types of modifications to be made to the code to create something new, even if the new code becomes a proprietary product. Conversely, the license might be copyleft in nature which provides that the code or work may be used, modified and distributed freely by others as long as anything derived from it is bound by the same conditions as the original code or source.</span><span style="font-weight: 400;"> </span>
 
 <span style="font-weight: 400;">The initiative Public Money, Public Code is calling for any software developed by governments to be made publicly available under a Free and Open Source Software licence. [3]</span><span style="font-weight: 400;"> In line with this and as part of its technological sovereignty strategy, the Barcelona city administration is currently phasing out the use of proprietary software. This will be enabled by outsourcing IT projects to local small and medium sized enterprises and employing developers to build software programs for its own specific needs.</span>
-<pre><span style="font-weight: 400;">[1] Haff, G. (2018) <i>How Open Source Ate Software.</i> Apress.</span>
 
-<span style="font-weight: 400;">[2] For example, refer to </span><a href="https://producingoss.com/en/license-choosing.html" target="_blank" rel="noopener noreferrer"><em><span style="font-weight: 400;">Producing Open Source Software</span> </em></a>
+<div class="footnote"><span style="font-weight: 400;">[1] Haff, G. (2018) <i>How Open Source Ate Software.</i> Apress.</span>
 
-Best practice:
+<span style="font-weight: 400;">[2] For example, refer to <a href="https://producingoss.com/en/license-choosing.html" target="_blank" rel="noopener noreferrer"><em>Producing Open Source Software</em></a></span>
 
-<span style="font-weight: 400;">[3] <a href="https://publiccode.eu" target="_blank" rel="noopener noreferrer">Public money, public code</a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">Best practice:</span>
+
+<span style="font-weight: 400;">[3] <a href="https://publiccode.eu" target="_blank" rel="noopener noreferrer">Public money, public code</a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[The open source movement involves much more than simply providing free code for software creation.]]></excerpt:encoded>
 	<wp:post_id>3726</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 12:41:44]]></wp:post_date>
@@ -921,8 +924,8 @@ Best practice:
 	<title>Data stewardship</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/data-stewardship/</link>
 	<pubDate>Mon, 16 Dec 2019 13:04:53 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3729</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">Data stewardship concerns the people or entity that ensures data is managed according to agreed practices and principles. Those responsible for data stewardship implement the data strategy and ensures data quality, compliance, privacy and security through </span><span style="font-weight: 400;">data management</span><span style="font-weight: 400;"> and </span><span style="font-weight: 400;">data sharing</span><span style="font-weight: 400;"> (where applicable).</span>
 
@@ -931,13 +934,14 @@ Best practice:
 <span style="font-weight: 400;">Those responsible for data stewardship need to implement stakeholder and consensus driven processes that define the rules for every type of activity concerning data. This includes solutions to the growing need of big data, whereby such is collected by only certain organisations but is needed by various stakeholders in the ecosystem to achieve diverse technology innovation outcomes involving an array of actors. </span>
 
 <span style="font-weight: 400;">The Barcelona Municipal Data Office (MDO) is a data stewardship model established within a city government administration. It is a multi-department directorate responsible for the management, quality, governance and exploitation of data relating to Barcelona City Council and all its associated bodies (public and private) that provide services to the general public.</span><span style="font-weight: 400;"> [1] Examples involving public-private partnerships for data stewardship, management and sharing include the City Data Exchange, a pilot between the Municipality of Copenhagen, the Capital Region of Denmark and Hitachi. [2]</span><span style="font-weight: 400;"> In Toronto, Canada Sidewalk Labs has proposed an independent government-sanctioned entity to form a Data Trust as part of proposals for the public-private redevelopment of a post-industrial waterfront area utilising emergent technologies. [3]</span>
-<pre>Best practice:
+
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
 <span style="font-weight: 400;">[1]  <a href="https://www.barcelona.cat/digitalstandards/en/data-management/0.1/governance/" target="_blank" rel="noopener noreferrer">Governance of municipal data: the Municipal Data Office</a></span>
 
 <span style="font-weight: 400;">[2] <a href="https://cphsolutionslab.dk/en/news/city-data-exchange" target="_blank" rel="noopener noreferrer">City Data Exchange.</a></span>
 
-<span style="font-weight: 400;">[3] <a href="https://www.sidewalktoronto.ca/innovations/digital-innovation" target="_blank" rel="noopener noreferrer">Sidewalk Toronto. <em>Digital Innovation.</em></a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[3] <a href="https://www.sidewalktoronto.ca/innovations/digital-innovation" target="_blank" rel="noopener noreferrer">Sidewalk Toronto. <em>Digital Innovation.</em></a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Defining the management framework for data constantly collected from transport users, organizations and vendors. ]]></excerpt:encoded>
 	<wp:post_id>3729</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 13:04:53]]></wp:post_date>
@@ -980,8 +984,8 @@ Best practice:
 	<title>Data management</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/data-management/</link>
 	<pubDate>Mon, 16 Dec 2019 13:20:45 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3730</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">It is undertaken by those responsible for </span><span style="font-weight: 400;">data stewardship</span><span style="font-weight: 400;"> to enable data quality, security and compliance with relevant laws. Data management implements the data architecture needed for data governance to achieve the goals set out in the data strategy or agreed by stakeholders the data affects. Data architecture encompasses the rules, standards and models that specifically define the type of data collected, its format, how it is used, stored, managed and integrated in an organisation, made open data or deleted. It might involve structured data within databases and information systems, and unstructured data which can include any data not as traditionally stored within a database or in a file such as documents, content, audio or video.</span>
 
@@ -1001,11 +1005,12 @@ Best practice:
 </li>
 </ul>
 <span style="font-weight: 400;">In line with this guidance, the World Business Council for Sustainable Development (WBCSD) are currently developing a position paper on data sharing principles. It will include data sharing use cases that could be achieved through partnerships between cities and mobility vendors. [2]</span>
-<pre>Best practice:
+
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
 <span style="font-weight: 400;">[1] National Association of City Transportation Officials (NACTO) and the International Municipal Lawyers Association (IMLA) <a href="https://nacto.org/managingmobilitydata/" target="_blank" rel="noopener noreferrer"><em>Guidelines for Managing Mobility Data (2019)</em></a>  </span>
 
-<span style="font-weight: 400;">[2]  <a href="https://www.wbcsd.org/Programs/Cities-and-Mobility/Transforming-Mobility/Transforming-Urban-Mobility/Data-Sharing-Principles" target="_blank" rel="noopener noreferrer">WBCSD Data Sharing Principles</a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[2]  <a href="https://www.wbcsd.org/Programs/Cities-and-Mobility/Transforming-Mobility/Transforming-Urban-Mobility/Data-Sharing-Principles" target="_blank" rel="noopener noreferrer">WBCSD Data Sharing Principles</a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Data management involves an array of activities to ensure data is managed in accordance with regulations, standards and stakeholder expectations.]]></excerpt:encoded>
 	<wp:post_id>3730</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 13:20:45]]></wp:post_date>
@@ -1048,8 +1053,8 @@ Best practice:
 	<title>Data sharing</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/data-sharing/</link>
 	<pubDate>Mon, 16 Dec 2019 13:44:53 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3732</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">They enable a greater array of stakeholders to contribute to or benefit from emergent mobility ecosystem opportunities as users, creators or service providers. Increasing mobility data access by transit authorities enables data based products and services to be developed that can contribute to the accomplishment of urban sustainability goals. For example access to real time transit information has been shown to increase public transport patronage.</span><span style="font-weight: 400;"> [1]</span>
 
@@ -1058,7 +1063,8 @@ Best practice:
 <span style="font-weight: 400;">That said, making data open or ensuring it is shared does not guarantee public value. The variety of data points needed depend on the challenge a city or organisation aims to address. Aiming to ensure data openness in the public interest, best practices have been developed for sharing public sector information. One example is the Share-PSI 2.0 guidelines co-funded by the European Commission. It sets out 129 recommendations and includes policies and legislation to be taken into consideration for open data.</span><span style="font-weight: 400;"> [5]</span>
 
 <span style="font-weight: 400;">Data sharing partnerships might be established through government procurement or permit granting activities. The sharing of certain data points can be required as part of these processes and can be enabled by standard contract clauses referring to data utilization and ownership.</span><span style="font-weight: 400;"> [6] Mobility data sharing in this format is currently enforced by New York City which requires ride hailing companies to provide the city the date, time, and location of pickups and drop-offs (at least down to the intersection), the vehicle’s license number, the trip mileage, itemized trip fare, route (including whether the vehicle entered traffic-choked Midtown), and how much the driver was paid. Los Angeles Department of Transportation created the Mobility Data Specification which similarly enables information transfer to the city about shared scooters e.g. where they are at all times. Providing data via the MDS standards is one of the conditions for operators seeking permission for shared mobility businesses in Los Angeles. These standards have since been adopted by other US cities and are now the basis for the standards advocated by the Open Mobility Foundation. They have the potential to be used for all forms of mobility. </span>
-<pre><span style="font-weight: 400;">Best practice: </span>
+
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
 <span style="font-weight: 400;">[1]  <a href="http://transitcenter.org/publications/transit_data/#recommendations" target="_blank" rel="noopener noreferrer">The Transit Center (2017). <em>The Data Transit Riders Want.</em></a></span>
 
@@ -1068,10 +1074,9 @@ Best practice:
 
 <span style="font-weight: 400;">[4]  The Open Data Institute (2019). <a href="https://theodi.org/article/what-effect-does-data-portability-have-in-an-agent-based-model-of-the-data-economy/" target="_blank" rel="noopener noreferrer"><i>What effect does data portability have in an agent-based model of the data economy?</i></a></span>
 
-<span style="font-weight: 400;">[5]  Network for Innovation in European Public Sector Information (2018) <a href="https://www.w3.org/2013/share-psi/bp/" target="_blank" rel="noopener noreferrer"><i>Best Practices for Sharing Public Sector Information</i></a>
+<span style="font-weight: 400;">[5]  Network for Innovation in European Public Sector Information (2018) <a href="https://www.w3.org/2013/share-psi/bp/" target="_blank" rel="noopener noreferrer"><i>Best Practices for Sharing Public Sector Information</i></a></span>
 
-[6] Examples can be found at <a href="https://www.lawinsider.com/clause/data-ownership?clauses%5B0%5D=Data+Ownership" target="_blank" rel="noopener noreferrer">Law Insider (2019)</a>
-</span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[6] Examples can be found at <a href="https://www.lawinsider.com/clause/data-ownership?clauses%5B0%5D=Data+Ownership" target="_blank" rel="noopener noreferrer">Law Insider (2019)</a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Data sharing through open data and data sharing partnerships increase possibilities for digital innovation. ]]></excerpt:encoded>
 	<wp:post_id>3732</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 13:44:53]]></wp:post_date>
@@ -1114,19 +1119,20 @@ Best practice:
 	<title>Life cycle sustainability</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/life-cycle-sustainability/</link>
 	<pubDate>Mon, 16 Dec 2019 13:53:28 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3734</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">The life cycle begins with the natural resources and raw materials used for production, and includes distribution processes, use and maintenance of the product as well as impacts of disposal or recycling. As a rule, addressing lifecycle sustainability begins with product design and reducing resource use across the entire life of the product. Ideally however consideration has been given as to whether the product is actually the best solution to the problem within its context and existing possibilities; the pursuit of aggregate externality avoidance, rather than simply impact reduction at different stages of a life cycle that might not be necessary in the first place. </span>
 
 <span style="font-weight: 400;">Life cycle assessment will be a key tool for transitioning to a circular economy. A comprehensive life cycle assessment involves an array of quantitative and qualitative indicators. A common challenge of assessments is ascertaining suitable datasets. [1] </span><span style="font-weight: 400;"> Lifecycle sustainability requires a commitment by those developing products and services to provide access to data as well as require it or collect it as part of transactions with suppliers or customers. </span>
 
 <span style="font-weight: 400;">The concept of life cycle sustainability is long established and a number of life cycle assessment methodologies have been developed into international standards. For example ISO 14040 series Environmental Management - Lifecycle Assessment which looks at potential environmental impacts, ISO 26000 Social Responsibility examines social consequences, and ISO 15686 Buildings and constructed assets - Part 5 Life-cycle costing relating to cost implications. The UNEP advocates the use of an overarching life cycle sustainability assessment (LCSA) which combines these frameworks to gain a holistic view of social, environmental and economic sustainability. [2]</span>
-<pre><span style="font-weight: 400;">Best practice:</span>
 
-<span style="font-weight: 400;">[1]  Guinée J. (2016) <a href="https://link.springer.com/chapter/10.1007/978-3-319-20571-7_3" target="_blank" rel="noopener noreferrer">Life Cycle Sustainability Assessment: What Is It and What Are Its Challenges?. In: Clift R., Druckman A. (eds) Taking Stock of Industrial Ecology</a>. Springer</span>
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
-<span style="font-weight: 400;">[2] United Nations Environment Program (2011) <a href="http://wedocs.unep.org/bitstream/handle/20.500.11822/8001/UNEP_LifecycleInit_Dec_FINAL.pdf?sequence=3&amp;isAllowed=y" target="_blank" rel="noopener noreferrer"><i>Towards a Life Cycle Sustainability Assessment.</i></a></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[1] Guinée J. (2016) <a href="https://link.springer.com/chapter/10.1007/978-3-319-20571-7_3" target="_blank" rel="noopener noreferrer">Life Cycle Sustainability Assessment: What Is It and What Are Its Challenges?. In: Clift R., Druckman A. (eds) Taking Stock of Industrial Ecology</a>. Springer</span>
+
+<span style="font-weight: 400;">[2] United Nations Environment Program (2011) <a href="http://wedocs.unep.org/bitstream/handle/20.500.11822/8001/UNEP_LifecycleInit_Dec_FINAL.pdf?sequence=3&amp;isAllowed=y" target="_blank" rel="noopener noreferrer"><i>Towards a Life Cycle Sustainability Assessment.</i></a></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[The environmental sustainability of mobility products and services depends on their entire lifecycle, not just benefits and impacts calculated during journeys. ]]></excerpt:encoded>
 	<wp:post_id>3734</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 13:53:28]]></wp:post_date>
@@ -1169,17 +1175,18 @@ Best practice:
 	<title>Access</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/accessibility/</link>
 	<pubDate>Mon, 16 Dec 2019 13:57:21 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3736</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">To develop a sustainable and open mobility ecosystem products and services must address accessibility spheres in design as well as deployment. Access encompasses physical accessibility to enable independent travel by mobility restricted individuals as well as spatial and economic considerations, such as provision of transport services in underserved locations, time to reach destinations and price. [1]</span><span style="font-weight: 400;"> Access can also be applicable in terms of digital accessibility. A technology based mobility solution might see challenges for adoption in locations with low digital inclusion rates if they depend upon on mobile internet and smart device access, or the digital adoption progress of local government administrations, businesses or other relevant organisations.</span>
 
 <span style="font-weight: 400;">Access aims to provide ubiquitous safe, reliable and comfortable mobility opportunities for all segments of the public. What is needed to address access depends on local demographics, transit shortfalls and aims, both quantitative i.e. transit modes, infrastructure, frequency; and qualitative i.e. journey experience, perceptions of safety, cultural associations with ownership or public transport. Generally low-income groups are disadvantaged in multiple ways by transport inaccessibility.</span><span style="font-weight: 400;"> [2] For example those areas with low levels of public transport (or none) might have more affordable housing, but living in these locations limits resident’s accessibility to employment, education institutions, open spaces and public services, as well as limiting the ability to undertake active transport modes (walking and cycling) which is an important aspect of urban life quality, as highlighted by the World Health Organisation (WHO) Healthy Cities movement.</span>
-<pre>Best practice:
+
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
 <span style="font-weight: 400;">[1] For example: UN Habitat (2013) <i>Planning and Design for Sustainable Urban Mobility.</i></span>
 
-<span style="font-weight: 400;">[2] Institute for Transport and Development Policy (ITDP) (2017) <i>This is What Urban Equity Looks Like: The TOD Standard 3.0.</i></span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[2] Institute for Transport and Development Policy (ITDP) (2017) <i>This is What Urban Equity Looks Like: The TOD Standard 3.0.</i></span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Provision of access is the ultimate goal of mobility.]]></excerpt:encoded>
 	<wp:post_id>3736</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 13:57:21]]></wp:post_date>
@@ -1222,8 +1229,8 @@ Best practice:
 	<title>System synergies</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/ecosystem-synergies/</link>
 	<pubDate>Mon, 16 Dec 2019 14:02:04 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/?post_type=structure&#038;p=3738</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[<span style="font-weight: 400;">Rather than mass, generic rollout across locations, mobility service providers would benefit from assessing how they can contribute to a more integrated and efficient transport system from the existing and planned network.</span>
 
@@ -1246,11 +1253,12 @@ Best practice:
 </li>
 </ul>
 <span style="font-weight: 400;">Building mobility system synergies compounds the attractiveness of sustainable transport options and behaviour change. A recent working paper that modelled different transport services that can be developed through public-private urban mobility partnerships found that applying three types of new mobility services in particular had notable benefits to the local mobility systems. Electric, on-demand minibuses to match transport service levels more closely to demand; first and last mile ride sharing to provide transport in underserved urban areas, and; dynamic trip-planning and ticketing services such as smartphone apps that encourage multi-modal journeys and simplify ticket purchases. These services can make public transport more affordable, accessible, attractive and reduce its environmental impact. [2]</span>
-<pre>Best practice:
+
+<div class="footnote"><span style="font-weight: 400;">Best practice:</span>
 
 <span style="font-weight: 400;">[1] Transit Centre (2016) <a href="http://transitcenter.org/wp-content/uploads/2016/10/TC-Private-Mobility-Public-Interest-20160909.pdf" target="_blank" rel="noopener noreferrer"><i>Private Mobility, Public Interest. How public agencies can work with emerging mobility providers.</i></a></span>
 
-<span style="font-weight: 400;">[2] Canales, D., Bouton, S., Trimble, E., Thayne, J., Da Silva, L., Shastry, S., Knupfer, S., Powell, M.<a href="http://newclimateeconomy.net/content/cities-working-paper" target="_blank" rel="noopener noreferrer"> <i>Connected Urban Growth: Public-Private Collaborations for Transforming Urban Mobility</i>.</a> Coalition for Urban Transitions. London and Washington, DC.</span></pre>]]></content:encoded>
+<span style="font-weight: 400;">[2] Canales, D., Bouton, S., Trimble, E., Thayne, J., Da Silva, L., Shastry, S., Knupfer, S., Powell, M.<a href="http://newclimateeconomy.net/content/cities-working-paper" target="_blank" rel="noopener noreferrer"> <i>Connected Urban Growth: Public-Private Collaborations for Transforming Urban Mobility</i>.</a> Coalition for Urban Transitions. London and Washington, DC.</span></div>]]></content:encoded>
 	<excerpt:encoded><![CDATA[Products and services will succeed that address the local mobility ecosystem challenges and aspirations. ]]></excerpt:encoded>
 	<wp:post_id>3738</wp:post_id>
 	<wp:post_date><![CDATA[2019-12-16 14:02:04]]></wp:post_date>
@@ -1293,8 +1301,8 @@ Best practice:
 	<title>Open mobility platform</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-2/</link>
 	<pubDate>Mon, 16 Dec 2019 16:19:54 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-2.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1327,8 +1335,8 @@ Best practice:
 	<title>Data management</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-3/</link>
 	<pubDate>Mon, 16 Dec 2019 16:19:57 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-3.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1361,8 +1369,8 @@ Best practice:
 	<title>Ecosystem synergies</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-4/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:01 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-4.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1395,8 +1403,8 @@ Best practice:
 	<title>Accessibility</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-5/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:04 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-5.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1429,8 +1437,8 @@ Best practice:
 	<title>Life cycle sustainability</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-6/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:08 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-6.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1463,8 +1471,8 @@ Best practice:
 	<title>National agenda</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-7/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:10 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-7.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1497,8 +1505,8 @@ Best practice:
 	<title>Open source software</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-8/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:14 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-8.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1531,8 +1539,8 @@ Best practice:
 	<title>User-centered design</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-9/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:17 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-9.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1565,8 +1573,8 @@ Best practice:
 	<title>Open innovation</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-10/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:20 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-10.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1599,8 +1607,8 @@ Best practice:
 	<title>Carbon neutrality pathway</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-11/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:23 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-11.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1633,8 +1641,8 @@ Best practice:
 	<title>Transparency and citizen engagement</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-12/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:26 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-12.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1667,8 +1675,8 @@ Best practice:
 	<title>Mobility strategy</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-13/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:33 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-13.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1709,8 +1717,8 @@ Best practice:
 	<title>Open technical architecture</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-16/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:36 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-16.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1743,8 +1751,8 @@ Best practice:
 	<title>Data stewardship</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-17/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:39 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-17.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1777,8 +1785,8 @@ Best practice:
 	<title>Open standards</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-18/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:42 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-18.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1811,8 +1819,8 @@ Best practice:
 	<title>Governance transformation</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy-19/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:45 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy-19.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1845,8 +1853,8 @@ Best practice:
 	<title>Data sharing</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1-copy/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:48 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1-copy.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -1879,8 +1887,8 @@ Best practice:
 	<title>Digital strategy</title>
 	<link>https://opensourcelab.dfki.de/taxonomy/national-agenda/artboard-1/</link>
 	<pubDate>Mon, 16 Dec 2019 16:20:51 +0000</pubDate>
-	<dc:creator><![CDATA[Tina]]></dc:creator>
-	<guid isPermaLink="false">https://opensourcelab.dfki.de/wp-content/uploads/2019/12/Artboard-1.png</guid>
+	<dc:creator><![CDATA[dfki]]></dc:creator>
+	<guid isPermaLink="false"></guid>
 	<description></description>
 	<content:encoded><![CDATA[]]></content:encoded>
 	<excerpt:encoded><![CDATA[]]></excerpt:encoded>
