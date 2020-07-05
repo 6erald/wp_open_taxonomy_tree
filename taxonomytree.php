@@ -69,6 +69,20 @@ function taxonomytree_callback() {
 	$tree_taxonomy_arr  = get_taxonomy( $tree_taxonomy );
 	$tree_taxonomy_name = $tree_taxonomy_arr->labels->singular_name;
 
+	// If you use the xml for 'Sustainable Open Mobility Taxonomy'
+	// extract and overwrite taxonomy name tree for main parent from post meta
+	$the_slug = 'sustainable-open-mobility-taxonomy';
+	$args = array(
+		'name' 		     => $the_slug,
+		'post_type'      => 'structure'
+	);
+	$my_post = get_posts($args);
+
+	if ( post_exists($my_post[0]->post_title) != 0 ) {
+		$post_meta_key      = 'taxonomy_rootname';
+		$tree_taxonomy_name = get_post_meta($my_post[0]->ID, $post_meta_key);
+	}
+
 	// Create main parent element of the tree
 	$tree = array(
 		'parent'  => -1,
