@@ -10,7 +10,7 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 
 1. Download the files and separate the sustainable_open_mobility_taxonomy.xml from the other files.
 
-2. Upload the wp-taxonomy-tree folder into your wordpress plugin directory.
+2. Upload the wp_open_taxonomy_tree folder into your wordpress plugin directory.
 
 3. Log in to your site as an administrator.
 
