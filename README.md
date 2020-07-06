@@ -1,4 +1,4 @@
-# Open Taxonomy Tree Wordpress Plugin
+# Open Taxonomy Tree WordPress Plugin
 
 
 ## Description
@@ -73,5 +73,5 @@ Levels and Objecs:
 
 * A Project of the [Open Source Lab](https://opensourcelab.dfki.de/)
 * Concept: [Tina Gallico](https://www.tinagallico.com/)
-* Design: [Olya Bazilevich](http://olyabazilevich.com/)
+* Illustration: [Olya Bazilevich](http://olyabazilevich.com/)
 * Programming: [Gerald Wagner](https://github.com/6erald/)
