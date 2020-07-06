@@ -32,13 +32,13 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 7. Place the shortcode where the taxonomy tree shall display and modify it this way:
 
     `[taxonomytree]`
-    * The default taxonomy "tax_structure" and the assigned post of the default post type "structure" will display.
+    The default taxonomy "tax_structure" and the assigned post of the default post type "structure" will display.
 
     `[taxonomytree taxonomy="my_taxonomy_slug"]`
-    * You can display the taxonomy of a specific post type but not the assigned posts.
+    You can display the taxonomy of a specific post type but not the assigned posts.
 
     `[taxonomytree taxonomy="my_taxonomy_slug" post_type="my_post_type_slug"]`
-    * You can display taxonomy of a specific post type and its assigned posts.
+    You can display taxonomy of a specific post type and its assigned posts.
 
 8. Add tree colors to the terms of level 1 in hex `#fff` or `#ffffff`.
 
