@@ -10,9 +10,9 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 
 1. Download the files and separate the sustainable_open_mobility_taxonomy.xml from the other files.
 
-2. Log in to your site as an administrator.
+2. Upload the wp-taxonomy-tree folder into your wordpress plugin directory.
 
-3. Upload the wp-taxonomy-tree folder into your wordpress plugin directory.
+3. Log in to your site as an administrator.
 
 4. Got to Wordpress > Plugins > Installed Plugins in the WordPress admin panel and activate the Open Taxonomy Tree.
 
@@ -20,12 +20,12 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 
     1. Go to Tools > Import in the WordPress admin panel.
     2. Install the "WordPress" importer from the list.
-    4. Activate & Run Importer.
-    5. Upload the sustainable_open_mobility_taxonomy.xml.
-    6. You will first be asked to map the authors in this export file to users on the site. For each author, you may choose to map to an existing user on the site or to create a new user.
-    7. You will secondly be asked to import the attachments. This will enable you to import the Illustrations of the taxonomy as thumbnails.
-    8. WordPress will then import each of the posts, categories, Thumbnails of the Sustainable Open Mobility Taxonomy into your site.
-    9. You'll find the imported content under Taxonomy in the WordPress admin panel. The introducon page you'll find under Sustainable Open Mobility Taxonomy. If you want to display the Sustainable Open Mobility Taxonomy somewhere else at your website place the shortcode `[taxonomytree]` on your target.
+    3. Activate & Run Importer.
+    4. Upload the sustainable_open_mobility_taxonomy.xml.
+    5. You will first be asked to map the authors in this export file to users on the site. For each author, you may choose to map to an existing user on the site or to create a new user.
+    6. You will secondly be asked to import the attachments. This will enable you to import the Illustrations of the taxonomy as thumbnails.
+    7. WordPress will then import each of the posts, categories, Thumbnails of the Sustainable Open Mobility Taxonomy into your site.
+    8. You'll find the imported content under Taxonomy in the WordPress admin panel. The introducon page you'll find under Sustainable Open Mobility Taxonomy. If you want to display the Sustainable Open Mobility Taxonomy somewhere else at your website place the shortcode `[taxonomytree]` on your target.
 
 6. If you want to create a custom taxonomy go on with the following steps otherwise skip.
 
