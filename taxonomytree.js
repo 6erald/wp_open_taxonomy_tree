@@ -357,7 +357,7 @@ jQuery(document).ready(function($) {
          * Text wrap of root term
          */
 
-        function wrap(text, width, mydy) {
+        function wrap(text, width, yOffset) {
 
             text.each(function() {
 
@@ -373,7 +373,7 @@ jQuery(document).ready(function($) {
                         .append("tspan")
                         .attr("x", 0)
                         .attr("y", y)
-                        .attr("dy", "" + mydy /-2 + "px");
+                        .attr("dy", "" + yOffset /-2 + "px");
 
                 while (word = words.pop()) {
 
@@ -388,7 +388,7 @@ jQuery(document).ready(function($) {
                         tspan = text.append("tspan")
                             .attr("x", 0)
                             .attr("y", y)
-                            .attr("dy", "" + mydy + "px")
+                            .attr("dy", "" + yOffset + "px")
                             .text(word);
                     }
                 }

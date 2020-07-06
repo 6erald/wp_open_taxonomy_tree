@@ -22,9 +22,17 @@ add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
 function taxonomytree_shortcode( $atts ) {
 
 	// Define shorcode atts and default atts
+	if ( post_type_exists ( 'structure' ) ) {
+		$tree_taxonomy  = 'structure';
+		$tree_post_type = 'tax_structure';
+	} else {
+		$tree_taxonomy  = 'posts';
+		$tree_post_type = 'category';
+	}
+
 	$atts = shortcode_atts( array(
-		'post_type'  => 'structure',
-		'taxonomy'   => 'tax_structure'
+		'post_type'  => $tree_taxonomy,
+		'taxonomy'   => $tree_post_type
 	), $atts );
 
  	// Save post type and taxonomy slug in wp_options table to access later
