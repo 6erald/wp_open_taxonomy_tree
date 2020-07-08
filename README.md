@@ -22,7 +22,7 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 
 7. Activate the Plugin.
 
-8. To import the content of the Sustainable Open Mobility Taxonomy, you have to import the sustainable_open_mobility_taxonomy.xml by following the next steps otherwise skip and go on with 8.:
+8. To import the content of the Sustainable Open Mobility Taxonomy, you have to import the sustainable_open_mobility_taxonomy.xml by following the next steps otherwise skip and go on with 9.:
 
     1. Go to Tools > Import in the WordPress admin panel.
     2. Install the "WordPress" importer from the list.
