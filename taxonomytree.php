@@ -22,9 +22,17 @@ add_shortcode( 'taxonomytree', 'taxonomytree_shortcode' );
 function taxonomytree_shortcode( $atts ) {
 
 	// Define shorcode atts and default atts
+	if ( post_type_exists ( 'structure' ) ) {
+		$tree_taxonomy  = 'structure';
+		$tree_post_type = 'tax_structure';
+	} else {
+		$tree_taxonomy  = 'posts';
+		$tree_post_type = 'category';
+	}
+
 	$atts = shortcode_atts( array(
-		'post_type'  => 'post',
-		'taxonomy'   => 'category'
+		'post_type'  => $tree_taxonomy,
+		'taxonomy'   => $tree_post_type
 	), $atts );
 
  	// Save post type and taxonomy slug in wp_options table to access later
@@ -50,7 +58,7 @@ function taxonomytree_scripts() {
     wp_enqueue_script( 'd3_js' );
 
 	wp_register_style( 'style_css', plugins_url( 'styles/style.css', __FILE__ ) );
-    wp_enqueue_style( 'style_css' );
+    wp_enqueue_style( 'style_css');
 
 	wp_localize_script( 'taxonomytree_js', 'TaxonomyTreeAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
@@ -68,6 +76,20 @@ function taxonomytree_callback() {
 	$tree_taxonomy      = get_option( 'tree_taxonomy' );
 	$tree_taxonomy_arr  = get_taxonomy( $tree_taxonomy );
 	$tree_taxonomy_name = $tree_taxonomy_arr->labels->singular_name;
+
+	// If you use the xml for 'Sustainable Open Mobility Taxonomy'
+	// extract and overwrite taxonomy name tree for main parent from post meta
+	$the_slug = 'sustainable-open-mobility-taxonomy';
+	$args = array(
+		'name' 		     => $the_slug,
+		'post_type'      => 'structure'
+	);
+	$my_post = get_posts($args);
+
+	if ( post_exists($my_post[0]->post_title) != 0 ) {
+		$post_meta_key      = 'taxonomy_rootname';
+		$tree_taxonomy_name = get_post_meta($my_post[0]->ID, $post_meta_key);
+	}
 
 	// Create main parent element of the tree
 	$tree = array(
@@ -151,5 +173,15 @@ define('__METABOX__', dirname(__FILE__).'/metaboxes');
 require_once ( __METABOX__ . '/metabox-color.php' );
 require_once ( __METABOX__ . '/metabox-order.php' );
 require_once ( __METABOX__ . '/metabox-excerpt.php' );
+
+/**
+ * Register new taxonomy for custom post type "structure"
+ */
+
+if ( file_exists ( dirname(__FILE__).'/register-structure.php' ) ) {
+
+	require_once ( dirname(__FILE__).'/register-structure.php' );
+
+}
 
 ?>

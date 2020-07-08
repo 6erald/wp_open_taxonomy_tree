@@ -4,6 +4,9 @@
 
 // tree
 #taxonomytree {
+    svg {
+        // set custom svg width here
+    }
     .label { transform: translate(0,-5px); }
     .taxonomy { fill: rgba(0,0,0, 1); }
 
@@ -17,6 +20,7 @@
     .label,
     .label-curvy {
         font-weight: 400;
+        font-size: .7em;
 
         &.highlight {
             font-weight: 600;
@@ -43,6 +47,7 @@
     top:  0;
     left: 0;
     margin: 10vh 10vw;
+    max-width: 80vw;
     width:  80vw;
     height: 80vh;
     background-color: rgba(255,255,255, 1);
@@ -66,3 +71,17 @@
 // hover
 #infobox-skip,
 #infobox-link { cursor: pointer; }
+
+
+div.footnote {
+     font-size: 70%;
+     opacity: .6;
+     &::before {
+          content: "" ;
+          display: block;
+          width: 25%;
+          height: 1em;
+          border-top: 1px solid black;
+          margin-top: 5em;
+     }
+}
