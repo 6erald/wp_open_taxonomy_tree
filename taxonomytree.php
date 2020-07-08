@@ -82,13 +82,14 @@ function taxonomytree_callback() {
 	$the_slug = 'sustainable-open-mobility-taxonomy';
 	$args = array(
 		'name' 		     => $the_slug,
-		'post_type'      => 'structure'
+		'post_type'      => 'page',
+		'posts_per_page' => 1
 	);
 	$my_post = get_posts($args);
 
 	if ( post_exists($my_post[0]->post_title) != 0 ) {
 		$post_meta_key      = 'taxonomy_rootname';
-		$tree_taxonomy_name = get_post_meta($my_post[0]->ID, $post_meta_key);
+		$tree_taxonomy_name = get_post_meta($my_post[0]->ID, $post_meta_key, true);
 	}
 
 	// Create main parent element of the tree

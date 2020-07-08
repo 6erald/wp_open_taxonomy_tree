@@ -77,7 +77,7 @@ Levels and Objecs:
 
 ## Credits
 
-* A Project of the [Open Source Lab](https://opensourcelab.dfki.de/)
+* A Project by the [Open Source Lab](https://opensourcelab.dfki.de/)
 * Concept: [Tina Gallico](https://www.tinagallico.com/)
 * Illustration: [Olya Bazilevich](http://olyabazilevich.com/)
 * Programming: [Gerald Wagner](https://github.com/6erald/)
