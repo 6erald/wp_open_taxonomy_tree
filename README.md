@@ -8,15 +8,21 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
 
 ## Installation
 
-1. Download the files and separate the sustainable_open_mobility_taxonomy.xml from the other files.
+1. Download the zip file and separate the sustainable_open_mobility_taxonomy.xml from it.
 
-2. Upload the wp_open_taxonomy_tree folder into your wordpress plugin directory.
+2. Log in to your site as an administrator.
 
-3. Log in to your site as an administrator.
+3. Go to Plugins in the Admin panel.
 
-4. Got to Wordpress > Plugins > Installed Plugins in the WordPress admin panel and activate the Open Taxonomy Tree.
+4. Choose Plugins > Add new.
 
-5. To import the sustainable_open_mobility_taxonomy.xml into your WordPress site follow next steps otherwise skip and go on with 6.:
+5. Then choose Add Plugins > Upload Plugin.
+
+6. Add the zip file and upload it. Click on Install Now.
+
+7. Activate the Plugin.
+
+8. To import the content of the Sustainable Open Mobility Taxonomy, you have to import the sustainable_open_mobility_taxonomy.xml by following the next steps otherwise skip and go on with 8.:
 
     1. Go to Tools > Import in the WordPress admin panel.
     2. Install the "WordPress" importer from the list.
@@ -27,9 +33,9 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
     7. WordPress will then import each of the posts, categories, Thumbnails of the Sustainable Open Mobility Taxonomy into your site.
     8. You'll find the imported content under Taxonomy in the WordPress admin panel. The introducon page you'll find under Sustainable Open Mobility Taxonomy. If you want to display the Sustainable Open Mobility Taxonomy somewhere else at your website place the shortcode `[taxonomytree]` on your target.
 
-6. If you want to create a custom taxonomy go on with the following steps otherwise skip.
+9. If you want to create a custom taxonomy go on with the following steps otherwise skip.
 
-7. Place the shortcode where the taxonomy tree shall display and modify it this way:
+10. Place the shortcode where the taxonomy tree shall display and modify it this way:
 
     `[taxonomytree]`
     The default taxonomy "tax_structure" and the assigned post of the default post type "structure" will display.
@@ -40,9 +46,9 @@ The Open Taxonomy Tree Wordpress Plugin displays a taxonomy tree with its terms 
     `[taxonomytree taxonomy="my_taxonomy_slug" post_type="my_post_type_slug"]`
     You can display taxonomy of a specific post type and its assigned posts.
 
-8. Add tree colors to the terms of level 1 in hex `#fff` or `#ffffff`.
+11. Add tree colors to the terms of level 1 in hex `#fff` or `#ffffff`.
 
-9. Add tree orders to terms and post to display them.
+12. Add tree orders to terms and post to display them.
 
 The following layout is necessary to display the post elements.
 
