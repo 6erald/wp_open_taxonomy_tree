@@ -4,8 +4,12 @@
 
 // tree
 #taxonomytree {
+    overflow: auto;
+
     svg {
-        // set custom svg width here
+        // set custom svg width here, for example:
+        // width: 1000px;
+        // max-width: 1000px;
     }
     .label { transform: translate(0,-5px); }
     .taxonomy { fill: rgba(0,0,0, 1); }

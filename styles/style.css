@@ -1,6 +1,9 @@
 /**
  * Taxonomy Tree Styles
  */
+#taxonomytree {
+  overflow: auto;
+}
 #taxonomytree .label {
   transform: translate(0, -5px);
 }
